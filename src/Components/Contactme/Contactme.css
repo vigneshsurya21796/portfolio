@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 155px 0px 55px;
+  padding: 0 155px 0 55px;
 }
 .contactme__containter-mail {
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  /*flex-direction: column;*/
   flex-direction: column;
+  /*flex-direction: column;*/
 
 }
 .contactme__containter-form {
