@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lato:ital,wght@1,400;1,700&family=Lora:wght@600&family=Montserrat:wght@300;400;500&family=Mulish:wght@300;400&family=Open+Sans:wght@300;400;500;600;700&family=PT+Sans:wght@400;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800&family=Prompt:wght@200;300&family=Raleway:wght@300;500&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  /* overflow-x: hidden; */
+}
+#gradient__bg{
+  background: -moz-radial-gradient(
+    circle at 3% 25%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
+
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-radial-gradient(
+    circle at 3% 25%,
+    rgb(0, 40, 83) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
+
+  /* opera 11.10+ */
+  background: -o-radial-gradient(
+    circle at 3% 25%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
+
+  /* ie 10+ */
+  background: -ms-radial-gradient(
+    circle at 3% 25%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
+
+  /* global 92%+ browsers support */
+  background: radial-gradient(
+    circle at 3% 25%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 25%
+  );
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+:root {
+  --font-family--1: "Roboto", sans-serif;
+  --font-family--2: "Lora", serif;
+  --font-family--3: "Montserrat", sans-serif;
+  --font-family--4: "Mulish", sans-serif;
+  --font-family--5: "Open Sans", sans-serif;
+  --font-family--6: "Poppins", sans-serif;
+  --font-family--7: "PT Sans", sans-serif;
+  --font-family--8: "Raleway", sans-serif;
+  --font-family--9: "Dancing Script", cursive;
+  --font-family--10: "Prompt", sans-serif;
+  --text-color: #808080e6;
+  --text-color-1: rgb(66, 84, 102);
+  --background-color: white;
+
+  --project-color-100: #82cd47;
+  --project-color-200: #a2ff86;
+  --project-color-300: #cbffa9;
+}

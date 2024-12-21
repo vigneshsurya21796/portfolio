@@ -1,0 +1,37 @@
+.Portfolio_aboutMe-header {
+    margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  font-family: var(--font-family--1);
+  font-size: 55px;  
+  color: black;
+}
+
+.Portfolio_aboutMe-content{
+    font-family: var(--font-family--1);
+    margin-top: 3rem;
+    color: grey;
+    padding: 1rem 15rem;
+    line-height: 2.1; 
+
+}
+@media screen and (max-width: 1150px) {
+  .Portfolio_aboutMe-content{
+    font-family: var(--font-family--1);
+    margin-top: 3rem;
+    color: white;
+    padding: 1rem 3rem;
+
+}
+}
+@media screen and (max-width: 750px) {
+  .Portfolio_aboutMe-content{
+    font-family: var(--font-family--1);
+    margin-top: 3rem;
+    color: white;
+    padding: 1rem 3rem;
+
+}
+}

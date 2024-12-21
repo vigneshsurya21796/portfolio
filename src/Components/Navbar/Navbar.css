@@ -1,0 +1,197 @@
+.project_Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+  /*position: sticky;*/
+  /*top: 0; */
+  /*z-index: 100; */
+}
+.project_Navbar_links {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.project_Navbar_img {
+  margin-right: 30px;
+
+  font-family: var(--font-family--1);
+  color: black;
+  font-size: 25px;
+}
+.project_Navbar_img img {
+  width: 95px;
+  height: 45px;
+  /* color: black; */
+}
+.project_Navbar_container {
+  display: flex;
+}
+.project_Navbar_signin {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.project_Navbar_container button {
+  border: none;
+  padding: 9px;
+  font-size: 17.5px;
+  /* height: 2.3rem; */
+  width: 9.1rem;
+  font-family: var(--font-family--1);
+  letter-spacing: 0.5px;
+  border-radius: 21px;
+  color: #fff;
+  background: radial-gradient(
+    circle at 75% 24%,
+    rgba(255, 166, 0, 1) 0%,
+    rgba(255, 59, 0, 1) 100%
+  );
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.project_Navbar_container button:hover {
+  box-shadow: 0 5px 15px #fe8c00;
+}
+.project_Navbar_container p,
+.project_Navbar_signin p {
+  font-family: var(--font-family--1);
+  font-size: 17px;
+  font-weight: 500;
+  color: black;
+  line-height: 25px;
+  text-transform: capitalize;
+  margin: 0 1rem;
+}
+.project_Navbar_signin button,
+.Project_Navbar_links_signin button {
+  padding: 0.5rem 1rem;
+  background-color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: var(--font-family-2);
+  color: white;
+  border-radius: 5px;
+}
+.slide-left {
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+  }
+}
+@keyframes slide-left {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+}
+
+.project_Navbar_container_Responsive {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(27, 24, 51, 1) 0%,
+    rgba(82, 91, 68, 1) 100%
+  );
+  padding: 1rem 1.5rem;
+  max-width: 207px;
+  text-align: end;
+  position: absolute;
+  right: -45px;
+  font-family: var(--font-family--1);
+  color: #fff;
+  top: 37px;
+  border-radius: 5px;
+  line-height: 34px;
+}
+.project_Navbar_container_links {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.project_Navbar_icon {
+  margin-left: 1rem;
+
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1050px) {
+  .project_Navbar_container,
+  .Project_Navbar_links_signin {
+    display: none;
+  }
+}
+.scale-up-center {
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .project_Navbar {
+    padding: 2rem 4rem;
+  }
+  .project_Navbar_signin {
+    display: none;
+  }
+  .project_Navbar_icon {
+    display: flex;
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .project_Navbar {
+    padding: 2rem 4rem;
+  }
+  .project_Navbar_signin {
+    display: none;
+  }
+  .project_Navbar_icon,
+  .Project_Navbar_links_signin {
+    display: block;
+  }
+  .Project_Navbar_links_signin {
+    margin-left: 15px;
+  }
+}
