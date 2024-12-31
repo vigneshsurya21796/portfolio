@@ -1,16 +1,20 @@
 .contactme__container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 155px 0 55px;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  padding: 0 155px 3rem 55px;
 }
 .contactme__containter-mail {
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  /*flex-direction: column;*/
+  gap: 15px;
+  height: 100%; /* Ensure it occupies full height if needed */
+  max-width: 600px;
 
+  /*flex-direction: column;*/
 }
 .contactme__containter-form {
   display: flex;
@@ -18,7 +22,104 @@
   /* align-items: center; */
   /* width: 100%; */
 }
-.contactme__input-container{
+.contactme__input-container {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+}
+.contactme__form-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.contactme__input-container label {
+  font-family: var(--font-family--1), serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+.contactme__input-container input {
+  height: 40px;
+  width: 25rem;
+  border: 1px solid black;
+  outline: none;
+  font-size: 20px;
+  color: grey;
+}
+.contactme__input-container textarea {
+  height: 81px;
+  width: 25rem;
+  border: 1px solid black;
+  padding: 5px;
+}
+.contactme__form-flex button {
+  border: none;
+  padding: 9px;
+  font-size: 17.5px;
+  /* height: 2.3rem; */
+  width: 9.1rem;
+  font-family: var(--font-family--1), serif;
+  letter-spacing: 0.5px;
+  border-radius: 21px;
+  color: #fff;
+  background: radial-gradient(
+    circle at 75% 24%,
+    rgba(255, 166, 0, 1) 0%,
+    rgba(255, 59, 0, 1) 100%
+  );
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.contactme__form-flex button:hover {
+  box-shadow: 0 5px 15px #fe8c00;
+}
+.contacme__sendmessage {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.contactme__containter-mail h1 {
+  font-size: 71px;
+  font-family: var(--font-family--1), serif;
+  font-weight: 400;
+}
+.contactme__containter-mail p {
+  font-size: 21px;
+  font-family: var(--font-family--1), serif;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 700px) {
+  .contactme__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem;
+    gap: 15px;
+  }
+
+  .contactme__containter-mail{
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    flex-direction: column;
+    gap: 15px;
+    /*background-color: brown;*/
+    width: auto;
+    flex: 1;
+
+  }
+  .contactme__containter-mail h1 {
+
+    text-align: left;
+  }
+  .contactme__containter-mail p {
+    font-size: 21px;
+    font-family: var(--font-family--1), serif;
+    font-weight: 400;
+    /*text-align: center;*/
+  }
 }
