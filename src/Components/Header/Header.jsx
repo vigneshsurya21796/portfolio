@@ -8,21 +8,21 @@ function Header() {
         <p>Hello, My Name is</p>
         <h1>SURYA P</h1>
 
-        <div className="Header__text-container">
-          <span className="Nav_text">Im an </span>
-          <div className="Navbar_words">
-            <span className="rotating">Full stack developer</span>
-            <span className="rotating">React js developer</span>
-            <span className="rotating">MERN Stack developer</span>
-            <span className="rotating">Full stack developer</span>
-            <span className="rotating">React js developer</span>
-          </div>
-        </div>
+        {/*<div className="Header__text-container">*/}
+        {/*  <span className="Nav_text">Im an </span>*/}
+        {/*  <div className="Navbar_words">*/}
+        {/*    <span className="rotating">Full stack developer</span>*/}
+        {/*    <span className="rotating">React js developer</span>*/}
+        {/*    <span className="rotating">MERN Stack developer</span>*/}
+        {/*    <span className="rotating">Full stack developer</span>*/}
+        {/*    <span className="rotating">React js developer</span>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
         <div className="Nav_explanation">
-          Join the millions of companiess of all millions of companiess of all
+          Join the millions of companies of all millions of companies of all
           sizes that use Stripe to accept payments online and in person, embed
-          financial sern, embed financial services, power custom revenue models,
-          and build a more profitable business.
+          financial stern, embed financial services, power custom revenue
+          models, and build a more profitable business.
         </div>
       </div>
       <div className="header_element_2">

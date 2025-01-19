@@ -4,22 +4,45 @@
   justify-content: center;
 
   align-items: center;
-  font-family: var(--font-family--1);
+    font-family: var(--font-family--1), serif;
   font-size: 55px;  
   color: black;
 }
 
 .Portfolio_aboutMe-content{
-    font-family: var(--font-family--1);
+    font-family: var(--font-family--1), serif;
     margin-top: 3rem;
+    /*background-color: yellow;*/
     color: grey;
-    padding: 1rem 15rem;
+    width: 50%;
+    /*margin: 0 auto;*/
+    text-align: center;
     line-height: 2.1; 
+
+}
+.Portfolio_aboutMe-content button{
+    outline: none;
+    border: none;
+    padding: 7px;
+    color: #fff;
+    background: radial-gradient(circle at 75% 24%, rgba(255, 166, 0, 1) 0%, rgba(255, 59, 0, 1) 100%);
+    border-radius: 21px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-family--1), serif;
+    font-size: 17.5px;
+}
+.Portfolio_aboutMe-content button:hover{
+    box-shadow: 0 5px 15px #fe8c00;
+}
+.Aboutme__flexcontianer{
+    display: flex;
+    justify-content: center;
 
 }
 @media screen and (max-width: 1150px) {
   .Portfolio_aboutMe-content{
-    font-family: var(--font-family--1);
+      font-family: var(--font-family--1), serif;
     margin-top: 3rem;
     color: white;
     padding: 1rem 3rem;
@@ -28,7 +51,7 @@
 }
 @media screen and (max-width: 750px) {
   .Portfolio_aboutMe-content{
-    font-family: var(--font-family--1);
+      font-family: var(--font-family--1), serif;
     margin-top: 3rem;
     color: white;
     padding: 1rem 3rem;
