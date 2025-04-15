@@ -16,7 +16,7 @@
 .project_Navbar_img {
   margin-right: 30px;
 
-  font-family: var(--font-family--1);
+  font-family: var(--font-family--1), serif;
   color: black;
   font-size: 25px;
 }
@@ -39,15 +39,11 @@
   font-size: 17.5px;
   /* height: 2.3rem; */
   width: 9.1rem;
-  font-family: var(--font-family--1);
+  font-family: var(--font-family--1), serif;
   letter-spacing: 0.5px;
   border-radius: 21px;
   color: #fff;
-  background: radial-gradient(
-    circle at 75% 24%,
-    rgba(255, 166, 0, 1) 0%,
-    rgba(255, 59, 0, 1) 100%
-  );
+  background: var(--color-bg);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -56,13 +52,34 @@
 }
 .project_Navbar_container p,
 .project_Navbar_signin p {
-  font-family: var(--font-family--1);
+  font-family: var(--font-family--1), serif;
   font-size: 17px;
   font-weight: 500;
   color: black;
   line-height: 25px;
   text-transform: capitalize;
   margin: 0 1rem;
+  position: relative;
+
+}
+.project_Navbar_signin p::after{
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  left: 0;
+  bottom: -5px;
+
+  background-color: #fe8c00;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform .5s;
+}
+.project_Navbar_signin p:hover::after{
+
+  transform: scaleX(1);
+  transform-origin: bottom left;
+
 }
 .project_Navbar_signin button,
 .Project_Navbar_links_signin button {
@@ -71,7 +88,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: var(--font-family-2);
+  font-family: var(--font-family--1), serif;
   color: white;
   border-radius: 5px;
 }
@@ -104,7 +121,7 @@
 .project_Navbar_container_Responsive {
   display: flex;
   flex-direction: column;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 
   background: radial-gradient(
     circle at 0% 0%,
@@ -116,7 +133,7 @@
   text-align: end;
   position: absolute;
   right: -45px;
-  font-family: var(--font-family--1);
+  font-family: var(--font-family--1), serif;
   color: #fff;
   top: 37px;
   border-radius: 5px;

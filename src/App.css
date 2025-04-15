@@ -6,19 +6,21 @@
 }
 
 body {
-  background: var(--color-bg);
+  /*background: var(--color-bg);*/
 }
+:root{
 
+}
 a {
   color: unset;
   text-decoration: none;
 }
-.gradient__text {
+/*.gradient__text {
   background: var(--gradient-text);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+}*/
 .gradient__bg__color {
   /* ff 3.6+ */
   background: -moz-linear-gradient(
@@ -126,4 +128,7 @@ a {
     rgba(0, 40, 83, 1) 0%,
     rgba(4, 12, 24, 1) 25%
   );
+}
+:root{
+  --color: grey;
 }

@@ -42,7 +42,7 @@
 .contactme__input-container input {
   height: 40px;
   width: 32rem;
-  border: 1px solid black;
+  border: 1px solid orange;
   outline: none;
   font-size: 20px;
   color: grey;
@@ -50,17 +50,22 @@
 .contactme__input-container textarea {
   height: 81px;
   width: 32rem;
-  border: 1px solid black;
+  border: 1px solid orange;
   padding: 5px;
+  resize: none;
+}
+.contactme__input-container textarea:focus{
+  border: 1px solid orange !important;
+  outline: none;
 }
 .contactme__form-flex button {
   border: none;
   padding: 9px;
-  font-size: 17.5px;
+  font-size: 18px;
   /* height: 2.3rem; */
   width: 9.1rem;
   font-family: var(--font-family--1), serif;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   border-radius: 21px;
   color: #fff;
   background: radial-gradient(
@@ -149,7 +154,7 @@
   .contactme__input-container textarea {
     height: 81px;
     width: 21rem;
-    border: 1px solid black;
+    border: 1px solid orange;
     padding: 5px;
   }
 }

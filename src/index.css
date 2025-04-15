@@ -62,10 +62,13 @@ code {
   --font-family--9: "Dancing Script", cursive;
   --font-family--10: "Prompt", sans-serif;
   --text-color: #808080e6;
+  --text-color-new: gray;
+  --text-color-new-heading: green;
   --text-color-1: rgb(66, 84, 102);
   --background-color: white;
-
+  --color-bg: radial-gradient(circle at 75% 24%, rgba(255, 166, 0, 1) 0%, rgba(255, 59, 0, 1) 100%);
   --project-color-100: #82cd47;
   --project-color-200: #a2ff86;
   --project-color-300: #cbffa9;
+
 }

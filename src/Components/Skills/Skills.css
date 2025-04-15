@@ -1,0 +1,31 @@
+.skills__container{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    margin: 50px 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: poppins, sans-serif;
+}
+.skills__container h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+.skills__container__item{
+    text-align: center;
+}
+.skills__container h4{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color);
+    text-transform: uppercase;
+}
+@media only screen and (max-width: 600px){
+    .skills__container{
+        display: block;
+    }
+    .skills__container__item{
+        text-align: center;
+        margin-top: 30px;
+    }
+}
