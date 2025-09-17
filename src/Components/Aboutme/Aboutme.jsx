@@ -37,7 +37,18 @@ function Aboutme() {
               Let’s connect and create something amazing together.
             */}
 
-            <button>Download CV</button>
+            <button>
+              {" "}
+              <a
+                href="https://drive.google.com/file/d/1wJiNO9up801Jm-SzmaiRWGCFDHIR5QIU/view?usp=drive_link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {" "}
+                Download CV
+              </a>
+            </button>
+            {/* <a></a> */}
           </div>
 
           <div>

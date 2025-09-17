@@ -3,72 +3,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body,
 html {
-  /* overflow-x: hidden; */
+    /* overflow-x: hidden; */
 }
 #gradient__bg{
-  background: -moz-radial-gradient(
-    circle at 3% 25%,
-    rgba(0, 40, 83, 1) 0%,
-    rgba(4, 12, 24, 1) 25%
-  );
+    background: -moz-radial-gradient(
+            circle at 3% 25%,
+            rgba(0, 40, 83, 1) 0%,
+            rgba(4, 12, 24, 1) 25%
+    );
 
-  /* safari 5.1+,chrome 10+ */
-  background: -webkit-radial-gradient(
-    circle at 3% 25%,
-    rgb(0, 40, 83) 0%,
-    rgba(4, 12, 24, 1) 25%
-  );
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-radial-gradient(
+            circle at 3% 25%,
+            rgb(0, 40, 83) 0%,
+            rgba(4, 12, 24, 1) 25%
+    );
 
-  /* opera 11.10+ */
-  background: -o-radial-gradient(
-    circle at 3% 25%,
-    rgba(0, 40, 83, 1) 0%,
-    rgba(4, 12, 24, 1) 25%
-  );
+    /* opera 11.10+ */
+    background: -o-radial-gradient(
+            circle at 3% 25%,
+            rgba(0, 40, 83, 1) 0%,
+            rgba(4, 12, 24, 1) 25%
+    );
 
-  /* ie 10+ */
-  background: -ms-radial-gradient(
-    circle at 3% 25%,
-    rgba(0, 40, 83, 1) 0%,
-    rgba(4, 12, 24, 1) 25%
-  );
+    /* ie 10+ */
+    background: -ms-radial-gradient(
+            circle at 3% 25%,
+            rgba(0, 40, 83, 1) 0%,
+            rgba(4, 12, 24, 1) 25%
+    );
 
-  /* global 92%+ browsers support */
-  background: radial-gradient(
-    circle at 3% 25%,
-    rgba(0, 40, 83, 1) 0%,
-    rgba(4, 12, 24, 1) 25%
-  );
+    /* global 92%+ browsers support */
+    background: radial-gradient(
+            circle at 3% 25%,
+            rgba(0, 40, 83, 1) 0%,
+            rgba(4, 12, 24, 1) 25%
+    );
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 :root {
-  --font-family--1: "Roboto", sans-serif;
-  --font-family--2: "Lora", serif;
-  --font-family--3: "Montserrat", sans-serif;
-  --font-family--4: "Mulish", sans-serif;
-  --font-family--5: "Open Sans", sans-serif;
-  --font-family--6: "Poppins", sans-serif;
-  --font-family--7: "PT Sans", sans-serif;
-  --font-family--8: "Raleway", sans-serif;
-  --font-family--9: "Dancing Script", cursive;
-  --font-family--10: "Prompt", sans-serif;
-  --text-color: #808080e6;
-  --text-color-new: gray;
-  --text-color-new-heading: green;
-  --text-color-1: rgb(66, 84, 102);
-  --background-color: white;
-  --color-bg: radial-gradient(circle at 75% 24%, rgba(255, 166, 0, 1) 0%, rgba(255, 59, 0, 1) 100%);
-  --project-color-100: #82cd47;
-  --project-color-200: #a2ff86;
-  --project-color-300: #cbffa9;
+    --font-family--1: "Roboto", sans-serif;
+    --font-family--2: "Lora", serif;
+    --font-family--3: "Montserrat", sans-serif;
+    --font-family--4: "Mulish", sans-serif;
+    --font-family--5: "Open Sans", sans-serif;
+    --font-family--6: "Poppins", sans-serif;
+    --font-family--7: "PT Sans", sans-serif;
+    --font-family--8: "Raleway", sans-serif;
+    --font-family--9: "Dancing Script", cursive;
+    --font-family--10: "Prompt", sans-serif;
+    --text-color: #808080e6;
+    --text-color-new: gray;
+    --text-color-new-heading: green;
+    --text-color-1: rgb(66, 84, 102);
+    --background-color: white;
+   --color-bg: linear-gradient(76deg, rgba(0, 150, 136, 1) 0%, rgba(76, 175, 80, 1) 50%, rgba(0, 150, 136, 1) 100%);
+    --project-color-100: #82cd47;
+    --project-color-200: #a2ff86;
+    --project-color-300: #cbffa9;
+     --color-primary: rgba(0, 150, 136, 1);
 
 }

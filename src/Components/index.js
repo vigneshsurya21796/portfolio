@@ -3,3 +3,4 @@ export { default as Header } from "../Components/Header/Header.jsx";
 export { default as Aboutme } from "../Components/Aboutme/Aboutme.jsx";
 export { default as Contactme } from "../Components/Contactme/Contactme.jsx";
 export { default as Skills } from "../Components/Skills/Skills.jsx";
+export { default as Recentprojects } from "../Components/Recentprojects/Recentprojects.jsx";

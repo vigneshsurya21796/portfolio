@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5rem;
+  padding: 2rem 0;
   /*position: sticky;*/
   /*top: 0; */
   /*z-index: 100; */
@@ -48,7 +48,7 @@
   transition: all 0.3s;
 }
 .project_Navbar_container button:hover {
-  box-shadow: 0 5px 15px #fe8c00;
+  box-shadow: 0 5px 15px rgba(0, 150, 136, 1);
 }
 .project_Navbar_container p,
 .project_Navbar_signin p {
@@ -58,11 +58,10 @@
   color: black;
   line-height: 25px;
   text-transform: capitalize;
-  margin: 0 1rem;
+  margin: 0 1.7rem;
   position: relative;
-
 }
-.project_Navbar_signin p::after{
+.project_Navbar_signin p::after {
   position: absolute;
   content: "";
   height: 3px;
@@ -70,21 +69,19 @@
   left: 0;
   bottom: -5px;
 
-  background-color: #fe8c00;
+  background-color: var(--color-primary);
   transform: scaleX(0);
   transform-origin: bottom right;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
-.project_Navbar_signin p:hover::after{
-
+.project_Navbar_signin p:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
-
 }
 .project_Navbar_signin button,
 .Project_Navbar_links_signin button {
   padding: 0.5rem 1rem;
-  background-color: black;
+  /* background-color: black; */
   border: none;
   outline: none;
   cursor: pointer;
@@ -99,21 +96,19 @@
 
 @-webkit-keyframes slide-left {
   0% {
-    -webkit-transform: translateX(0);
     transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-10px);
     transform: translateX(-10px);
   }
 }
 @keyframes slide-left {
   0% {
-    -webkit-transform: translateX(0);
+
     transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-100px);
+
     transform: translateX(-100px);
   }
 }
@@ -121,23 +116,25 @@
 .project_Navbar_container_Responsive {
   display: flex;
   flex-direction: column;
+  background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 
-  background: radial-gradient(
+  /* background: radial-gradient(
     circle at 0% 0%,
     rgba(27, 24, 51, 1) 0%,
     rgba(82, 91, 68, 1) 100%
-  );
+  ); */
   padding: 1rem 1.5rem;
   max-width: 207px;
   text-align: end;
   position: absolute;
   right: -45px;
   font-family: var(--font-family--1), serif;
-  color: #fff;
+  color: black;
   top: 37px;
   border-radius: 5px;
   line-height: 34px;
+  z-index: 9;
 }
 .project_Navbar_container_links {
   margin-top: 15px;
@@ -165,21 +162,21 @@
 
 @-webkit-keyframes scale-up-center {
   0% {
-    -webkit-transform: scale(0.5);
+
     transform: scale(0.5);
   }
   100% {
-    -webkit-transform: scale(1);
+
     transform: scale(1);
   }
 }
 @keyframes scale-up-center {
   0% {
-    -webkit-transform: scale(0.5);
+
     transform: scale(0.5);
   }
   100% {
-    -webkit-transform: scale(1);
+
     transform: scale(1);
   }
 }

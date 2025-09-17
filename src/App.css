@@ -8,8 +8,7 @@
 body {
   /*background: var(--color-bg);*/
 }
-:root{
-
+:root {
 }
 a {
   color: unset;
@@ -129,6 +128,17 @@ a {
     rgba(4, 12, 24, 1) 25%
   );
 }
-:root{
+:root {
   --color: grey;
+}
+.Testing__background {
+  background-color: yellow;
+}
+
+.App__container {
+  margin: auto;
+  max-width: 1380px;
+  width: 90%; /* keeps layout flexible on small screens */
+  padding: 0 1rem; /* horizontal padding so content isn’t flush */
+  /* background-color: rgba(255, 0, 0, 0.408); */
 }

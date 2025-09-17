@@ -1,23 +1,21 @@
 import React from "react";
 import "./Skills.css";
+import { technologies } from "../../constants/index";
 function Skills() {
   return (
-    <div className="skills__container">
-      <div className="skills__container__item">
-        <h1>300+</h1>
-        <h4>Projects Completed</h4>
-      </div>
-      <div className="skills__container__item">
-        <h1>3+</h1>
-        <h4>Experience</h4>
-      </div>
-      <div className="skills__container__item">
-        <h1>12K+</h1>
-        <h4>Students Trained</h4>
-      </div>
-      <div className="skills__container__item">
-        <h1>150+</h1>
-        <h4>Happy Clients</h4>
+    <div className="skills__container"  id="Skills">
+      <div>
+        <h1>Skills</h1>
+        <div className="skills__container-overall">
+          {technologies.map((tech, index) => {
+            return (
+              <div key={index} className="skills__imageconatainer">
+                <p style={{ textAlign: "center" }}>{tech.name}</p>
+                <img src={tech.icon} width="100%" alt="HTML 5" />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

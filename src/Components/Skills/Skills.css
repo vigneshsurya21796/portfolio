@@ -1,31 +1,83 @@
-.skills__container{
-    display: flex;
-    justify-content: space-between;
-    padding: 50px;
-    margin: 50px 10px;
-    align-items: center;
-    flex-wrap: wrap;
-    font-family: poppins, sans-serif;
+.skills__container {
+  margin: 50px 10px;
+  font-family: poppins, sans-serif;
 }
+
 .skills__container h1 {
-    font-size: 40px;
-    font-weight: 500;
+  font-size: 2.5rem; /* responsive unit */
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 25px;
 }
-.skills__container__item{
-    text-align: center;
+
+.skills__container-overall {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px; /* smaller than 90px for better wrapping */
 }
-.skills__container h4{
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--color);
-    text-transform: uppercase;
+
+.skills__imageconatainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-@media only screen and (max-width: 600px){
-    .skills__container{
-        display: block;
-    }
-    .skills__container__item{
-        text-align: center;
-        margin-top: 30px;
-    }
+
+.skills__imageconatainer img {
+  height: 55px;
+  width: 55px;
+  transition: transform 0.3s ease;
+}
+
+.skills__imageconatainer img:hover {
+  transform: scale(1.1); /* nice hover effect */
+}
+
+.skills__imageconatainer p {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color, #333);
+  text-transform: capitalize;
+}
+
+/* 🔹 Responsive styles */
+@media (max-width: 1024px) {
+  .skills__container h1 {
+    font-size: 2rem;
+  }
+  .skills__container-overall {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills__container h1 {
+    font-size: 1.8rem;
+  }
+  .skills__imageconatainer img {
+    height: 45px;
+    width: 45px;
+  }
+  .skills__container-overall {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills__container {
+    margin: 30px 5px;
+  }
+  .skills__container h1 {
+    font-size: 1.5rem;
+  }
+  .skills__imageconatainer img {
+    height: 40px;
+    width: 40px;
+  }
+  .skills__container-overall {
+    justify-content: center;
+    gap: 15px;
+  }
 }

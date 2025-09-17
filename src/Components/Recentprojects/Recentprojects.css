@@ -1,0 +1,208 @@
+.mySwiper {
+  padding-top: 120px; /* Increased padding for bigger slider */
+  width: 100%;
+  margin-top: 60px; /* Slightly more margin */
+}
+
+.recent__projects-container {
+  height: 500px; /* Increased height for bigger images on desktop */
+  overflow: visible !important;
+}
+
+.swiper-slide {
+  /* padding: 15px;  */
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+  /* background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.5), transparent); */
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  /* No shadow by default */
+}
+
+/* Shadow only for non-active slides (side slides) */
+.swiper-slide:not(.swiper-slide-active) {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced shadow for non-active slides on hover */
+.swiper-slide:not(.swiper-slide-active):hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Center/active slide - clean look without shadow */
+.swiper-slide-active {
+  box-shadow: none;
+}
+
+/* Remove the old hover effect as it's now handled above */
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0; /* Add border radius to images */
+}
+
+/* Style the pagination dots and position them */
+.swiper-pagination {
+  bottom: -15px !important; /* instead of -3px */
+  position: absolute;
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #000;
+}
+
+.recentproject__imageone {
+  border-radius: 8px 8px 12px 12px; /* Updated border radius to match slide */
+}
+
+.recentproject__imageone h1 {
+  padding: 10px 10px 0 30px; /* Increased padding for bigger slides */
+  color: black;
+  font-size: 20px; /* Slightly larger font for desktop */
+  font-weight: bold;
+  font-family: var(--font-family--1) sans-serif;
+}
+
+.recentproject__imageone span {
+  font-weight: 400;
+  color: black;
+}
+
+.Recentprojects__container h3 {
+  font-size: 60px;
+  font-weight: 500;
+  text-align: center;
+  font-family: var(--font-family--1) sans-serif;
+  margin-bottom: 15px;
+}
+
+.Recentprojects__secondary {
+  text-align: center;
+  font-family: var(--font-family--3) sans-serif;
+  font-weight: 500;
+  color: gray;
+  line-height: 25px;
+}
+
+.Receneproject__primary {
+  width: 600px;
+  margin: auto auto 50px;
+  text-align: center;
+}
+
+.recentproject__imageone p {
+  padding: 10px 10px 10px 30px; /* Increased padding for bigger slides */
+  color: black;
+  font-size: 16px; /* Slightly larger font for desktop */
+  font-family: var(--font-family--1) sans-serif;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1200px) {
+  .mySwiper {
+    padding-top: 50px;
+    margin-top: 30px;
+  }
+
+  .recent__projects-container {
+    height: 280px; /* Reduced height for mobile */
+  }
+
+  .swiper-slide {
+    /* padding: 5px;  */
+    /* No shadow by default on mobile */
+  }
+
+  /* Shadow only for non-active slides on mobile */
+  .swiper-slide:not(.swiper-slide-active) {
+    box-shadow:
+      0 5px 15px rgba(0, 0, 0, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .swiper-slide:not(.swiper-slide-active):hover {
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.25),
+      0 5px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); /* Reduced hover effect on mobile */
+  }
+
+  /* Active slide on mobile - no shadow */
+  .swiper-slide-active {
+    box-shadow: none;
+  }
+
+  .Recentprojects__container h3 {
+    font-size: 40px; /* Smaller heading */
+  }
+
+  .Receneproject__primary {
+    width: 90%; /* More flexible width */
+    margin: auto auto 30px;
+  }
+
+  .recentproject__imageone h1 {
+    font-size: 20px; /* Smaller project title */
+    padding: 10px 10px 0 10px;
+  }
+
+  .recentproject__imageone p {
+    font-size: 13px; /* Smaller description text */
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mySwiper {
+    padding-top: 40px;
+    margin-top: 20px;
+  }
+
+  .recent__projects-container {
+    height: 220px; /* Even smaller for very small screens */
+  }
+
+  .swiper-slide {
+    padding: 3px;
+  }
+
+  .Recentprojects__container h3 {
+    font-size: 32px;
+  }
+
+  .Recentprojects__secondary {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .recentproject__imageone h1 {
+    font-size: 18px;
+    padding: 8px 8px 0 8px;
+  }
+
+  .recentproject__imageone p {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+  }
+}

@@ -1,177 +1,201 @@
+/* ================= Base Styles ================= */
 .Portfolio_aboutMe-header {
-    margin-top: 5rem;
+  margin-top: 5rem;
   display: flex;
-    justify-content: flex-start;
-
-
-    align-items: center;
-    font-family: var(--font-family--1), serif;
-    font-size: 70px;
-    font-weight: 500;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: var(--font-family--1), serif;
+  font-size: clamp(2rem, 6vw, 70px); /* responsive font */
+  font-weight: 500;
   color: black;
 }
 
-.Portfolio_aboutMe-content{
-    font-family: var(--font-family--1), serif;
-    margin-top: 3rem;
-    /*background-color: yellow;*/
-    color: grey;
-    width: 41%;
-    /*margin: 0 auto;*/
-    text-align: justify;
-    line-height: 2.1;
+.Portfolio_aboutMe-content {
+  font-family: var(--font-family--1), serif;
+  margin-top: 3rem;
+  color: grey;
+  width: 41%;
+  text-align: justify;
+  line-height: 2.1;
+}
 
+.Portfolio_aboutMe-content button a {
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
-.icon__cards{
 
+.icon__cards {
+  height: 125px;
+  width: 125px;
+}
 
-    height: 125px;
-    width: 125px;
+.icon__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.icon__container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.Portfolio_aboutMe-content button{
-    outline: none;
-    border: none;
-    padding: 12px 35px;
-    color: #fff;
-    background: var(--color-bg);
-    border-radius: 21px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: var(--font-family--1), serif;
-    font-size: 15.5px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
-.Portfolio_aboutMe-content button:hover{
-    box-shadow: 0 5px 15px #fe8c00;
-}
-.card__header{
-    /*padding: 25px;*/
-    width: 350px;
-    /*background-color: yellow;*/
-    display: flex;
-    padding: 20px 40px 50px;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.card__header-container p{
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-color-new);
-    font-family: var(--font-family--1), serif;
-}
-.card__header-container span{
-    font-weight: bold;
-    font-size: 1.3rem;
-    font-family: var(--font-family--1), serif;
 
+.Portfolio_aboutMe-content button {
+  background: var(--color-bg);
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  line-height: 3rem;
+  margin: 20px auto auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  transition: box-shadow 0.4s;
+  display: inline-block;
 }
-.card__header-container{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-
-    /*align-items: center;*/
+.Portfolio_aboutMe-content button:hover {
+  box-shadow: 0 5px 15px rgba(0, 150, 136, 1);
 }
-.card__header-container button{
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    color: #4ba9fd;
-    font-family: Poppins, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 20px;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    transition: all .5s;
+
+/* ================= Card Styles ================= */
+.card__header {
+  width: 350px;
+  display: flex;
+  padding: 20px 40px 50px;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
-.card__header-container button:hover{
-    color: blue;
-    cursor: pointer;
 
-    -webkit-box-shadow: 10px 10px 64px -2px rgba(75, 169, 253, .75);
-
-
-    background-color: #fff;
+.card__header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
 }
+
+.card__header-container p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-color-new);
+  font-family: var(--font-family--1), serif;
+}
+
+.card__header-container span {
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: var(--font-family--1), serif;
+}
+
+.card__header-container button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: #4ba9fd;
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+
+.card__header-container button:hover {
+  color: blue;
+  cursor: pointer;
+  -webkit-box-shadow: 10px 10px 64px -2px rgba(75, 169, 253, 0.75);
+  background-color: #fff;
+}
+
+/* ================= Layout ================= */
 .Aboutme__contentone {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10rem;
-    gap: 35px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10rem;
+  gap: 35px;
 }
-.margin__add{
-    margin-top: 3rem;
 
+.margin__add {
+  margin-top: 3rem;
 }
-.Aboutme__flexcontianer_top{
-    display: flex;
-    justify-content: space-between;
-    padding: 55px;
-    align-items: center;
 
+.Aboutme__flexcontianer_top {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 55px; */
+  align-items: center;
+  gap: 40px;
 }
-.Aboutme__flexcontianer{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 
-
+.Aboutme__flexcontianer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
+
+/* ================= Media Queries ================= */
+
+/* Tablets (below 1150px) */
 @media screen and (max-width: 1150px) {
-  .Portfolio_aboutMe-content{
-      font-family: var(--font-family--1), serif;
-    margin-top: 3rem;
-    color: white;
-    padding: 1rem 3rem;
+  .Portfolio_aboutMe-content {
+    width: 100%;
+    /* color: white; */
+    /* padding: 1rem 3rem; */
+  }
+  .Aboutme__flexcontianer_top {
+    flex-direction: column;
+    text-align: center;
+    /* padding: 2rem; */
+  }
+  .Aboutme__contentone {
+    margin-right: 0;
+    justify-content: center;
+  }
+}
 
-}
-}
+/* Mobile (below 750px) */
 @media screen and (max-width: 750px) {
-  .Portfolio_aboutMe-content{
-      font-family: var(--font-family--1), serif;
-    margin-top: 3rem;
+  .Portfolio_aboutMe-content {
     color: gray;
-    padding: 1rem 3rem;
-      width: 100%;
+    /* padding: 1rem 2rem; */
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .card__header {
+    width: 100%;
+    max-width: 320px;
+  }
+  .Aboutme__contentone {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+}
 
-}
-}
+/* Small Mobile (below 550px) */
 @media (max-width: 550px) {
-    .Portfolio_aboutMe-content{
-        padding: 1rem;
-        margin-top: 1rem;
-    }
-    .Aboutme__flexcontianer_top{
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        padding: 0px;
-        align-items: center;
-
-    }
-    .Portfolio_aboutMe-content button{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-
-    }
-    .Aboutme__contentone {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 35px;
-        margin-right: 0rem;
-    }
+  .Portfolio_aboutMe-header {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-top: 2rem;
+  }
+  .Portfolio_aboutMe-content {
+    /* padding: 1rem; */
+    margin-top: 1rem;
+    text-align: left;
+  }
+  .Portfolio_aboutMe-content button {
+    margin: 1rem auto;
+  }
+  .Aboutme__flexcontianer_top {
+    flex-direction: column;
+    padding: 0;
+    text-align: center;
+  }
+  .Aboutme__contentone {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
