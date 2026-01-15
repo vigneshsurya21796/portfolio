@@ -73,15 +73,17 @@
 
 .recentproject__imageone h1 {
   padding: 10px 10px 0 30px; /* Increased padding for bigger slides */
-  color: black;
+
   font-size: 20px; /* Slightly larger font for desktop */
   font-weight: bold;
-  font-family: var(--font-family--1) sans-serif;
+    color: white;
+    font-family: var(--font-family--3), serif;
 }
 
 .recentproject__imageone span {
   font-weight: 400;
-  color: black;
+    color: white;
+    font-family: var(--font-family--3), serif;
 }
 
 .Recentprojects__container h3 {
@@ -94,7 +96,7 @@
 
 .Recentprojects__secondary {
   text-align: center;
-  font-family: var(--font-family--3) sans-serif;
+  font-family: var(--font-family--3), sans-serif;
   font-weight: 500;
   color: gray;
   line-height: 25px;
@@ -192,13 +194,17 @@
   }
 
   .recentproject__imageone h1 {
-    font-size: 18px;
+    font-size: 28px;
     padding: 8px 8px 0 8px;
+      color: white;
+      font-family: var(--font-family--3), serif;
   }
 
-  .recentproject__imageone p {
+  .recentproject__imageone p ,.recentproject__imageone span{
     font-size: 12px;
     padding: 8px;
+      color: white;
+      font-family: var(--font-family--3), serif;
   }
 
   .swiper-pagination-bullet {

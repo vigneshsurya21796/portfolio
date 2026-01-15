@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useState } from "react";
+// import { useState } from "react";
 
 // import Apple from "../../assets/artificial-intelligence-14078.svg";
 function Navbar() {
   const [toggle, settoggle] = useState(false);
-
   return (
     <div className="project_Navbar">
       <div className="project_Navbar_links">
