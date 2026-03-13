@@ -94,7 +94,7 @@ function Contactme() {
     <div className="contactme__container" id="Contactme">
       <div className="contactme__containter-mail">
         <div>
-          <p>React out to me</p>
+          <p>Reach out to me</p>
           <span>
             Discuss a Project or just want to say Hi? My inbox is open for all.
           </span>{" "}
