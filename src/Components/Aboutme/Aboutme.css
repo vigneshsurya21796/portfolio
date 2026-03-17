@@ -4,14 +4,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-family: var(--font-family--1), serif;
+    font-family: var(--font-body);
     font-size: clamp(2rem, 6vw, 70px); /* responsive font */
     font-weight: 500;
     color: black;
 }
 
 .Portfolio_aboutMe-content {
-    font-family: var(--font-family--1), serif;
+    font-family: var(--font-body);
     margin-top: 3rem;
     color: grey;
     width: 41%;
@@ -43,7 +43,7 @@
     border-radius: 30px;
     color: #fff;
     cursor: pointer;
-    font-family: Poppins, sans-serif;
+    font-family: var(--font-primary);
     font-size: 1rem;
     letter-spacing: 1px;
     line-height: 3rem;
@@ -54,7 +54,7 @@
     display: inline-block;
 }
 .Portfolio_aboutMe-content button:hover {
-    box-shadow: 0 5px 15px rgba(0, 150, 136, 1);
+    box-shadow: 0 5px 15px #6C63FF;
 }
 
 /* ================= Card Styles ================= */
@@ -79,21 +79,21 @@
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text-color-new);
-    font-family: var(--font-family--1), serif;
+    font-family: var(--font-body);
 }
 
 .card__header-container span {
     font-weight: bold;
     font-size: 1.3rem;
-    font-family: var(--font-family--1), serif;
+    font-family: var(--font-body);
 }
 
 .card__header-container button {
     background-color: #fff;
     border: none;
     border-radius: 5px;
-    color: #4ba9fd;
-    font-family: Poppins, sans-serif;
+    color: #6C63FF;
+    font-family: var(--font-primary);
     font-size: 12px;
     font-weight: 500;
     margin-top: 20px;

@@ -16,7 +16,7 @@
 .project_Navbar_img {
   margin-right: 30px;
 
-  font-family: var(--font-family--1), serif;
+  font-family: var(--font-body);
   color: black;
   font-size: 25px;
 }
@@ -39,7 +39,7 @@
   font-size: 17.5px;
   /* height: 2.3rem; */
   width: 9.1rem;
-  font-family: var(--font-family--1), serif;
+  font-family: var(--font-primary);
   letter-spacing: 0.5px;
   border-radius: 21px;
   color: #fff;
@@ -48,11 +48,11 @@
   transition: all 0.3s;
 }
 .project_Navbar_container button:hover {
-  box-shadow: 0 5px 15px rgba(0, 150, 136, 1);
+  box-shadow: 0 5px 15px #6C63FF;
 }
 .project_Navbar_container p,
 .project_Navbar_signin p {
-  font-family: var(--font-family--1), serif;
+  font-family: var(--font-primary);
   font-size: 17px;
   font-weight: 500;
   color: black;
@@ -85,7 +85,7 @@
   border: none;
   outline: none;
   cursor: pointer;
-  font-family: var(--font-family--1), serif;
+  font-family: var(--font-body);
   color: white;
   border-radius: 5px;
 }
@@ -129,7 +129,7 @@
   text-align: end;
   position: absolute;
   right: -45px;
-  font-family: var(--font-family--1), serif;
+  font-family: var(--font-body);
   color: black;
   top: 37px;
   border-radius: 5px;

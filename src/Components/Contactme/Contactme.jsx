@@ -13,7 +13,8 @@ const formSchema = z.object({
   email: z.string().email("Invalid email format"),
   contactnumber: z
     .string()
-    .regex(/^\d{10}$/, "Contact number must be exactly 10 digits"),
+    .regex(/^\d{10}$/, "Contact number must be exactly 10 digits")
+    .or(z.literal("")),
   message: z.string().min(1, "Message is required"),
 });
 
@@ -40,8 +41,8 @@ function Contactme() {
 
   // Handle form submission
   const onformsubmit = (e) => {
-    setLoading(true);
     e.preventDefault();
+    setLoading(true);
 
     // Validate form data using Zod schema
     const result = formSchema.safeParse(form);
@@ -61,30 +62,23 @@ function Contactme() {
     } else {
       setErrors({});
 
-      // Log form data for debugging
-      const formData = new FormData(formRef.current);
-      formData.forEach((value, key) => {
-        console.log(key, value); // Log form field names and values
-      });
-
       // Send the form data using EmailJS
       emailjs
         .sendForm(
-          "service_v70h3pd", // Replace with your EmailJS service ID
-          "template_fhhiu2w", // Replace with your EmailJS template ID
-          formRef.current, // Pass the form reference
-          "l6hGRO60uFw5HoYO9" // Replace with your EmailJS public key
+          "service_v70h3pd",
+          "template_fhhiu2w",
+          formRef.current,
+          "l6hGRO60uFw5HoYO9"
         )
         .then(
-          (result) => {
+          () => {
             setLoading(false);
-            console.log("Message sent successfully!", result);
             toast.success("Message sent successfully!");
             setform({ name: "", email: "", contactnumber: "", message: "" });
           },
-          (error) => {
+          () => {
             setLoading(false);
-            console.error("Failed to send message. Try again.", error);
+            toast.error("Failed to send message. Please try again.");
           }
         );
     }
@@ -92,15 +86,14 @@ function Contactme() {
 
   return (
     <div className="contactme__container" id="Contactme">
-      <div className="contactme__containter-mail">
+      <div className="contactme__container-mail">
         <div>
-          <p>Reach out to me</p>
-          <span>
-            Discuss a Project or just want to say Hi? My inbox is open for all.
-          </span>{" "}
-          {/* Icon */}
+          <h2 className="contactme__heading">Get In Touch</h2>
+          <p>
+            Discuss a project or just want to say Hi? My inbox is open for all.
+          </p>
         </div>
-        <div className="Contanectme__left">
+        <div className="Contactme__left">
           <div className="Contactme__icons">
             <FaUser size={25} className="user__icon" />
             <div>
@@ -119,40 +112,32 @@ function Contactme() {
             <IoMdMail size={25} className="user__icon" />
             <div>
               <p>Email</p>
-              <span>vigneshsurya21796@gmail.com</span>
+              <a href="mailto:vigneshsurya21796@gmail.com" className="contactme__email-link">
+                vigneshsurya21796@gmail.com
+              </a>
             </div>
           </div>
           <div className="contactme__container-stayconnected">
             <p>Stay connected</p>
             <div className="Contactname__icons-container">
-              <div>
-                <a
-                  href="https://www.linkedin.com/in/vigneshsurya21796/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="Stayconnected__iconsco">
-                    <div>
-                      <IoLogoLinkedin />
-                    </div>
-                    <p>Linkedin</p>
-                  </div>
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://github.com/vigneshsurya21796"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="Stayconnected__iconsco">
-                    <div>
-                      <IoLogoGithub />
-                    </div>
-                    <p>Github</p>
-                  </div>
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/vigneshsurya21796/"
+                target="_blank"
+                rel="noreferrer"
+                className="social__pill"
+              >
+                <IoLogoLinkedin />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://github.com/vigneshsurya21796"
+                target="_blank"
+                rel="noreferrer"
+                className="social__pill"
+              >
+                <IoLogoGithub />
+                <span>GitHub</span>
+              </a>
             </div>
           </div>
         </div>
@@ -163,7 +148,7 @@ function Contactme() {
           collaborate on a project.
         </p> */}
       </div>
-      <div className="contactme__containter-form">
+      <div className="contactme__container-form">
         <form
           ref={formRef}
           className="contactme__form-flex"
@@ -198,7 +183,7 @@ function Contactme() {
 
           {/* Contact Number Field */}
           <div className="contactme__input-container">
-            <label htmlFor="contactnumber">Contact Number:</label>
+            <label htmlFor="contactnumber">Phone <span className="contactme__optional">(optional)</span></label>
             <input
               type="tel"
               name="contactnumber"

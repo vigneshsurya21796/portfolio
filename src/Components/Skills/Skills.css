@@ -1,6 +1,6 @@
 .skills__container {
   margin: 50px 10px;
-  font-family: poppins, sans-serif;
+  font-family: var(--font-primary);
 }
 
 .skills__container h1 {
