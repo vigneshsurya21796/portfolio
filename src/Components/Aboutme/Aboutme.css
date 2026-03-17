@@ -5,15 +5,15 @@
     justify-content: flex-start;
     align-items: center;
     font-family: var(--font-body);
-    font-size: clamp(2rem, 6vw, 70px); /* responsive font */
+    font-size: clamp(2rem, 6vw, 70px);
     font-weight: 500;
-    color: black;
+    color: #ffffff;
 }
 
 .Portfolio_aboutMe-content {
     font-family: var(--font-body);
     margin-top: 3rem;
-    color: grey;
+    color: var(--text-color);
     width: 41%;
     text-align: justify;
     line-height: 2.1;
@@ -65,7 +65,10 @@
     text-align: center;
     justify-content: center;
     align-content: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
 }
 
 .card__header-container {
@@ -86,11 +89,12 @@
     font-weight: bold;
     font-size: 1.3rem;
     font-family: var(--font-body);
+    color: #e5e5e5;
 }
 
 .card__header-container button {
-    background-color: #fff;
-    border: none;
+    background-color: transparent;
+    border: 1px solid rgba(108, 99, 255, 0.4);
     border-radius: 5px;
     color: #6C63FF;
     font-family: var(--font-primary);
@@ -103,10 +107,10 @@
 }
 
 .card__header-container button:hover {
-    color: blue;
+    color: #A78BFA;
     cursor: pointer;
-    -webkit-box-shadow: 10px 10px 64px -2px rgba(75, 169, 253, 0.75);
-    background-color: #fff;
+    border-color: #A78BFA;
+    box-shadow: 0 5px 20px rgba(108, 99, 255, 0.3);
 }
 
 /* ================= Layout ================= */
@@ -124,7 +128,6 @@
 .Aboutme__flexcontianer_top {
     display: flex;
     justify-content: space-between;
-    /* padding: 55px; */
     align-items: center;
     gap: 40px;
 }
@@ -137,17 +140,13 @@
 
 /* ================= Media Queries ================= */
 
-/* Tablets (below 1150px) */
 @media screen and (max-width: 1150px) {
     .Portfolio_aboutMe-content {
         width: 100%;
-        /* color: white; */
-        /* padding: 1rem 3rem; */
     }
     .Aboutme__flexcontianer_top {
         flex-direction: column;
         text-align: center;
-        /* padding: 2rem; */
     }
     .Aboutme__contentone {
         margin-right: 0;
@@ -155,11 +154,9 @@
     }
 }
 
-/* Mobile (below 750px) */
 @media screen and (max-width: 750px) {
     .Portfolio_aboutMe-content {
-        color: gray;
-        /* padding: 1rem 2rem; */
+        color: var(--text-color);
         width: 100%;
         margin-top: 2rem;
     }
@@ -174,14 +171,12 @@
     }
 }
 
-/* Small Mobile (below 550px) */
 @media (max-width: 550px) {
     .Portfolio_aboutMe-header {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
         margin-top: 2rem;
     }
     .Portfolio_aboutMe-content {
-        /* padding: 1rem; */
         margin-top: 1rem;
         text-align: left;
     }

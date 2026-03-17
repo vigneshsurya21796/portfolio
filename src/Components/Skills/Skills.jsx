@@ -1,20 +1,37 @@
 import React from "react";
 import "./Skills.css";
 import { technologies } from "../../constants/index";
+
 function Skills() {
+  const half = Math.ceil(technologies.length / 2);
+  const rowOne = technologies.slice(0, half);
+  const rowTwo = technologies.slice(half);
+
   return (
-    <div className="skills__container"  id="Skills">
-      <div>
-        <h1>Skills</h1>
-        <div className="skills__container-overall">
-          {technologies.map((tech, index) => {
-            return (
-              <div key={index} className="skills__imageconatainer">
-                <p style={{ textAlign: "center" }}>{tech.name}</p>
-                <img src={tech.icon} width="100%" alt="HTML 5" />
+    <div className="skills__container" id="Skills">
+      <h1>Skills</h1>
+      <div className="skills__marquee-wrapper">
+        {/* Row 1 — scrolls left */}
+        <div className="skills__marquee-track">
+          <div className="skills__marquee-row skills__scroll-left">
+            {[...rowOne, ...rowOne].map((tech, index) => (
+              <div key={index} className="skills__pill">
+                <img src={tech.icon} alt={tech.name} />
+                <span>{tech.name}</span>
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+        {/* Row 2 — scrolls right */}
+        <div className="skills__marquee-track">
+          <div className="skills__marquee-row skills__scroll-right">
+            {[...rowTwo, ...rowTwo].map((tech, index) => (
+              <div key={index} className="skills__pill">
+                <img src={tech.icon} alt={tech.name} />
+                <span>{tech.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

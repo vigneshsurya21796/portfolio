@@ -15,15 +15,13 @@
 }
 .project_Navbar_img {
   margin-right: 30px;
-
   font-family: var(--font-body);
-  color: black;
+  color: #e5e5e5;
   font-size: 25px;
 }
 .project_Navbar_img img {
   width: 95px;
   height: 45px;
-  /* color: black; */
 }
 .project_Navbar_container {
   display: flex;
@@ -37,7 +35,6 @@
   border: none;
   padding: 9px;
   font-size: 17.5px;
-  /* height: 2.3rem; */
   width: 9.1rem;
   font-family: var(--font-primary);
   letter-spacing: 0.5px;
@@ -55,7 +52,7 @@
   font-family: var(--font-primary);
   font-size: 17px;
   font-weight: 500;
-  color: black;
+  color: #e5e5e5;
   line-height: 25px;
   text-transform: capitalize;
   margin: 0 1.7rem;
@@ -68,7 +65,6 @@
   width: 100%;
   left: 0;
   bottom: -5px;
-
   background-color: var(--color-primary);
   transform: scaleX(0);
   transform-origin: bottom right;
@@ -81,7 +77,6 @@
 .project_Navbar_signin button,
 .Project_Navbar_links_signin button {
   padding: 0.5rem 1rem;
-  /* background-color: black; */
   border: none;
   outline: none;
   cursor: pointer;
@@ -95,42 +90,27 @@
 }
 
 @-webkit-keyframes slide-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-10px);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-10px); }
 }
 @keyframes slide-left {
-  0% {
-
-    transform: translateX(0);
-  }
-  100% {
-
-    transform: translateX(-100px);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
 }
 
 .project_Navbar_container_Responsive {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-
-  /* background: radial-gradient(
-    circle at 0% 0%,
-    rgba(27, 24, 51, 1) 0%,
-    rgba(82, 91, 68, 1) 100%
-  ); */
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 8px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1rem 1.5rem;
   max-width: 207px;
   text-align: end;
   position: absolute;
   right: -45px;
   font-family: var(--font-body);
-  color: black;
+  color: #e5e5e5;
   top: 37px;
   border-radius: 5px;
   line-height: 34px;
@@ -142,10 +122,10 @@
 }
 .project_Navbar_icon {
   margin-left: 1rem;
-
   display: none;
   position: relative;
   cursor: pointer;
+  color: #e5e5e5;
 }
 
 @media screen and (max-width: 1050px) {
@@ -155,30 +135,17 @@
   }
 }
 .scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 @-webkit-keyframes scale-up-center {
-  0% {
-
-    transform: scale(0.5);
-  }
-  100% {
-
-    transform: scale(1);
-  }
+  0% { transform: scale(0.5); }
+  100% { transform: scale(1); }
 }
 @keyframes scale-up-center {
-  0% {
-
-    transform: scale(0.5);
-  }
-  100% {
-
-    transform: scale(1);
-  }
+  0% { transform: scale(0.5); }
+  100% { transform: scale(1); }
 }
 
 @media screen and (max-width: 700px) {

@@ -1,83 +1,142 @@
 .skills__container {
-  margin: 50px 10px;
+  margin: 60px 0;
   font-family: var(--font-primary);
+  overflow: hidden;
 }
 
 .skills__container h1 {
-  font-size: 2.5rem; /* responsive unit */
+  font-size: 2.5rem;
   font-weight: 500;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
+  color: #ffffff;
 }
 
-.skills__container-overall {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px; /* smaller than 90px for better wrapping */
-}
-
-.skills__imageconatainer {
+/* ── Marquee wrapper ── */
+.skills__marquee-wrapper {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.skills__marquee-track {
+  overflow: hidden;
+  /* fade edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.skills__marquee-row {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+/* ── Scroll animations ── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.skills__scroll-left {
+  animation: marquee-left 25s linear infinite;
+}
+
+.skills__scroll-right {
+  animation: marquee-right 25s linear infinite;
+}
+
+/* Pause on hover */
+.skills__marquee-track:hover .skills__scroll-left,
+.skills__marquee-track:hover .skills__scroll-right {
+  animation-play-state: paused;
+}
+
+/* ── Pill card ── */
+.skills__pill {
+  display: flex;
   align-items: center;
-  text-align: center;
+  gap: 12px;
+  padding: 12px 22px;
+  background: #1a1a1a;
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  cursor: default;
 }
 
-.skills__imageconatainer img {
-  height: 55px;
-  width: 55px;
-  transition: transform 0.3s ease;
+.skills__pill:hover {
+  border-color: #6C63FF;
+  box-shadow: 0 0 18px rgba(108, 99, 255, 0.35);
+  transform: translateY(-3px);
 }
 
-.skills__imageconatainer img:hover {
-  transform: scale(1.1); /* nice hover effect */
+.skills__pill img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
-.skills__imageconatainer p {
-  margin-top: 10px;
-  font-size: 1rem;
+.skills__pill span {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color, #333);
-  text-transform: capitalize;
+  color: #c0c0c0;
 }
 
-/* 🔹 Responsive styles */
-@media (max-width: 1024px) {
-  .skills__container h1 {
-    font-size: 2rem;
-  }
-  .skills__container-overall {
-    gap: 30px;
-  }
-}
-
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .skills__container h1 {
     font-size: 1.8rem;
   }
-  .skills__imageconatainer img {
-    height: 45px;
-    width: 45px;
+  .skills__pill {
+    padding: 10px 16px;
+    gap: 10px;
   }
-  .skills__container-overall {
-    gap: 20px;
+  .skills__pill img {
+    width: 26px;
+    height: 26px;
+  }
+  .skills__pill span {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .skills__container {
-    margin: 30px 5px;
+    margin: 40px 0;
   }
   .skills__container h1 {
     font-size: 1.5rem;
+    margin-bottom: 28px;
   }
-  .skills__imageconatainer img {
-    height: 40px;
-    width: 40px;
+  .skills__pill {
+    padding: 8px 14px;
+    gap: 8px;
   }
-  .skills__container-overall {
-    justify-content: center;
-    gap: 15px;
+  .skills__pill img {
+    width: 22px;
+    height: 22px;
+  }
+  .skills__pill span {
+    font-size: 0.8rem;
   }
 }

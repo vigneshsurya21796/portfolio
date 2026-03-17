@@ -9,41 +9,7 @@ body,
 html {
     /* overflow-x: hidden; */
 }
-#gradient__bg{
-    background: -moz-radial-gradient(
-            circle at 3% 25%,
-            rgba(0, 40, 83, 1) 0%,
-            rgba(4, 12, 24, 1) 25%
-    );
 
-    /* safari 5.1+,chrome 10+ */
-    background: -webkit-radial-gradient(
-            circle at 3% 25%,
-            rgb(0, 40, 83) 0%,
-            rgba(4, 12, 24, 1) 25%
-    );
-
-    /* opera 11.10+ */
-    background: -o-radial-gradient(
-            circle at 3% 25%,
-            rgba(0, 40, 83, 1) 0%,
-            rgba(4, 12, 24, 1) 25%
-    );
-
-    /* ie 10+ */
-    background: -ms-radial-gradient(
-            circle at 3% 25%,
-            rgba(0, 40, 83, 1) 0%,
-            rgba(4, 12, 24, 1) 25%
-    );
-
-    /* global 92%+ browsers support */
-    background: radial-gradient(
-            circle at 3% 25%,
-            rgba(0, 40, 83, 1) 0%,
-            rgba(4, 12, 24, 1) 25%
-    );
-}
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -51,11 +17,13 @@ code {
 :root {
     --font-primary: "Poppins", sans-serif;
     --font-body: "Inter", sans-serif;
-    --text-color: #808080e6;
-    --text-color-new: gray;
+    --text-color: #a0a0a0;
+    --text-color-new: #888;
     --text-color-new-heading: #6C63FF;
-    --text-color-1: rgb(66, 84, 102);
-    --background-color: white;
+    --text-color-1: #c0c8d0;
+    --background-color: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --card-border: rgba(255, 255, 255, 0.08);
     --color-bg: linear-gradient(76deg, #6C63FF 0%, #A78BFA 50%, #6C63FF 100%);
     --color-primary: #6C63FF;
     --color-primary-dark: #5A52E0;
@@ -66,4 +34,6 @@ code {
 
 body {
     font-family: var(--font-body);
+    background-color: var(--background-color);
+    color: #e5e5e5;
 }
