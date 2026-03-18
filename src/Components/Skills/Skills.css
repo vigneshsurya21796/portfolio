@@ -12,7 +12,6 @@
   color: #ffffff;
 }
 
-/* ── Marquee wrapper ── */
 .skills__marquee-wrapper {
   display: flex;
   flex-direction: column;
@@ -44,7 +43,6 @@
   width: max-content;
 }
 
-/* ── Scroll animations ── */
 @keyframes marquee-left {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -69,7 +67,6 @@
   animation-play-state: paused;
 }
 
-/* ── Pill card ── */
 .skills__pill {
   display: flex;
   align-items: center;
@@ -102,7 +99,6 @@
   color: #c0c0c0;
 }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
   .skills__container h1 {
     font-size: 1.8rem;

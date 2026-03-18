@@ -1,11 +1,11 @@
-/* ── Section heading ── */
+
 .Recentprojects__container {
   padding: 60px 0;
 }
 
 .Receneproject__primary {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 48px;
 }
 
 .Recentprojects__container h3 {
@@ -23,175 +23,177 @@
   line-height: 1.6;
 }
 
-/* ── Clip wrapper — hides off-screen slides (x) but allows top corners to show (y) ── */
-.swiper-clip-wrapper {
-  overflow-x: clip;
-}
-
-/* ── Swiper ── */
-.mySwiper {
-  padding: 40px 0 50px !important;
-  width: 100%;
-  overflow: visible !important;
-}
-
-.mySwiper .swiper-wrapper {
-  overflow: visible !important;
-}
-
-/* ── Slide transitions ── */
-.swiper-slide {
-  border-radius: 20px;
-  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-  overflow: hidden;
-  opacity: 0.5;
-  filter: brightness(0.55) scale(0.95);
-  transform-origin: center;
-}
-
-.swiper-slide-active {
-  opacity: 1;
-  filter: brightness(1) scale(1);
-}
-
-.swiper-slide-prev,
-.swiper-slide-next {
-  opacity: 0.65;
-  filter: brightness(0.65);
-}
-
-/* ── Pagination dots ── */
-.swiper-pagination {
-  bottom: 8px !important;
-}
-
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.25);
-  opacity: 1;
-  transition: background 0.3s, width 0.3s;
-  border-radius: 4px;
-}
-
-.swiper-pagination-bullet-active {
-  background: #6C63FF;
-  width: 24px;
-}
-
-/* ── Project card ── */
-.project__card {
+.projects__list {
   position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  cursor: pointer;
-  background: #111;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.project__card-img {
+.projects__preview {
+  position: absolute;
+  left: 52%;
+  width: 340px;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.92) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.projects__preview--visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.projects__preview img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 20px;
+  object-fit: cover;
+  object-position: center top;
   display: block;
-  transition: transform 0.5s ease;
 }
 
-.project__card:hover .project__card-img {
-  transform: scale(1.03);
-}
-
-/* Gradient overlay — fades from accent color at bottom */
-.project__card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, var(--accent) 85%, black) 0%,
-    color-mix(in srgb, var(--accent) 30%, transparent) 45%,
-    transparent 70%
-  );
-  transition: opacity 0.4s ease;
-}
-
-/* Info block — sits at bottom of card */
-.project__card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.project__card-top {
+.project__row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  gap: 28px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: default;
+  transition: padding-left 0.3s ease;
+  position: relative;
 }
 
-.project__card-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  text-decoration: none;
-  flex-shrink: 0;
-  transition: background 0.2s, transform 0.2s;
+.project__row--active {
+  padding-left: 12px;
 }
 
-.project__card-link:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
+.project__row--dim {
+  opacity: 0.35;
+  transition: opacity 0.3s ease, padding-left 0.3s ease;
 }
 
-.project__card-title {
-  font-family: var(--font-primary);
-  font-size: 1.25rem;
+.project__row-num {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #ffffff;
-  margin: 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  width: 28px;
+  transition: color 0.3s ease;
 }
 
-/* Tech stack badges */
-.project__card-stack {
+.project__row--active .project__row-num {
+  color: #6C63FF;
+}
+
+.project__row-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  flex: 1;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project__row--active .project__row-title {
+  color: #ffffff;
+}
+
+.project__row-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.project__card-badge {
+.project__row-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
-  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 7px;
   border-radius: 20px;
   letter-spacing: 0.3px;
   white-space: nowrap;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 }
 
-/* ── Mobile ── */
-@media (max-width: 1000px) {
-  .mySwiper {
-    padding: 40px 0 45px !important;
+.project__row-tag:hover {
+  color: #fff;
+  background: color-mix(in srgb, var(--tc, #6C63FF) 12%, transparent);
+  border-color: color-mix(in srgb, var(--tc, #6C63FF) 40%, transparent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--tc, #6C63FF) 25%, transparent);
+  transform: translateY(-2px);
+}
+
+.project__row--active .project__row-tag {
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.project__row-actions {
+  flex-shrink: 0;
+}
+
+.project__row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.project__row-icon:hover {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: rgba(108, 99, 255, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .projects__preview {
+    display: none;
   }
-  .project__card-title {
-    font-size: 1.1rem;
+
+  .project__row {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .project__row-title {
+    font-size: 1.2rem;
+    white-space: normal;
+  }
+
+  .project__row-tags {
+    order: 3;
+    flex-basis: 100%;
+    padding-left: 44px;
+  }
+
+  .project__row-actions {
+    margin-left: auto;
   }
 }
 
@@ -199,13 +201,12 @@
   .Recentprojects__container h3 {
     font-size: 1.8rem;
   }
-  .project__card-info {
-    padding: 14px 16px;
+
+  .project__row-title {
+    font-size: 1.1rem;
   }
-  .project__card-title {
-    font-size: 1rem;
-  }
-  .project__card-badge {
-    font-size: 0.68rem;
+
+  .project__row-tag {
+    font-size: 0.7rem;
   }
 }

@@ -19,13 +19,11 @@ function Header() {
   return (
     <div className="Header-conatainer" id="Home">
 
-      {/* ── Animated background orbs ── */}
       <div className="hero-orb hero-orb--1" />
       <div className="hero-orb hero-orb--2" />
       <div className="hero-orb hero-orb--3" />
       <div className="hero-grid" />
 
-      {/* ── Left: text ── */}
       <div className="header_element_1">
 
         <div className="header__badge">
@@ -61,7 +59,6 @@ function Header() {
           <a href="#Contactme" className="header__cta-secondary">Let's Talk</a>
         </div>
 
-        {/* Social links */}
         <div className="header__socials">
           <span className="header__socials-line" />
           {socials.map(({ Icon, href, label }) => (
@@ -73,20 +70,16 @@ function Header() {
 
       </div>
 
-      {/* ── Right: image ── */}
       <div className="header_element_2">
         <div className="header__image-wrapper">
 
-          {/* Spinning ring */}
           <div className="header__image-glow" />
 
-          {/* Floating badge — experience */}
           <div className="hero-float hero-float--exp">
             <span className="hero-float-num">4+</span>
             <span className="hero-float-label">Years Exp.</span>
           </div>
 
-          {/* Floating badge — tech stack */}
           <div className="hero-float hero-float--tech">
             <SiReact size={13} color="#61DAFB" />
             <SiNodedotjs size={13} color="#339933" />
@@ -94,7 +87,6 @@ function Header() {
             <span>& more</span>
           </div>
 
-          {/* Floating badge — projects */}
           <div className="hero-float hero-float--projects">
             <span className="hero-float-num">10+</span>
             <span className="hero-float-label">Projects</span>
@@ -104,7 +96,6 @@ function Header() {
         </div>
       </div>
 
-      {/* ── Scroll indicator ── */}
       <a href="#About" className="hero-scroll">
         <HiArrowDown size={16} />
       </a>

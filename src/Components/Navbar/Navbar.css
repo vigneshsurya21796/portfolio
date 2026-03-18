@@ -1,4 +1,4 @@
-/* ── Navbar base ── */
+
 .project_Navbar {
   display: flex;
   justify-content: space-between;
@@ -19,7 +19,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ── Logo ── */
 .project_Navbar_logo {
   font-family: "Courier New", Courier, monospace;
   font-size: 1.35rem;
@@ -40,7 +39,6 @@
   opacity: 0.85;
 }
 
-/* ── Desktop nav links ── */
 .project_Navbar_signin {
   display: flex;
   align-items: center;
@@ -82,7 +80,6 @@
   width: 60%;
 }
 
-/* ── CTA button ── */
 .project_Navbar_container {
   flex-shrink: 0;
 }
@@ -107,7 +104,6 @@
   transform: translateY(-1px);
 }
 
-/* ── Hamburger icon ── */
 .project_Navbar_icon {
   display: none;
   position: relative;
@@ -116,7 +112,6 @@
   font-size: 1.2rem;
 }
 
-/* ── Mobile dropdown ── */
 .project_Navbar_container_Responsive {
   position: absolute;
   right: 0;
@@ -167,7 +162,6 @@
   box-shadow: 0 0 16px rgba(108, 99, 255, 0.5);
 }
 
-/* ── Animation ── */
 .scale-up-center {
   animation: scale-up-center 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
@@ -177,7 +171,6 @@
   100% { transform: scale(1);    opacity: 1; }
 }
 
-/* ── Responsive ── */
 @media screen and (max-width: 1050px) {
   .project_Navbar_container {
     display: none;
