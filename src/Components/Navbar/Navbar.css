@@ -1,178 +1,195 @@
+/* ── Navbar base ── */
 .project_Navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
-  /*position: sticky;*/
-  /*top: 0; */
-  /*z-index: 100; */
+  padding: 1.2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
 }
-.project_Navbar_links {
+
+/* Scrolled state — frosted glass */
+.project_Navbar--scrolled {
+  background: rgba(13, 13, 13, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Logo ── */
+.project_Navbar_logo {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  flex-shrink: 0;
   display: flex;
-  flex: 1;
-  justify-content: space-between;
   align-items: center;
+  gap: 2px;
 }
-.project_Navbar_img {
-  margin-right: 30px;
-  font-family: var(--font-body);
-  color: #e5e5e5;
-  font-size: 25px;
+
+.logo__bracket {
+  color: #6C63FF;
+  font-weight: 400;
+  font-size: 1.2rem;
+  opacity: 0.85;
 }
-.project_Navbar_img img {
-  width: 95px;
-  height: 45px;
-}
-.project_Navbar_container {
-  display: flex;
-}
+
+/* ── Desktop nav links ── */
 .project_Navbar_signin {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
 }
-.project_Navbar_container button {
-  border: none;
-  padding: 9px;
-  font-size: 17.5px;
-  width: 9.1rem;
+
+.nav__link {
   font-family: var(--font-primary);
-  letter-spacing: 0.5px;
-  border-radius: 21px;
-  color: #fff;
-  background: var(--color-bg);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.project_Navbar_container button:hover {
-  box-shadow: 0 5px 15px #6C63FF;
-}
-.project_Navbar_container p,
-.project_Navbar_signin p {
-  font-family: var(--font-primary);
-  font-size: 17px;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: #e5e5e5;
-  line-height: 25px;
-  text-transform: capitalize;
-  margin: 0 1.7rem;
+  color: #a0a0a0;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
   position: relative;
+  transition: color 0.25s;
 }
-.project_Navbar_signin p::after {
-  position: absolute;
+
+.nav__link::after {
   content: "";
-  height: 3px;
-  width: 100%;
-  left: 0;
-  bottom: -5px;
-  background-color: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.5s;
-}
-.project_Navbar_signin p:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-.project_Navbar_signin button,
-.Project_Navbar_links_signin button {
-  padding: 0.5rem 1rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  color: white;
-  border-radius: 5px;
-}
-.slide-left {
-  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@-webkit-keyframes slide-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-10px); }
-}
-@keyframes slide-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100px); }
-}
-
-.project_Navbar_container_Responsive {
-  display: flex;
-  flex-direction: column;
-  background-color: #1a1a1a;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 8px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 1rem 1.5rem;
-  max-width: 207px;
-  text-align: end;
   position: absolute;
-  right: -45px;
-  font-family: var(--font-body);
-  color: #e5e5e5;
-  top: 37px;
-  border-radius: 5px;
-  line-height: 34px;
-  z-index: 9;
+  left: 50%;
+  bottom: 0px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6C63FF, #A78BFA);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
-.project_Navbar_container_links {
-  margin-top: 15px;
-  margin-left: 15px;
+
+.nav__link:hover {
+  color: #ffffff;
 }
+
+.nav__link:hover::after {
+  width: 60%;
+}
+
+/* ── CTA button ── */
+.project_Navbar_container {
+  flex-shrink: 0;
+}
+
+.nav__cta {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.55rem 1.5rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6C63FF 0%, #A78BFA 100%);
+  border: 1px solid transparent;
+  transition: box-shadow 0.3s, transform 0.2s;
+  display: inline-block;
+}
+
+.nav__cta:hover {
+  box-shadow: 0 0 20px rgba(108, 99, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+/* ── Hamburger icon ── */
 .project_Navbar_icon {
-  margin-left: 1rem;
   display: none;
   position: relative;
   cursor: pointer;
-  color: #e5e5e5;
+  color: #c0c0c0;
+  font-size: 1.2rem;
 }
 
+/* ── Mobile dropdown ── */
+.project_Navbar_container_Responsive {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  background: #1a1a1a;
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+.nav__mobile-link {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #a0a0a0;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav__mobile-link:hover {
+  background: rgba(108, 99, 255, 0.1);
+  color: #fff;
+}
+
+.nav__mobile-cta {
+  margin-top: 8px;
+  padding: 0.55rem 1rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6C63FF, #A78BFA);
+  color: #fff;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: box-shadow 0.3s;
+}
+
+.nav__mobile-cta:hover {
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.5);
+}
+
+/* ── Animation ── */
+.scale-up-center {
+  animation: scale-up-center 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes scale-up-center {
+  0%   { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Responsive ── */
 @media screen and (max-width: 1050px) {
-  .project_Navbar_container,
-  .Project_Navbar_links_signin {
+  .project_Navbar_container {
     display: none;
   }
 }
-.scale-up-center {
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@-webkit-keyframes scale-up-center {
-  0% { transform: scale(0.5); }
-  100% { transform: scale(1); }
-}
-@keyframes scale-up-center {
-  0% { transform: scale(0.5); }
-  100% { transform: scale(1); }
-}
 
 @media screen and (max-width: 700px) {
-  .project_Navbar {
-    padding: 2rem 4rem;
-  }
   .project_Navbar_signin {
     display: none;
   }
   .project_Navbar_icon {
     display: flex;
-    margin: 0 1rem;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .project_Navbar {
-    padding: 2rem 4rem;
-  }
-  .project_Navbar_signin {
-    display: none;
-  }
-  .project_Navbar_icon,
-  .Project_Navbar_links_signin {
-    display: block;
-  }
-  .Project_Navbar_links_signin {
-    margin-left: 15px;
+    align-items: center;
   }
 }

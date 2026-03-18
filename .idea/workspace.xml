@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="415879d5-8360-4a38-905b-11668ad3e1f5" name="Changes" comment="optimized files">
-      <change beforePath="$PROJECT_DIR$/src/Components/Aboutme/Aboutme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Aboutme/Aboutme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Navbar/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Recentprojects/Recentprojects.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Recentprojects/Recentprojects.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Workexperience/Workexperience.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Workexperience/Workexperience.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +81,8 @@
       <workItem from="1758125614407" duration="1750000" />
       <workItem from="1758648887605" duration="97000" />
       <workItem from="1760239113076" duration="321000" />
-      <workItem from="1768495737770" duration="1341000" />
+      <workItem from="1768495737770" duration="2423000" />
+      <workItem from="1768574349749" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="optimized files">
       <option name="closed" value="true" />

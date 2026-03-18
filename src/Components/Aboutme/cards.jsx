@@ -1,18 +1,15 @@
 import React from "react";
 import "./Aboutme.css";
-function Cards({ icon, title, description }) {
-  return (
-    <div className="card__header">
-      <div className="card__header-container">
-        <div className="icon__container">
-          <img className="icon__cards" src={icon} alt="" />
-        </div>
 
-        <span>{title}</span>
-        <p>{description}</p>
-        <div>
-          <button>Learn More</button>
-        </div>
+function Cards({ Icon, color, title, description }) {
+  return (
+    <div className="about__card">
+      <div className="about__card-icon" style={{ "--icon-color": color }}>
+        <Icon size={26} color={color} />
+      </div>
+      <div className="about__card-body">
+        <h3 className="about__card-title">{title}</h3>
+        <p className="about__card-desc">{description}</p>
       </div>
     </div>
   );

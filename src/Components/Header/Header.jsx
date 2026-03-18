@@ -1,35 +1,114 @@
-import React from "react";
 import "./Header.css";
-import Picture from "../../Assets/IMG_0933-removebgwhite.png";
-// import Avatar from "../../Assets/photo-1717501218636-a390f9ac5957.avif";
+import Picture from "../../Assets/profile.jpg.png";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+import { MdAttachEmail } from "react-icons/md";
+import { HiArrowDown } from "react-icons/hi";
+import { SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
+
+const roles = ["Full Stack Developer", "React JS Developer", "MERN Stack Developer"];
+
+const socials = [
+  { Icon: FaGithub,    href: "https://github.com/vigneshsurya21796",              label: "GitHub"   },
+  { Icon: FaLinkedin,  href: "https://www.linkedin.com/in/vigneshsurya21796/",     label: "LinkedIn" },
+  { Icon: SiLeetcode,  href: "#",                                                  label: "LeetCode" },
+  { Icon: MdAttachEmail, href: "mailto:vigneshsurya21796@gmail.com",               label: "Email"    },
+];
+
 function Header() {
   return (
     <div className="Header-conatainer" id="Home">
-      <div className="header_element_1">
-        <p>Hello, My Name is</p>
-        <h1>SURYA P</h1>
 
-        {/*<div className="Header__text-container">*/}
-        {/*  <span className="Nav_text">Im an </span>*/}
-        {/*  <div className="Navbar_words">*/}
-        {/*    <span className="rotating">Full stack developer</span>*/}
-        {/*    <span className="rotating">React js developer</span>*/}
-        {/*    <span className="rotating">MERN Stack developer</span>*/}
-        {/*    <span className="rotating">Full stack developer</span>*/}
-        {/*    <span className="rotating">React js developer</span>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-        <div className="Nav_explanation">
-          I'm a tech enthusiast who always looks into new tech stacks. A single
-          word to represent me is adaptability. Loves to learn new technology to
-          work on a project.
+      {/* ── Animated background orbs ── */}
+      <div className="hero-orb hero-orb--1" />
+      <div className="hero-orb hero-orb--2" />
+      <div className="hero-orb hero-orb--3" />
+      <div className="hero-grid" />
+
+      {/* ── Left: text ── */}
+      <div className="header_element_1">
+
+        <div className="header__badge">
+          <span className="header__badge-dot" />
+          Available for work
         </div>
+
+        <p className="header__greeting">Hello, I'm</p>
+
+        <h1 className="header__name">Surya P</h1>
+
+        <div className="header__roles">
+          <span className="header__roles-prefix">I'm a&nbsp;</span>
+          <div className="header__roles-window">
+            <div className="header__roles-ticker">
+              {[...roles, roles[0]].map((role, i) => (
+                <span key={i} className="header__role">{role}</span>
+              ))}
+            </div>
+          </div>
+          <span className="header__cursor">|</span>
+        </div>
+
+        <p className="header__description">
+          I'm a tech enthusiast who always looks into new tech stacks.
+          A single word to represent me is{" "}
+          <span className="header__highlight">adaptability</span>.
+          Loves to learn new technology to work on a project.
+        </p>
+
+        <div className="header__ctas">
+          <a href="#Projects" className="header__cta-primary">View My Work</a>
+          <a href="#Contactme" className="header__cta-secondary">Let's Talk</a>
+        </div>
+
+        {/* Social links */}
+        <div className="header__socials">
+          <span className="header__socials-line" />
+          {socials.map(({ Icon, href, label }) => (
+            <a key={label} href={href} target="_blank" rel="noreferrer" className="header__social-icon" aria-label={label}>
+              <Icon size={18} />
+            </a>
+          ))}
+        </div>
+
       </div>
+
+      {/* ── Right: image ── */}
       <div className="header_element_2">
-        <div className="Header__image-container">
-          <img src={Picture} alt="" />
+        <div className="header__image-wrapper">
+
+          {/* Spinning ring */}
+          <div className="header__image-glow" />
+
+          {/* Floating badge — experience */}
+          <div className="hero-float hero-float--exp">
+            <span className="hero-float-num">4+</span>
+            <span className="hero-float-label">Years Exp.</span>
+          </div>
+
+          {/* Floating badge — tech stack */}
+          <div className="hero-float hero-float--tech">
+            <SiReact size={13} color="#61DAFB" />
+            <SiNodedotjs size={13} color="#339933" />
+            <SiMongodb size={13} color="#47A248" />
+            <span>& more</span>
+          </div>
+
+          {/* Floating badge — projects */}
+          <div className="hero-float hero-float--projects">
+            <span className="hero-float-num">10+</span>
+            <span className="hero-float-label">Projects</span>
+          </div>
+
+          <img src={Picture} alt="Surya P" className="header__image" />
         </div>
       </div>
+
+      {/* ── Scroll indicator ── */}
+      <a href="#About" className="hero-scroll">
+        <HiArrowDown size={16} />
+      </a>
+
     </div>
   );
 }

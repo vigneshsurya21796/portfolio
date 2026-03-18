@@ -1,182 +1,211 @@
-.mySwiper {
-  padding-top: 120px;
-  width: 100%;
-  margin-top: 60px;
+/* ── Section heading ── */
+.Recentprojects__container {
+  padding: 60px 0;
 }
 
-.recent__projects-container {
-  height: 500px;
+.Receneproject__primary {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Recentprojects__container h3 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.Recentprojects__secondary {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* ── Clip wrapper — hides off-screen slides (x) but allows top corners to show (y) ── */
+.swiper-clip-wrapper {
+  overflow-x: clip;
+}
+
+/* ── Swiper ── */
+.mySwiper {
+  padding: 40px 0 50px !important;
+  width: 100%;
   overflow: visible !important;
 }
 
+.mySwiper .swiper-wrapper {
+  overflow: visible !important;
+}
+
+/* ── Slide transitions ── */
 .swiper-slide {
-  flex-shrink: 0;
-  height: 100%;
-  position: relative;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.swiper-slide:not(.swiper-slide-active) {
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.6),
-    0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.swiper-slide:not(.swiper-slide-active):hover {
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.7),
-    0 10px 30px rgba(0, 0, 0, 0.5);
-  transform: translateY(-5px);
+  border-radius: 20px;
+  transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+  overflow: hidden;
+  opacity: 0.5;
+  filter: brightness(0.55) scale(0.95);
+  transform-origin: center;
 }
 
 .swiper-slide-active {
-  box-shadow: none;
+  opacity: 1;
+  filter: brightness(1) scale(1);
 }
 
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
+.swiper-slide-prev,
+.swiper-slide-next {
+  opacity: 0.65;
+  filter: brightness(0.65);
 }
 
+/* ── Pagination dots ── */
 .swiper-pagination {
-  bottom: -15px !important;
-  position: absolute;
+  bottom: 8px !important;
 }
 
 .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.4);
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.25);
   opacity: 1;
-  width: 10px;
-  height: 10px;
+  transition: background 0.3s, width 0.3s;
+  border-radius: 4px;
 }
 
 .swiper-pagination-bullet-active {
   background: #6C63FF;
-  opacity: 1;
+  width: 24px;
 }
 
-.recentproject__imageone {
-  border-radius: 8px 8px 12px 12px;
+/* ── Project card ── */
+.project__card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  background: #111;
 }
 
-.recentproject__imageone h1 {
-  padding: 10px 10px 0 30px;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
+.project__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 20px;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project__card:hover .project__card-img {
+  transform: scale(1.03);
+}
+
+/* Gradient overlay — fades from accent color at bottom */
+.project__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--accent) 85%, black) 0%,
+    color-mix(in srgb, var(--accent) 30%, transparent) 45%,
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+}
+
+/* Info block — sits at bottom of card */
+.project__card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.project__card-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.project__card-link:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.project__card-title {
   font-family: var(--font-primary);
-}
-
-.recentproject__imageone span {
-  font-weight: 400;
-  color: white;
-  font-family: var(--font-primary);
-}
-
-.Recentprojects__container h3 {
-  font-size: 60px;
-  font-weight: 500;
-  text-align: center;
-  font-family: var(--font-body);
-  margin-bottom: 15px;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.Recentprojects__secondary {
-  text-align: center;
+/* Tech stack badges */
+.project__card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project__card-badge {
   font-family: var(--font-body);
-  font-weight: 500;
-  color: var(--text-color);
-  line-height: 25px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
-.Receneproject__primary {
-  width: 600px;
-  margin: auto auto 50px;
-  text-align: center;
-}
-
-.recentproject__imageone p {
-  padding: 10px 10px 10px 30px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 16px;
-  font-family: var(--font-body);
-}
-
-@media (max-width: 1200px) {
+/* ── Mobile ── */
+@media (max-width: 1000px) {
   .mySwiper {
-    padding-top: 50px;
-    margin-top: 30px;
+    padding: 40px 0 45px !important;
   }
-  .recent__projects-container {
-    height: 280px;
-  }
-  .swiper-slide:not(.swiper-slide-active) {
-    box-shadow:
-      0 5px 15px rgba(0, 0, 0, 0.4),
-      0 3px 10px rgba(0, 0, 0, 0.3);
-  }
-  .swiper-slide:not(.swiper-slide-active):hover {
-    box-shadow:
-      0 8px 20px rgba(0, 0, 0, 0.5),
-      0 5px 15px rgba(0, 0, 0, 0.35);
-    transform: translateY(-2px);
-  }
-  .swiper-slide-active {
-    box-shadow: none;
-  }
-  .Recentprojects__container h3 {
-    font-size: 40px;
-  }
-  .Receneproject__primary {
-    width: 90%;
-    margin: auto auto 30px;
-  }
-  .recentproject__imageone h1 {
-    font-size: 20px;
-    padding: 10px 10px 0 10px;
-  }
-  .recentproject__imageone p {
-    font-size: 13px;
-    padding: 10px;
+  .project__card-title {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 500px) {
-  .mySwiper {
-    padding-top: 40px;
-    margin-top: 20px;
-  }
-  .recent__projects-container {
-    height: 220px;
-  }
-  .swiper-slide {
-    padding: 3px;
-  }
   .Recentprojects__container h3 {
-    font-size: 32px;
+    font-size: 1.8rem;
   }
-  .Recentprojects__secondary {
-    font-size: 14px;
-    line-height: 20px;
+  .project__card-info {
+    padding: 14px 16px;
   }
-  .recentproject__imageone h1 {
-    font-size: 28px;
-    padding: 8px 8px 0 8px;
-    color: white;
-    font-family: var(--font-primary);
+  .project__card-title {
+    font-size: 1rem;
   }
-  .recentproject__imageone p, .recentproject__imageone span {
-    font-size: 12px;
-    padding: 8px;
-    color: white;
-    font-family: var(--font-primary);
-  }
-  .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
+  .project__card-badge {
+    font-size: 0.68rem;
   }
 }

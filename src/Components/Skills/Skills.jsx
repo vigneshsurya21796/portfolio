@@ -16,7 +16,7 @@ function Skills() {
           <div className="skills__marquee-row skills__scroll-left">
             {[...rowOne, ...rowOne].map((tech, index) => (
               <div key={index} className="skills__pill">
-                <img src={tech.icon} alt={tech.name} />
+                <tech.Icon size={28} color={tech.color} />
                 <span>{tech.name}</span>
               </div>
             ))}
@@ -27,7 +27,7 @@ function Skills() {
           <div className="skills__marquee-row skills__scroll-right">
             {[...rowTwo, ...rowTwo].map((tech, index) => (
               <div key={index} className="skills__pill">
-                <img src={tech.icon} alt={tech.name} />
+                <tech.Icon size={28} color={tech.color} />
                 <span>{tech.name}</span>
               </div>
             ))}

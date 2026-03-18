@@ -1,196 +1,261 @@
-/* ================= Base Styles ================= */
-.Portfolio_aboutMe-header {
-    margin-top: 5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-family: var(--font-body);
-    font-size: clamp(2rem, 6vw, 70px);
-    font-weight: 500;
-    color: #ffffff;
+/* ── Section ── */
+.aboutme__section {
+  padding: 80px 0;
 }
 
-.Portfolio_aboutMe-content {
-    font-family: var(--font-body);
-    margin-top: 3rem;
-    color: var(--text-color);
-    width: 41%;
-    text-align: justify;
-    line-height: 2.1;
+/* ══════════════════════════════
+   BENTO GRID
+   Col layout (desktop):
+   [ bio  bio  status ]   row 1
+   [ stats stats tech ]   row 2
+   [ r1   r2   r3    ]   row 3
+══════════════════════════════ */
+.aboutme__bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 14px;
 }
 
-.Portfolio_aboutMe-content button a {
-    width: 100%;
-    text-decoration: none;
-    color: inherit;
+/* ── Base card ── */
+.bento-card {
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 28px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
 }
 
-.icon__cards {
-    height: 125px;
-    width: 125px;
+.bento-card:hover {
+  border-color: rgba(108, 99, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
-.icon__container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ── 1. Bio card — spans 2 of 3 cols, row 1 ── */
+.bento-bio {
+  grid-column: 1 / 3;
+  grid-row: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  /* subtle dot-grid background */
+  background-image: radial-gradient(rgba(108, 99, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: #111;
 }
 
-.Portfolio_aboutMe-content button {
-    background: var(--color-bg);
-    border: none;
-    border-radius: 30px;
-    color: #fff;
-    cursor: pointer;
-    font-family: var(--font-primary);
-    font-size: 1rem;
-    letter-spacing: 1px;
-    line-height: 3rem;
-    margin: 20px auto auto;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    transition: box-shadow 0.4s;
-    display: inline-block;
-}
-.Portfolio_aboutMe-content button:hover {
-    box-shadow: 0 5px 15px #6C63FF;
+.bento-eyebrow {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #6C63FF;
 }
 
-/* ================= Card Styles ================= */
-.card__header {
-    width: 350px;
-    display: flex;
-    padding: 20px 40px 50px;
-    text-align: center;
-    justify-content: center;
-    align-content: center;
-    background-color: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    border-radius: 12px;
+.bento-heading {
+  font-family: var(--font-primary);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin: 0;
 }
 
-.card__header-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
+.bento-bio-text {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: #777;
+  margin: 0;
+  max-width: 520px;
 }
 
-.card__header-container p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-color-new);
-    font-family: var(--font-body);
+.bento-bio-text strong {
+  color: #aaa;
+  font-weight: 500;
 }
 
-.card__header-container span {
-    font-weight: bold;
-    font-size: 1.3rem;
-    font-family: var(--font-body);
-    color: #e5e5e5;
+.bento-cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.65rem 1.75rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #6C63FF, #A78BFA);
+  transition: box-shadow 0.3s, transform 0.2s;
+  margin-top: 4px;
 }
 
-.card__header-container button {
-    background-color: transparent;
-    border: 1px solid rgba(108, 99, 255, 0.4);
-    border-radius: 5px;
-    color: #6C63FF;
-    font-family: var(--font-primary);
-    font-size: 12px;
-    font-weight: 500;
-    margin-top: 20px;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    transition: all 0.5s;
+.bento-cv-btn:hover {
+  box-shadow: 0 0 22px rgba(108, 99, 255, 0.5);
+  transform: translateY(-2px);
 }
 
-.card__header-container button:hover {
-    color: #A78BFA;
-    cursor: pointer;
-    border-color: #A78BFA;
-    box-shadow: 0 5px 20px rgba(108, 99, 255, 0.3);
+/* ── 2. Tech card — col 3, row 1 ── */
+.bento-tech {
+  grid-column: 3;
+  grid-row: 1;
 }
 
-/* ================= Layout ================= */
-.Aboutme__contentone {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10rem;
-    gap: 35px;
+/* ── 3. Stats card — col 1-3, row 2 ── */
+.bento-stats {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
-.margin__add {
-    margin-top: 3rem;
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.Aboutme__flexcontianer_top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
+.stat-num {
+  font-family: var(--font-primary);
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 20%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
 }
 
-.Aboutme__flexcontianer {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #555;
+  letter-spacing: 0.3px;
 }
 
-/* ================= Media Queries ================= */
-
-@media screen and (max-width: 1150px) {
-    .Portfolio_aboutMe-content {
-        width: 100%;
-    }
-    .Aboutme__flexcontianer_top {
-        flex-direction: column;
-        text-align: center;
-    }
-    .Aboutme__contentone {
-        margin-right: 0;
-        justify-content: center;
-    }
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.06);
 }
 
-@media screen and (max-width: 750px) {
-    .Portfolio_aboutMe-content {
-        color: var(--text-color);
-        width: 100%;
-        margin-top: 2rem;
-    }
-    .card__header {
-        width: 100%;
-        max-width: 320px;
-    }
-    .Aboutme__contentone {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
+/* ── 4. Tech card inner styles ── */
+.bento-tech {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-@media (max-width: 550px) {
-    .Portfolio_aboutMe-header {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-        margin-top: 2rem;
-    }
-    .Portfolio_aboutMe-content {
-        margin-top: 1rem;
-        text-align: left;
-    }
-    .Portfolio_aboutMe-content button {
-        margin: 1rem auto;
-    }
-    .Aboutme__flexcontianer_top {
-        flex-direction: column;
-        padding: 0;
-        text-align: center;
-    }
-    .Aboutme__contentone {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+.bento-card-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.bento-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.bento-tech-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s, transform 0.2s;
+  cursor: default;
+}
+
+.bento-tech-icon:hover {
+  background: rgba(108, 99, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ── 5–7. Role cards — row 3, one col each ── */
+.bento-role {
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bento-role-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--c) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 20%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.bento-role:hover .bento-role-icon {
+  background: color-mix(in srgb, var(--c) 18%, transparent);
+}
+
+.bento-role-title {
+  font-family: var(--font-primary);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.bento-role-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #666;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .aboutme__bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-bio    { grid-column: 1 / 3; grid-row: 1; }
+  .bento-status { grid-column: 1;     grid-row: 2; }
+  .bento-stats  { grid-column: 2;     grid-row: 2; flex-direction: column; gap: 8px; }
+  .bento-tech   { grid-column: 1 / 3; grid-row: 3; }
+  .bento-tech .bento-tech-grid { grid-template-columns: repeat(8, 1fr); }
+  .bento-role   { grid-row: 4; }
+  .stat-divider { width: 40px; height: 1px; }
+}
+
+@media (max-width: 650px) {
+  .aboutme__section { padding: 50px 0; }
+  .aboutme__bento {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .bento-bio    { grid-column: 1; grid-row: auto; }
+  .bento-status { grid-column: 1; grid-row: auto; }
+  .bento-stats  { grid-column: 1; grid-row: auto; flex-direction: row; }
+  .bento-tech   { grid-column: 1; grid-row: auto; }
+  .bento-tech .bento-tech-grid { grid-template-columns: repeat(4, 1fr); }
+  .bento-role   { grid-row: auto; }
+  .stat-num     { font-size: 1.8rem; }
+  .stat-divider { width: 1px; height: 36px; }
 }

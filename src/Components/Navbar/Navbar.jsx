@@ -1,78 +1,68 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
-// import { useState } from "react";
 
-// import Apple from "../../assets/artificial-intelligence-14078.svg";
 function Navbar() {
   const [toggle, settoggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const links = [
+    { label: "Home", href: "#Home" },
+    { label: "About", href: "#About" },
+    { label: "Skills", href: "#Skills" },
+    { label: "Projects", href: "#Projects" },
+  ];
+
   return (
-    <div className="project_Navbar">
-      <div className="project_Navbar_links">
-        <div className="project_Navbar_img">
-          <h3>Surya</h3>
-        </div>
-        <div className="project_Navbar_signin">
-          <p>
-            <a href="#Home">Home</a>
-          </p>
-          <p>
-            <a href="#About">About</a>
-          </p>
-          <p>
-            <a href="#Skills">Skills</a>
-          </p>
-          <p>
-            <a href="#Projects">Projects</a>
-          </p>
-        </div>
-        <div className="project_Navbar_container">
-          <button>
-            <a href="#Contactme">Contact Me</a>
-          </button>
-        </div>
+    <nav className={`project_Navbar ${scrolled ? "project_Navbar--scrolled" : ""}`}>
+      {/* Logo */}
+      <a href="#Home" className="project_Navbar_logo">
+        <span className="logo__bracket">&lt;</span>
+        Surya
+        <span className="logo__bracket">/&gt;</span>
+      </a>
+
+      {/* Desktop links */}
+      <div className="project_Navbar_signin">
+        {links.map(({ label, href }) => (
+          <a key={label} href={href} className="nav__link">
+            {label}
+          </a>
+        ))}
       </div>
 
+      {/* CTA */}
+      <div className="project_Navbar_container">
+        <a href="#Contactme" className="nav__cta">Contact Me</a>
+      </div>
+
+      {/* Hamburger */}
       <div className="project_Navbar_icon">
         {toggle ? (
-          <FaTimes onClick={() => settoggle(!toggle)} color="grey" />
+          <FaTimes onClick={() => settoggle(false)} />
         ) : (
-          <FaBars color="grey" onClick={() => settoggle(!toggle)} />
+          <FaBars onClick={() => settoggle(true)} />
         )}
         {toggle && (
           <div className="project_Navbar_container_Responsive scale-up-center">
-            <div className="project_Navbar_container_links">
-              <p>
-                <a href="#Home" onClick={() => settoggle(false)}>
-                  Home
-                </a>
-              </p>
-              <p>
-                <a href="#About" onClick={() => settoggle(false)}>
-                  About
-                </a>
-              </p>
-
-              <p>
-                <a href="#Skills" onClick={() => settoggle(false)}>
-                  Skills
-                </a>
-              </p>
-              <p>
-                <a href="#Projects" onClick={() => settoggle(false)}>
-                  Projects
-                </a>
-              </p>
-
-            </div>
-            {/*  <div className="Project_Navbar_links_signin">
-              <p>Signin</p>
-              <button>Signup</button>
-            </div> */}
+            {links.map(({ label, href }) => (
+              <a key={label} href={href} className="nav__mobile-link" onClick={() => settoggle(false)}>
+                {label}
+              </a>
+            ))}
+            <a href="#Contactme" className="nav__mobile-cta" onClick={() => settoggle(false)}>
+              Contact Me
+            </a>
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 }
 
