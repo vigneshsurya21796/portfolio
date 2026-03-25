@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
-  const [toggle, settoggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,18 +45,18 @@ function Navbar() {
       {/* Hamburger */}
       <div className="project_Navbar_icon">
         {toggle ? (
-          <FaTimes onClick={() => settoggle(false)} />
+          <FaTimes onClick={() => setToggle(false)} />
         ) : (
-          <FaBars onClick={() => settoggle(true)} />
+          <FaBars onClick={() => setToggle(true)} />
         )}
         {toggle && (
           <div className="project_Navbar_container_Responsive scale-up-center">
             {links.map(({ label, href }) => (
-              <a key={label} href={href} className="nav__mobile-link" onClick={() => settoggle(false)}>
+              <a key={label} href={href} className="nav__mobile-link" onClick={() => setToggle(false)}>
                 {label}
               </a>
             ))}
-            <a href="#Contactme" className="nav__mobile-cta" onClick={() => settoggle(false)}>
+            <a href="#Contactme" className="nav__mobile-cta" onClick={() => setToggle(false)}>
               Contact Me
             </a>
           </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Skills.css";
 import { technologies } from "../../constants/index";
 
@@ -15,7 +14,7 @@ function Skills() {
         <div className="skills__marquee-track">
           <div className="skills__marquee-row skills__scroll-left">
             {[...rowOne, ...rowOne].map((tech, index) => (
-              <div key={index} className="skills__pill">
+              <div key={`r1-${tech.name}-${index}`} className="skills__pill">
                 <tech.Icon size={28} color={tech.color} />
                 <span>{tech.name}</span>
               </div>
@@ -26,7 +25,7 @@ function Skills() {
         <div className="skills__marquee-track">
           <div className="skills__marquee-row skills__scroll-right">
             {[...rowTwo, ...rowTwo].map((tech, index) => (
-              <div key={index} className="skills__pill">
+              <div key={`r2-${tech.name}-${index}`} className="skills__pill">
                 <tech.Icon size={28} color={tech.color} />
                 <span>{tech.name}</span>
               </div>

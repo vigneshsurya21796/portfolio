@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./Recentprojects.css";
 import { FiExternalLink } from "react-icons/fi";
 import { technologies } from "../../constants";
-import Landingpage from "../../Assets/landingpage.png";
 import Mayilveera from "../../Assets/mvsite.jpg";
 import Meipaari from "../../Assets/meipaari3.PNG";
 import Ecommerce from "../../Assets/ecommerce.jpg";
@@ -10,13 +9,6 @@ import Ecommerce from "../../Assets/ecommerce.jpg";
 const techMap = Object.fromEntries(technologies.map((t) => [t.name, t]));
 
 const projects = [
-  // {
-  //   num: "01",
-  //   img: Landingpage,
-  //   project: "Landing Page",
-  //   used: ["React JS", "Tailwind"],
-  //   link: null,
-  // },
   {
     num: "01",
     img: Mayilveera,
@@ -61,7 +53,6 @@ function Recentprojects() {
 
       {/* Project list */}
       <div className="projects__list" onMouseMove={handleMouseMove}>
-
         {/* Floating preview image */}
         <div
           className={`projects__preview ${hovered !== null ? "projects__preview--visible" : ""}`}
@@ -87,7 +78,12 @@ function Recentprojects() {
               {p.used.map((t) => {
                 const tech = techMap[t];
                 return (
-                  <span key={t} className="project__row-tag" style={{ "--tc": tech?.color }} title={t}>
+                  <span
+                    key={t}
+                    className="project__row-tag"
+                    style={{ "--tc": tech?.color }}
+                    title={t}
+                  >
                     {tech && <tech.Icon size={15} color={tech.color} />}
                   </span>
                 );

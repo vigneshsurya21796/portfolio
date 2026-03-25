@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./Contactme.css";
 import emailjs from "emailjs-com";
 import { z } from "zod";
@@ -30,7 +30,7 @@ function Contactme() {
   const [loading, setLoading] = useState(false);
 
   // Handle input change
-  const formchange = (e) => {
+  const handleFormChange = (e) => {
     const { name, value } = e.target;
 
     setform((prevForm) => ({
@@ -40,7 +40,7 @@ function Contactme() {
   };
 
   // Handle form submission
-  const onformsubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -65,10 +65,10 @@ function Contactme() {
       // Send the form data using EmailJS
       emailjs
         .sendForm(
-          "service_v70h3pd",
-          "template_fhhiu2w",
+          process.env.REACT_APP_EMAILJS_SERVICE_ID,
+          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
           formRef.current,
-          "l6hGRO60uFw5HoYO9"
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         )
         .then(
           () => {
@@ -142,17 +142,12 @@ function Contactme() {
           </div>
         </div>
 
-        {/*  <h1>Contact Me</h1>
-        <p>
-          You can write a mail directly to me if you want to work with me or
-          collaborate on a project.
-        </p> */}
-      </div>
+</div>
       <div className="contactme__container-form">
         <form
           ref={formRef}
           className="contactme__form-flex"
-          onSubmit={onformsubmit}
+          onSubmit={handleFormSubmit}
         >
           {/* Name Field */}
           <div className="contactme__input-container">
@@ -163,7 +158,7 @@ function Contactme() {
               name="name"
               id="name"
               value={form.name}
-              onChange={formchange}
+              onChange={handleFormChange}
             />
             {errors.name && <span className="error">{errors.name}</span>}
           </div>
@@ -176,7 +171,7 @@ function Contactme() {
               name="email"
               id="email"
               value={form.email}
-              onChange={formchange}
+              onChange={handleFormChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
@@ -189,7 +184,7 @@ function Contactme() {
               name="contactnumber"
               id="contactnumber"
               value={form.contactnumber}
-              onChange={formchange}
+              onChange={handleFormChange}
               maxLength={10}
             />
             {errors.contactnumber && (
@@ -206,7 +201,7 @@ function Contactme() {
               name="message"
               id="message"
               value={form.message}
-              onChange={formchange}
+              onChange={handleFormChange}
             />
             {errors.message && <span className="error">{errors.message}</span>}
           </div>
