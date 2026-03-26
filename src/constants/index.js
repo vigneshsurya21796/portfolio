@@ -1,7 +1,6 @@
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiExpress,
   SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiFigma, SiPostman,
-  SiHandlebarsdotjs
 } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { VscCode } from "react-icons/vsc";
