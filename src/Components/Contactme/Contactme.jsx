@@ -65,10 +65,10 @@ function Contactme() {
       // Send the form data using EmailJS
       emailjs
         .sendForm(
-          process.env.REACT_APP_EMAILJS_SERVICE_ID,
-          process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+          "service_v70h3pd",
+          "template_fhhiu2w",
           formRef.current,
-          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+          "l6hGRO60uFw5HoYO9"
         )
         .then(
           () => {
