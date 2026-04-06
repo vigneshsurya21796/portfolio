@@ -10,9 +10,9 @@
 
 .Recentprojects__container h3 {
   font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 600;
-  font-family: var(--font-body);
-  color: #ffffff;
+  font-weight: 400;
+  font-family: var(--font-primary);
+  color: #1A1A18;
   margin-bottom: 12px;
 }
 
@@ -25,7 +25,7 @@
 
 .projects__list {
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #E2DDD5;
 }
 
 .projects__preview {
@@ -33,15 +33,15 @@
   left: 52%;
   width: 340px;
   aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  border-radius: 10px;
   overflow: hidden;
   pointer-events: none;
   opacity: 0;
   transform: scale(0.92) translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 10;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 48px rgba(90, 85, 80, 0.2);
+  border: 1px solid #E2DDD5;
 }
 
 .projects__preview--visible {
@@ -62,7 +62,7 @@
   align-items: center;
   gap: 28px;
   padding: 28px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #E2DDD5;
   cursor: default;
   transition: padding-left 0.3s ease;
   position: relative;
@@ -73,7 +73,7 @@
 }
 
 .project__row--dim {
-  opacity: 0.35;
+  opacity: 0.3;
   transition: opacity 0.3s ease, padding-left 0.3s ease;
 }
 
@@ -81,7 +81,7 @@
   font-family: "Courier New", Courier, monospace;
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.2);
+  color: #C4B9B0;
   letter-spacing: 1px;
   flex-shrink: 0;
   width: 28px;
@@ -89,14 +89,14 @@
 }
 
 .project__row--active .project__row-num {
-  color: #6C63FF;
+  color: #C84B31;
 }
 
 .project__row-title {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  color: #8A8278;
   margin: 0;
   flex: 1;
   transition: color 0.3s ease;
@@ -106,7 +106,7 @@
 }
 
 .project__row--active .project__row-title {
-  color: #ffffff;
+  color: #1A1A18;
 }
 
 .project__row-tags {
@@ -123,27 +123,26 @@
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #8A8278;
+  background: #F0EBE3;
+  border: 1px solid #E2DDD5;
   padding: 7px;
   border-radius: 20px;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
 }
 
 .project__row-tag:hover {
-  color: #fff;
-  background: color-mix(in srgb, var(--tc, #6C63FF) 12%, transparent);
-  border-color: color-mix(in srgb, var(--tc, #6C63FF) 40%, transparent);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--tc, #6C63FF) 25%, transparent);
+  color: #C84B31;
+  background: color-mix(in srgb, var(--tc, #C84B31) 10%, transparent);
+  border-color: color-mix(in srgb, var(--tc, #C84B31) 35%, transparent);
   transform: translateY(-2px);
 }
 
 .project__row--active .project__row-tag {
-  color: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.12);
+  color: #5A5550;
+  border-color: #D5CFC8;
 }
 
 .project__row-actions {
@@ -157,16 +156,16 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.4);
+  background: #F0EBE3;
+  border: 1px solid #E2DDD5;
+  color: #8A8278;
   text-decoration: none;
   transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
 }
 
 .project__row-icon:hover {
-  background: rgba(108, 99, 255, 0.15);
-  border-color: rgba(108, 99, 255, 0.4);
+  background: #C84B31;
+  border-color: #C84B31;
   color: #ffffff;
   transform: translateY(-2px);
 }

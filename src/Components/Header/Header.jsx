@@ -4,7 +4,6 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { MdAttachEmail } from "react-icons/md";
 import { HiArrowDown } from "react-icons/hi";
-import { SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
 
 const roles = ["Full Stack Developer", "React JS Developer", "MERN Stack Developer"];
 
@@ -19,12 +18,7 @@ function Header() {
   return (
     <div className="Header-conatainer" id="Home">
 
-      <div className="hero-orb hero-orb--1" />
-      <div className="hero-orb hero-orb--2" />
-      <div className="hero-orb hero-orb--3" />
-      <div className="hero-grid" />
-
-      <div className="header_element_1">
+<div className="header_element_1">
 
         <div className="header__badge">
           <span className="header__badge-dot" />
@@ -54,6 +48,23 @@ function Header() {
           Loves to learn new technology to work on a project.
         </p>
 
+        <div className="header__stats">
+          <div className="header__stat">
+            <span className="header__stat-num">4+</span>
+            <span className="header__stat-label">Years Exp.</span>
+          </div>
+          <span className="header__stat-divider" />
+          <div className="header__stat">
+            <span className="header__stat-num">20+</span>
+            <span className="header__stat-label">Technologies</span>
+          </div>
+          <span className="header__stat-divider" />
+          <div className="header__stat">
+            <span className="header__stat-num">10+</span>
+            <span className="header__stat-label">Projects</span>
+          </div>
+        </div>
+
         <div className="header__ctas">
           <a href="#Projects" className="header__cta-primary">View My Work</a>
           <a href="#Contactme" className="header__cta-secondary">Let's Talk</a>
@@ -72,26 +83,6 @@ function Header() {
 
       <div className="header_element_2">
         <div className="header__image-wrapper">
-
-          <div className="header__image-glow" />
-
-          <div className="hero-float hero-float--exp">
-            <span className="hero-float-num">4+</span>
-            <span className="hero-float-label">Years Exp.</span>
-          </div>
-
-          <div className="hero-float hero-float--tech">
-            <SiReact size={13} color="#61DAFB" />
-            <SiNodedotjs size={13} color="#339933" />
-            <SiMongodb size={13} color="#47A248" />
-            <span>& more</span>
-          </div>
-
-          <div className="hero-float hero-float--projects">
-            <span className="hero-float-num">10+</span>
-            <span className="hero-float-label">Projects</span>
-          </div>
-
           <img src={Picture} alt="Surya P" className="header__image" />
         </div>
       </div>
