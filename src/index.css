@@ -1,53 +1,107 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body,
-html {
-    /* overflow-x: hidden; */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 :root {
-    --font-primary: "DM Serif Display", serif;
-    --font-body: "Space Grotesk", sans-serif;
-    --text-color: #5A5550;
-    --text-color-new: #8A8278;
-    --text-color-new-heading: #C84B31;
-    --text-color-1: #3A3530;
-    --background-color: #FAF8F3;
-    --card-bg: #FFFFFF;
-    --card-border: #E2DDD5;
-    --color-bg: linear-gradient(76deg, #C84B31 0%, #E07050 50%, #C84B31 100%);
-    --color-primary: #C84B31;
-    --color-primary-dark: #A83A23;
-    --project-color-100: #E07050;
-    --project-color-200: #E8906A;
-    --project-color-300: #F0B8A0;
+  --bg:           #080808;
+  --surface:      #111111;
+  --surface-2:    #1A1A1A;
+  --accent:       #C9FF47;
+  --accent-dim:   rgba(201, 255, 71, 0.12);
+  --text:         #EDE8E0;
+  --text-muted:   #555555;
+  --border:       #222222;
+  --font-display: "DM Serif Display", serif;
+  --font-body:    "Space Grotesk", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-body);
-    background-color: var(--background-color);
-    color: #1A1A18;
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom cursor — hide default on non-touch */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #080808;
 }
 
 :focus-visible {
-    outline: 2px solid #C84B31;
-    outline-offset: 3px;
-    border-radius: 4px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
+/* ── Reveal animation ─────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Section label ────────────────────────────────────────── */
+.section__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section__label::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+code {
+  font-family: "Courier New", monospace;
 }

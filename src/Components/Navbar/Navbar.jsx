@@ -7,61 +7,71 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const links = [
-    { label: "Home", href: "#Home" },
-    { label: "About", href: "#About" },
-    { label: "Skills", href: "#Skills" },
+    { label: "Home",     href: "#Home"     },
+    { label: "About",    href: "#About"    },
+    { label: "Skills",   href: "#Skills"   },
     { label: "Projects", href: "#Projects" },
   ];
 
   return (
-    <nav className={`project_Navbar ${scrolled ? "project_Navbar--scrolled" : ""}`}>
+    <nav className={`nav${scrolled ? " nav--scrolled" : ""}`}>
       {/* Logo */}
-      <a href="#Home" className="project_Navbar_logo">
-        <span className="logo__bracket">&lt;</span>
-        Surya
-        <span className="logo__bracket">/&gt;</span>
+      <a href="#Home" className="nav__logo" data-hover>
+        <span className="nav__logo-bracket">&lt;</span>SP<span className="nav__logo-bracket">/&gt;</span>
       </a>
 
       {/* Desktop links */}
-      <div className="project_Navbar_signin">
+      <ul className="nav__links">
         {links.map(({ label, href }) => (
-          <a key={label} href={href} className="nav__link">
-            {label}
-          </a>
+          <li key={label}>
+            <a href={href} className="nav__link" data-hover>{label}</a>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* CTA */}
-      <div className="project_Navbar_container">
-        <a href="#Contactme" className="nav__cta">Contact Me</a>
-      </div>
+      <a href="#Contactme" className="nav__cta" data-hover>
+        Contact Me
+      </a>
 
       {/* Hamburger */}
-      <div className="project_Navbar_icon">
-        {toggle ? (
-          <FaTimes onClick={() => setToggle(false)} />
-        ) : (
-          <FaBars onClick={() => setToggle(true)} />
-        )}
-        {toggle && (
-          <div className="project_Navbar_container_Responsive scale-up-center">
-            {links.map(({ label, href }) => (
-              <a key={label} href={href} className="nav__mobile-link" onClick={() => setToggle(false)}>
-                {label}
-              </a>
-            ))}
-            <a href="#Contactme" className="nav__mobile-cta" onClick={() => setToggle(false)}>
-              Contact Me
+      <button
+        className="nav__hamburger"
+        onClick={() => setToggle(!toggle)}
+        aria-label="Toggle menu"
+        data-hover
+      >
+        {toggle ? <FaTimes size={20} /> : <FaBars size={20} />}
+      </button>
+
+      {/* Mobile menu */}
+      {toggle && (
+        <div className="nav__mobile scale-up-center">
+          {links.map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="nav__mobile-link"
+              onClick={() => setToggle(false)}
+            >
+              {label}
             </a>
-          </div>
-        )}
-      </div>
+          ))}
+          <a
+            href="#Contactme"
+            className="nav__mobile-cta"
+            onClick={() => setToggle(false)}
+          >
+            Contact Me
+          </a>
+        </div>
+      )}
     </nav>
   );
 }

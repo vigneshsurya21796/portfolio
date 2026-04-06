@@ -1,137 +1,98 @@
-.skills__container {
-  margin: 60px 0;
-  font-family: var(--font-body);
+/* ── Skills section ───────────────────────────────────────── */
+.skills {
+  padding: 60px 0 100px;
   overflow: hidden;
 }
 
-.skills__container h1 {
-  font-size: 2.5rem;
-  font-weight: 400;
-  text-align: center;
-  margin-bottom: 40px;
-  color: #1A1A18;
-  font-family: var(--font-primary);
+.skills__head {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
+.skills__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* Marquee */
 .skills__marquee-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .skills__marquee-track {
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .skills__marquee-row {
   display: flex;
-  gap: 16px;
+  gap: 0;
   width: max-content;
 }
 
 @keyframes marquee-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 @keyframes marquee-right {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
-.skills__scroll-left {
-  animation: marquee-left 25s linear infinite;
-}
-
-.skills__scroll-right {
-  animation: marquee-right 25s linear infinite;
-}
+.skills__scroll-left  { animation: marquee-left  28s linear infinite; }
+.skills__scroll-right { animation: marquee-right 28s linear infinite; }
 
 .skills__marquee-track:hover .skills__scroll-left,
 .skills__marquee-track:hover .skills__scroll-right {
   animation-play-state: paused;
 }
 
+/* Pills */
 .skills__pill {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 22px;
-  background: #FFFFFF;
-  border: 1px solid #E2DDD5;
-  border-radius: 50px;
+  gap: 10px;
+  padding: 14px 24px;
+  background: transparent;
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   white-space: nowrap;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-  cursor: default;
+  transition: background 0.25s, color 0.25s;
+}
+
+.skills__pill:first-child {
+  border-left: 1px solid var(--border);
 }
 
 .skills__pill:hover {
-  border-color: #C84B31;
-  box-shadow: 0 4px 16px rgba(200, 75, 49, 0.15);
-  transform: translateY(-3px);
+  background: var(--accent-dim);
 }
 
-.skills__pill img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
+.skills__pill:hover span {
+  color: var(--accent);
 }
 
 .skills__pill span {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: #5A5550;
-}
-
-@media (max-width: 768px) {
-  .skills__container h1 {
-    font-size: 1.8rem;
-  }
-  .skills__pill {
-    padding: 10px 16px;
-    gap: 10px;
-  }
-  .skills__pill img {
-    width: 26px;
-    height: 26px;
-  }
-  .skills__pill span {
-    font-size: 0.85rem;
-  }
+  color: var(--text-muted);
+  transition: color 0.25s;
 }
 
 @media (max-width: 480px) {
-  .skills__container {
-    margin: 40px 0;
-  }
-  .skills__container h1 {
-    font-size: 1.5rem;
-    margin-bottom: 28px;
-  }
-  .skills__pill {
-    padding: 8px 14px;
-    gap: 8px;
-  }
-  .skills__pill img {
-    width: 22px;
-    height: 22px;
-  }
-  .skills__pill span {
-    font-size: 0.8rem;
-  }
+  .skills { padding: 40px 0 60px; }
+  .skills__pill { padding: 12px 18px; gap: 8px; }
+  .skills__pill span { font-size: 0.78rem; }
 }

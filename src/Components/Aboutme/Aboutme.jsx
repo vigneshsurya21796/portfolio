@@ -2,84 +2,117 @@ import "./Aboutme.css";
 import { SiReact } from "react-icons/si";
 import { FaServer, FaLayerGroup } from "react-icons/fa";
 import { technologies } from "../../constants/index";
+import { useReveal } from "../../hooks/useReveal";
 
 const roles = [
-  { Icon: SiReact,      color: "#61DAFB", title: "Frontend Developer", description: "Pixel-perfect UIs with React, Tailwind & modern CSS." },
-  { Icon: FaServer,     color: "#68D391", title: "Backend Developer",  description: "Scalable REST APIs with Node.js, Express & SQL/NoSQL." },
-  { Icon: FaLayerGroup, color: "#A78BFA", title: "Full Stack",         description: "End-to-end ownership from design system to deployment." },
+  { Icon: SiReact,      color: "#61DAFB", title: "Frontend",   description: "Pixel-perfect UIs with React, Tailwind & modern CSS." },
+  { Icon: FaServer,     color: "#68D391", title: "Backend",    description: "Scalable REST APIs with Node.js, Express & SQL/NoSQL." },
+  { Icon: FaLayerGroup, color: "#A78BFA", title: "Full Stack", description: "End-to-end ownership from design system to deployment." },
 ];
 
-const techPreview = technologies.slice(0, 8);
+const stats = [
+  { num: "4+",  label: "Years Experience" },
+  { num: "10+", label: "Projects Shipped" },
+  { num: "20+", label: "Technologies"     },
+];
+
+function RoleCard({ Icon, color, title, description, delay }) {
+  const ref = useReveal(0.15);
+  return (
+    <div
+      ref={ref}
+      className="about__role-card reveal"
+      style={{ transitionDelay: delay }}
+    >
+      <div className="about__role-icon" style={{ "--c": color }}>
+        <Icon size={20} color={color} />
+      </div>
+      <div>
+        <h3 className="about__role-title">{title}</h3>
+        <p className="about__role-desc">{description}</p>
+      </div>
+    </div>
+  );
+}
 
 function Aboutme() {
-  return (
-    <div id="About" className="aboutme__section">
-      <div className="aboutme__bento">
+  const headRef  = useReveal(0.1);
+  const bioRef   = useReveal(0.1);
+  const statsRef = useReveal(0.15);
 
-        {/* 1. Bio card — col 1-2, row 1 */}
-        <div className="bento-card bento-bio">
-          <span className="bento-eyebrow">About Me</span>
-          <h2 className="bento-heading">I Build Things<br />for the Web</h2>
-          <p className="bento-bio-text">
-            Web developer with <strong>4+ years</strong> of experience combining
-            a foundation in Electronics &amp; Communication Engineering with
-            hands-on full-stack expertise. Currently building custom software at
-            <strong> Mayilveera Tech Solutions</strong>, Chennai — shipping
-            scalable solutions with React, Node.js, Socket.io &amp; MySQL.
-          </p>
-          <a
-            className="bento-cv-btn"
-            href="https://drive.google.com/file/d/1wJiNO9up801Jm-SzmaiRWGCFDHIR5QIU/view?usp=drive_link"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Download CV
-          </a>
+  return (
+    <section id="About" className="about">
+      {/* Watermark */}
+      <div className="about__watermark" aria-hidden="true">01</div>
+
+      <div className="about__inner">
+        {/* Left */}
+        <div className="about__left">
+          <div ref={headRef} className="reveal">
+            <span className="section__label">About Me</span>
+            <h2 className="about__heading">
+              I Build Things<br />for the Web
+            </h2>
+          </div>
+
+          <div ref={bioRef} className="reveal" style={{ transitionDelay: "0.1s" }}>
+            <p className="about__bio">
+              Web developer with <strong>4+ years</strong> of experience combining
+              a foundation in Electronics &amp; Communication Engineering with
+              hands-on full-stack expertise. Currently building custom software at{" "}
+              <strong>Mayilveera Tech Solutions</strong>, Chennai — shipping
+              scalable solutions with React, Node.js, Socket.io &amp; MySQL.
+            </p>
+            <a
+              className="about__cv"
+              href="https://drive.google.com/file/d/1wJiNO9up801Jm-SzmaiRWGCFDHIR5QIU/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              data-hover
+            >
+              Download CV <span className="about__cv-arrow">↗</span>
+            </a>
+          </div>
         </div>
 
-        {/* 2. Tech icons card — col 3, row 1 */}
-        <div className="bento-card bento-tech">
-          <span className="bento-card-label">Tech I Work With</span>
-          <div className="bento-tech-grid">
-            {techPreview.map(({ Icon, color, name }) => (
-              <div key={name} className="bento-tech-icon" title={name}>
-                <Icon size={24} color={color} />
+        {/* Right */}
+        <div className="about__right">
+          <div ref={statsRef} className="about__stats reveal">
+            {stats.map(({ num, label }) => (
+              <div key={label} className="about__stat">
+                <span className="about__stat-num">{num}</span>
+                <span className="about__stat-label">{label}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* 3. Stats card — col 1-3, row 2 */}
-        <div className="bento-card bento-stats">
-          <div className="stat-item">
-            <span className="stat-num">4+</span>
-            <span className="stat-label">Years Exp.</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat-item">
-            <span className="stat-num">10+</span>
-            <span className="stat-label">Projects</span>
-          </div>
-          <div className="stat-divider" />
-          <div className="stat-item">
-            <span className="stat-num">8+</span>
-            <span className="stat-label">Tech Stacks</span>
+          <div className="about__roles">
+            {roles.map(({ Icon, color, title, description }, i) => (
+              <RoleCard
+                key={title}
+                Icon={Icon}
+                color={color}
+                title={title}
+                description={description}
+                delay={`${i * 0.12}s`}
+              />
+            ))}
           </div>
         </div>
-
-        {/* 4–6. Role cards — row 3 */}
-        {roles.map(({ Icon, color, title, description }) => (
-          <div key={title} className="bento-card bento-role">
-            <div className="bento-role-icon" style={{ "--c": color }}>
-              <Icon size={22} color={color} />
-            </div>
-            <h3 className="bento-role-title">{title}</h3>
-            <p className="bento-role-desc">{description}</p>
-          </div>
-        ))}
-
       </div>
-    </div>
+
+      {/* Infinite tech ticker */}
+      <div className="about__tech-strip" aria-hidden="true">
+        <div className="about__tech-inner">
+          {[...technologies, ...technologies].map((t, i) => (
+            <div key={i} className="about__tech-item">
+              <t.Icon size={16} color={t.color} />
+              <span>{t.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
