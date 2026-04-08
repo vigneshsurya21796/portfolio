@@ -371,46 +371,6 @@
   border-left-width: 2px;
 }
 
-/* ── Scroll indicator ─────────────────────────────────────── */
-.hero__scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 1;
-  transition: opacity 0.2s;
-}
-
-.hero__scroll:hover { opacity: 0.7; }
-
-.hero__scroll-text {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  writing-mode: horizontal-tb;
-}
-
-.hero__scroll-line {
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--text-muted), transparent);
-  animation: scroll-line 1.8s ease-in-out infinite;
-}
-
-@keyframes scroll-line {
-  0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
-  50%  { transform: scaleY(1); transform-origin: top;    opacity: 1; }
-  51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
 
 /* ── Responsive ───────────────────────────────────────────── */
 @media screen and (max-width: 950px) {
@@ -434,7 +394,6 @@
     width: clamp(200px, 55vw, 280px);
     height: clamp(200px, 55vw, 280px);
   }
-  .hero__scroll { display: none; }
   .hero__shape--dot-grid { display: none; }
 }
 

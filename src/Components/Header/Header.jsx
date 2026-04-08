@@ -15,28 +15,13 @@ const socials = [
 const NAME_LETTERS = "SURYA P".split("");
 
 function Header() {
-  const [mouse, setMouse]   = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const onMove = (e) => {
-      setMouse({
-        x: (e.clientX / window.innerWidth  - 0.5) * 2,
-        y: (e.clientY / window.innerHeight - 0.5) * 2,
-      });
-    };
     const onScroll = () => setScrollY(window.scrollY);
-
-    window.addEventListener("mousemove", onMove);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const px = mouse.x;
-  const py = mouse.y;
 
   return (
     <section className="hero" id="Home">
@@ -44,34 +29,28 @@ function Header() {
       <div className="hero__bg" aria-hidden="true">
         <div
           className="hero__shape hero__shape--circle"
-          style={{ transform: `translate(${px * 28}px, ${py * 18}px) translateY(${scrollY * 0.14}px)` }}
+          style={{ transform: `translateY(${scrollY * 0.14}px)` }}
         />
         <div
           className="hero__shape hero__shape--ring"
-          style={{ transform: `translate(${px * -22}px, ${py * 14}px) translateY(${scrollY * 0.06}px)` }}
+          style={{ transform: `translateY(${scrollY * 0.06}px)` }}
         />
         <div
           className="hero__shape hero__shape--ring-sm"
-          style={{ transform: `translate(${px * 16}px, ${py * -20}px) translateY(${scrollY * 0.1}px)` }}
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
         />
         <div
           className="hero__shape hero__shape--dot-grid"
-          style={{ transform: `translate(${px * 12}px, ${py * -26}px) translateY(${scrollY * 0.08}px)` }}
+          style={{ transform: `translateY(${scrollY * 0.08}px)` }}
         />
-        <div
-          className="hero__shape hero__shape--line"
-          style={{ transform: `translate(${px * -32}px, ${py * 28}px)` }}
-        />
+        <div className="hero__shape hero__shape--line" />
         <span
           className="hero__code-glyph"
-          style={{ transform: `translate(${px * 20}px, ${py * -14}px) translateY(${scrollY * 0.05}px)` }}
+          style={{ transform: `translateY(${scrollY * 0.05}px)` }}
         >
           {"</>"}
         </span>
-        <span
-          className="hero__code-glyph hero__code-glyph--2"
-          style={{ transform: `translate(${px * -16}px, ${py * 22}px)` }}
-        >
+        <span className="hero__code-glyph hero__code-glyph--2">
           {"{}"}
         </span>
         {/* Radial glow */}
@@ -164,11 +143,6 @@ function Header() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <a href="#About" className="hero__scroll" aria-label="Scroll down">
-        <span className="hero__scroll-text">scroll</span>
-        <span className="hero__scroll-line" />
-      </a>
     </section>
   );
 }

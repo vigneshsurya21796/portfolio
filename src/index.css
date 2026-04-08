@@ -31,12 +31,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom cursor — hide default on non-touch */
-@media (hover: hover) and (pointer: fine) {
-  *, *::before, *::after {
-    cursor: none !important;
-  }
-}
 
 a {
   color: inherit;

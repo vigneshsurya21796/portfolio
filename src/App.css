@@ -31,47 +31,6 @@ body::after {
   z-index: 9997;
 }
 
-/* ── Custom cursor ────────────────────────────────────────── */
-.cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  will-change: left, top;
-}
-
-.cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(201, 255, 71, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: left 0.1s ease-out, top 0.1s ease-out, width 0.25s, height 0.25s, border-color 0.25s;
-  will-change: left, top;
-}
-
-.cursor-ring--hover {
-  width: 56px;
-  height: 56px;
-  border-color: var(--accent);
-}
-
-/* Hide cursor on touch devices */
-@media (hover: none) {
-  .cursor-dot,
-  .cursor-ring {
-    display: none;
-  }
-}
-
 /* ── Scale animation (kept for mobile menu) ───────────────── */
 .scale-up-center {
   animation: scale-up-center 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
