@@ -1,7 +1,6 @@
 import "./Aboutme.css";
 import { SiReact } from "react-icons/si";
 import { FaServer, FaLayerGroup } from "react-icons/fa";
-import { technologies } from "../../constants/index";
 import { useReveal } from "../../hooks/useReveal";
 
 const roles = [
@@ -11,9 +10,10 @@ const roles = [
 ];
 
 const stats = [
-  { num: "4+",  label: "Years Experience" },
-  { num: "10+", label: "Projects Shipped" },
-  { num: "20+", label: "Technologies"     },
+  { num: "4+",   label: "Years Experience"  },
+  { num: "10+",  label: "Projects Shipped"  },
+  { num: "20+",  label: "Technologies"      },
+  { num: "100%", label: "Remote Ready"      },
 ];
 
 function RoleCard({ Icon, color, title, description, delay }) {
@@ -49,9 +49,12 @@ function Aboutme() {
         {/* Left */}
         <div className="about__left">
           <div ref={headRef} className="reveal">
-            <span className="section__label">About Me</span>
+            <span className="section__label">
+              <span className="section__num">01 /</span> About Me
+            </span>
             <h2 className="about__heading">
-              I Build Things<br />for the Web
+              Building <span className="about__heading-accent">Systems</span>
+              <br />for the Web
             </h2>
           </div>
 
@@ -75,17 +78,8 @@ function Aboutme() {
           </div>
         </div>
 
-        {/* Right */}
+        {/* Right — role cards */}
         <div className="about__right">
-          <div ref={statsRef} className="about__stats reveal">
-            {stats.map(({ num, label }) => (
-              <div key={label} className="about__stat">
-                <span className="about__stat-num">{num}</span>
-                <span className="about__stat-label">{label}</span>
-              </div>
-            ))}
-          </div>
-
           <div className="about__roles">
             {roles.map(({ Icon, color, title, description }, i) => (
               <RoleCard
@@ -101,16 +95,14 @@ function Aboutme() {
         </div>
       </div>
 
-      {/* Infinite tech ticker */}
-      <div className="about__tech-strip" aria-hidden="true">
-        <div className="about__tech-inner">
-          {[...technologies, ...technologies].map((t, i) => (
-            <div key={i} className="about__tech-item">
-              <t.Icon size={16} color={t.color} />
-              <span>{t.name}</span>
-            </div>
-          ))}
-        </div>
+      {/* 4-column stats row */}
+      <div ref={statsRef} className="about__stats-row reveal">
+        {stats.map(({ num, label }) => (
+          <div key={label} className="about__stat">
+            <span className="about__stat-num">{num}</span>
+            <span className="about__stat-label">{label}</span>
+          </div>
+        ))}
       </div>
     </section>
   );

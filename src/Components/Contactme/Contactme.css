@@ -1,34 +1,45 @@
-/* ── Contact section ──────────────────────────────────────── */
+/* ── CTA block ─────────────────────────────────────────────── */
+.contact-cta {
+  padding: 100px 0 70px;
+  border-top: 1px solid var(--border);
+}
+
+.contact-cta__headline {
+  font-family: var(--font-display-condensed);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 1.5rem 0 2rem;
+}
+
+.contact-cta__accent {
+  color: var(--accent);
+  display: block;
+}
+
+.contact-cta__sub {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
+/* ── Info + Form grid ──────────────────────────────────────── */
 .contactme__container {
-  padding: 80px 0 120px;
+  padding: 0 0 80px;
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 4rem;
   align-items: start;
 }
 
-/* Left column — info + socials */
+/* Left column — info */
 .contactme__container-mail {
   padding-top: 0.5rem;
-}
-
-.contactme__heading {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -2px;
-  color: var(--text);
-  margin-top: 0.75rem;
-  margin-bottom: 0;
-}
-
-.contactme__container-mail > div > p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-top: 1rem;
-  margin-bottom: 2rem;
 }
 
 /* Info rows */
@@ -247,20 +258,45 @@
   to { transform: rotate(360deg); }
 }
 
+/* ── Site footer ───────────────────────────────────────────── */
+.site-footer {
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.site-footer__copy {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.site-footer__socials {
+  display: flex;
+  gap: 8px;
+}
+
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .contactme__container {
     grid-template-columns: 1fr;
     gap: 3rem;
+    padding: 0 0 60px;
   }
-  .contactme__heading {
-    font-size: clamp(2.5rem, 10vw, 5rem);
+  .contact-cta__headline {
+    font-size: clamp(3rem, 12vw, 6rem);
   }
 }
 
 @media (max-width: 550px) {
-  .contactme__container { padding: 60px 0 80px; }
+  .contact-cta { padding: 60px 0 50px; }
   .contactme__container-form { padding: 1.5rem; }
   .contactme__sendmessage { justify-content: stretch; }
   .contactme__form-flex button { width: 100%; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
 }

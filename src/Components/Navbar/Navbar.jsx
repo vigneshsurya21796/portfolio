@@ -17,6 +17,7 @@ function Navbar() {
     { label: "About",    href: "#About"    },
     { label: "Skills",   href: "#Skills"   },
     { label: "Projects", href: "#Projects" },
+    { label: "Contact",  href: "#Contactme"},
   ];
 
   return (
@@ -35,10 +36,11 @@ function Navbar() {
         ))}
       </ul>
 
-      {/* CTA */}
-      <a href="#Contactme" className="nav__cta" data-hover>
-        Contact Me
-      </a>
+      {/* Availability badge */}
+      <div className="nav__availability" aria-label="Availability status">
+        <span className="nav__avail-dot" aria-hidden="true" />
+        Available
+      </div>
 
       {/* Hamburger */}
       <button
@@ -63,13 +65,6 @@ function Navbar() {
               {label}
             </a>
           ))}
-          <a
-            href="#Contactme"
-            className="nav__mobile-cta"
-            onClick={() => setToggle(false)}
-          >
-            Contact Me
-          </a>
         </div>
       )}
     </nav>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
 *, *::before, *::after {
   margin: 0;
@@ -15,8 +15,9 @@
   --text:         #EDE8E0;
   --text-muted:   #555555;
   --border:       #222222;
-  --font-display: "DM Serif Display", serif;
-  --font-body:    "Space Grotesk", sans-serif;
+  --font-display:           "DM Serif Display", serif;
+  --font-body:              "Space Grotesk", sans-serif;
+  --font-display-condensed: "Barlow Condensed", sans-serif;
 }
 
 html {
@@ -81,6 +82,38 @@ a {
   height: 1px;
   background: var(--accent);
   flex-shrink: 0;
+}
+
+/* ── Outline text utility ─────────────────────────────────── */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+}
+
+.text-outline--accent {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+}
+
+/* ── Section number prefix ────────────────────────────────── */
+.section__num {
+  color: var(--text-muted);
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+/* ── Full-bleed escape ────────────────────────────────────── */
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+/* ── marquee-left keyframe (shared) ──────────────────────── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ── Reduced motion ───────────────────────────────────────── */

@@ -1,7 +1,7 @@
 /* ── About section ────────────────────────────────────────── */
 .about {
   position: relative;
-  padding: 100px 0 80px;
+  padding: 100px 0 0;
   overflow: hidden;
 }
 
@@ -15,7 +15,7 @@
   font-weight: 400;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -45,6 +45,10 @@
   letter-spacing: -1px;
   color: var(--text);
   margin-top: 1rem;
+}
+
+.about__heading-accent {
+  color: var(--accent);
 }
 
 .about__bio {
@@ -90,53 +94,13 @@
   transform: translate(3px, -3px);
 }
 
-/* Right */
+/* Right — role cards */
 .about__right {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
   padding-top: 3.5rem;
 }
 
-/* Stats row */
-.about__stats {
-  display: flex;
-  gap: 0;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2rem;
-}
-
-.about__stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-right: 1.5rem;
-  border-right: 1px solid var(--border);
-  margin-right: 1.5rem;
-}
-
-.about__stat:last-child {
-  border-right: none;
-  margin-right: 0;
-}
-
-.about__stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1;
-  color: var(--accent);
-}
-
-.about__stat-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* Role cards */
 .about__roles {
   display: flex;
   flex-direction: column;
@@ -196,40 +160,43 @@
   color: var(--text-muted);
 }
 
-/* ── Tech ticker strip ────────────────────────────────────── */
-.about__tech-strip {
-  margin-top: 5rem;
-  overflow: hidden;
+/* ── Stats row (4-column border grid) ─────────────────────── */
+.about__stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  margin-top: 5rem;
   position: relative;
   z-index: 1;
 }
 
-.about__tech-inner {
+.about__stat {
   display: flex;
-  gap: 0;
-  animation: tech-scroll 30s linear infinite;
-  width: max-content;
-}
-
-.about__tech-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0.4rem 2rem;
+  flex-direction: column;
+  gap: 6px;
+  padding: 2rem 1.5rem;
+  text-align: center;
   border-right: 1px solid var(--border);
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
-@keyframes tech-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.about__stat:last-child {
+  border-right: none;
+}
+
+.about__stat-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.about__stat-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
@@ -244,23 +211,19 @@
   .about__heading {
     font-size: clamp(2rem, 7vw, 3rem);
   }
+  .about__stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3rem;
+  }
+  .about__stat:nth-child(2) { border-right: none; }
+  .about__stat:nth-child(3) { border-top: 1px solid var(--border); }
 }
 
 @media (max-width: 550px) {
   .about {
-    padding: 60px 0 50px;
+    padding: 60px 0 0;
   }
-  .about__stats {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .about__stat {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1rem;
-    margin-right: 0;
-  }
-  .about__stat:last-child {
-    border-bottom: none;
+  .about__stats-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

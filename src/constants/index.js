@@ -1,11 +1,14 @@
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiExpress,
   SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiFigma, SiPostman,
+  SiLeetcode,
 } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { VscCode } from "react-icons/vsc";
 import { FaNodeJs } from "react-icons/fa6";
 import { TbBrandVite } from "react-icons/tb";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdAttachEmail } from "react-icons/md";
 
 const technologies = [
   { name: "HTML 5",      Icon: SiHtml5,           color: "#E34F26" },
@@ -26,4 +29,34 @@ const technologies = [
   { name: "VS Code",     Icon: VscCode,           color: "#007ACC" },
 ];
 
-export { technologies };
+const socials = [
+  { Icon: FaGithub,      href: "https://github.com/vigneshsurya21796",           label: "GitHub"   },
+  { Icon: FaLinkedin,    href: "https://www.linkedin.com/in/vigneshsurya21796/",  label: "LinkedIn" },
+  { Icon: SiLeetcode,    href: "#",                                               label: "LeetCode" },
+  { Icon: MdAttachEmail, href: "mailto:vigneshsurya21796@gmail.com",              label: "Email"    },
+];
+
+const arsenal = [
+  {
+    category: "Frontend",
+    techs: ["HTML 5", "CSS 3", "JavaScript", "TypeScript", "React JS", "Tailwind", "Bootstrap"],
+  },
+  {
+    category: "Backend",
+    techs: ["Node JS", "Express JS"],
+  },
+  {
+    category: "Database",
+    techs: ["MongoDB", "MySQL"],
+  },
+  {
+    category: "DevOps / Tools",
+    techs: ["GitHub", "Vite", "Postman", "VS Code"],
+  },
+  {
+    category: "Design",
+    techs: ["Figma"],
+  },
+];
+
+export { technologies, socials, arsenal };

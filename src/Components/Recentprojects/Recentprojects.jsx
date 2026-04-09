@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Recentprojects.css";
 import { FiExternalLink } from "react-icons/fi";
 import { technologies } from "../../constants";
@@ -36,91 +35,72 @@ const projects = [
   },
 ];
 
+function ProjectCard({ p, index }) {
+  const ref = useReveal(0.1);
+  return (
+    <div
+      ref={ref}
+      className="project__card reveal"
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      {/* Image */}
+      <div className="project__card-img">
+        <img src={p.img} alt={p.project} loading="lazy" />
+      </div>
+
+      {/* Body */}
+      <div className="project__card-body">
+        <span className="project__card-num">{p.num}</span>
+        <h3 className="project__card-title">{p.project}</h3>
+        <p className="project__card-category">{p.category}</p>
+
+        {/* Footer */}
+        <div className="project__card-footer">
+          <div className="project__card-tags">
+            {p.used.map((t) => {
+              const tech = techMap[t];
+              return (
+                <span key={t} className="project__tag">
+                  {tech && <tech.Icon size={12} color={tech.color} />}
+                  <span>{t}</span>
+                </span>
+              );
+            })}
+          </div>
+          {p.link ? (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noreferrer"
+              className="project__card-link"
+              aria-label={`Visit ${p.project}`}
+            >
+              <FiExternalLink size={15} />
+            </a>
+          ) : (
+            <span className="project__row-private">Private</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Recentprojects() {
-  const [hovered, setHovered] = useState(null);
-  const [mouseY,  setMouseY]  = useState(0);
-
   const headRef = useReveal(0.1);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMouseY(e.clientY - rect.top);
-  };
 
   return (
     <section className="projects" id="Projects">
-      {/* Heading */}
       <div ref={headRef} className="projects__head reveal">
-        <span className="section__label">Work</span>
-        <h2 className="projects__title">Selected Work</h2>
+        <span className="section__label">
+          <span className="section__num">02 /</span> Work
+        </span>
+        <h2 className="projects__title">Selected Projects</h2>
       </div>
 
-      {/* Project list */}
-      <div
-        className="projects__list"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={() => setHovered(null)}
-      >
-        {/* Floating preview image */}
-        <div
-          className={`projects__preview${hovered !== null ? " projects__preview--visible" : ""}`}
-          style={{ top: mouseY - 130 }}
-          aria-hidden="true"
-        >
-          {hovered !== null && (
-            <img src={projects[hovered].img} alt={projects[hovered].project} />
-          )}
-        </div>
-
+      <div className="projects__grid">
         {projects.map((p, i) => (
-          <div
-            key={i}
-            className={`project__row${hovered === i ? " project__row--active" : ""}${hovered !== null && hovered !== i ? " project__row--dim" : ""}`}
-            onMouseEnter={() => setHovered(i)}
-          >
-            {/* Hover accent bar */}
-            <span className="project__row-bar" aria-hidden="true" />
-
-            <span className="project__row-num">{p.num}</span>
-
-            <div className="project__row-main">
-              <h3 className="project__row-title">{p.project}</h3>
-              <span className="project__row-category">{p.category}</span>
-            </div>
-
-            <div className="project__row-tags">
-              {p.used.map((t) => {
-                const tech = techMap[t];
-                return (
-                  <span
-                    key={t}
-                    className="project__tag"
-                    title={t}
-                  >
-                    {tech && <tech.Icon size={13} color={tech.color} />}
-                    <span>{t}</span>
-                  </span>
-                );
-              })}
-            </div>
-
-            {p.link ? (
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noreferrer"
-                className="project__row-link"
-                onClick={(e) => e.stopPropagation()}
-                title="Live site"
-                data-hover
-              >
-                <FiExternalLink size={16} />
-                <span>Visit</span>
-              </a>
-            ) : (
-              <span className="project__row-private">Private</span>
-            )}
-          </div>
+          <ProjectCard key={p.num} p={p} index={i} />
         ))}
       </div>
     </section>

@@ -71,24 +71,36 @@
   width: 100%;
 }
 
-/* CTA button */
-.nav__cta {
+/* Availability badge */
+.nav__availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.4px;
-  color: #080808;
-  background: var(--accent);
-  padding: 0.55rem 1.4rem;
-  border-radius: 2px;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(201, 255, 71, 0.2);
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(201, 255, 71, 0.05);
   flex-shrink: 0;
 }
 
-.nav__cta:hover {
-  background: #d8ff5a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 255, 71, 0.25);
+.nav__avail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 255, 71, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(201, 255, 71, 0); }
 }
 
 /* Hamburger */
@@ -145,7 +157,7 @@
 
 @media screen and (max-width: 768px) {
   .nav__links,
-  .nav__cta {
+  .nav__availability {
     display: none;
   }
   .nav__hamburger {
