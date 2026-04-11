@@ -1,0 +1,35 @@
+.cursor__dot,
+.cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* Small filled dot */
+.cursor__dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  transition: opacity 0.2s;
+  mix-blend-mode: difference;
+}
+
+/* Larger lagged ring */
+.cursor__ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  opacity: 0.55;
+  transition: transform 0.08s linear, opacity 0.2s, border-color 0.2s;
+  mix-blend-mode: difference;
+}
+
+/* Fade both out when cursor leaves window */
+body:not(:hover) .cursor__dot,
+body:not(:hover) .cursor__ring {
+  opacity: 0;
+}

@@ -2,6 +2,8 @@ import "./Aboutme.css";
 import { SiReact } from "react-icons/si";
 import { FaServer, FaLayerGroup } from "react-icons/fa";
 import { useReveal } from "../../hooks/useReveal";
+import { useCounter } from "../../hooks/useCounter";
+import { SplitWords } from "../../utils/SplitWords";
 
 const roles = [
   { Icon: SiReact,      color: "#61DAFB", title: "Frontend",   description: "Pixel-perfect UIs with React, Tailwind & modern CSS." },
@@ -9,12 +11,22 @@ const roles = [
   { Icon: FaLayerGroup, color: "#A78BFA", title: "Full Stack", description: "End-to-end ownership from design system to deployment." },
 ];
 
-const stats = [
-  { num: "4+",   label: "Years Experience"  },
-  { num: "10+",  label: "Projects Shipped"  },
-  { num: "20+",  label: "Technologies"      },
-  { num: "100%", label: "Remote Ready"      },
+const statsConfig = [
+  { target: 4,   suffix: "+",  label: "Years Experience" },
+  { target: 10,  suffix: "+",  label: "Projects Shipped" },
+  { target: 20,  suffix: "+",  label: "Technologies"     },
+  { target: 100, suffix: "%",  label: "Remote Ready"     },
 ];
+
+function StatItem({ target, suffix, label }) {
+  const [count, ref] = useCounter(target);
+  return (
+    <div ref={ref} className="about__stat">
+      <span className="about__stat-num">{count}{suffix}</span>
+      <span className="about__stat-label">{label}</span>
+    </div>
+  );
+}
 
 function RoleCard({ Icon, color, title, description, delay }) {
   const ref = useReveal(0.15);
@@ -36,9 +48,8 @@ function RoleCard({ Icon, color, title, description, delay }) {
 }
 
 function Aboutme() {
-  const headRef  = useReveal(0.1);
-  const bioRef   = useReveal(0.1);
-  const statsRef = useReveal(0.15);
+  const headRef = useReveal(0.1);
+  const bioRef  = useReveal(0.1);
 
   return (
     <section id="About" className="about">
@@ -52,9 +63,14 @@ function Aboutme() {
             <span className="section__label">
               <span className="section__num">01 /</span> About Me
             </span>
-            <h2 className="about__heading">
-              Building <span className="about__heading-accent">Systems</span>
-              <br />for the Web
+            <h2 className="about__heading" aria-label="Building Systems That Matter">
+              <SplitWords text="BUILDING" />
+              <br />
+              <span className="about__heading-accent">
+                <SplitWords text="SYSTEMS" delay={0.15} />
+              </span>
+              <br />
+              <SplitWords text="THAT MATTER" delay={0.3} />
             </h2>
           </div>
 
@@ -96,12 +112,9 @@ function Aboutme() {
       </div>
 
       {/* 4-column stats row */}
-      <div ref={statsRef} className="about__stats-row reveal">
-        {stats.map(({ num, label }) => (
-          <div key={label} className="about__stat">
-            <span className="about__stat-num">{num}</span>
-            <span className="about__stat-label">{label}</span>
-          </div>
+      <div className="about__stats-row">
+        {statsConfig.map(({ target, suffix, label }) => (
+          <StatItem key={label} target={target} suffix={suffix} label={label} />
         ))}
       </div>
     </section>

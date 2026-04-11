@@ -1,60 +1,55 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import "./Recentprojects.css";
 import { FiExternalLink } from "react-icons/fi";
 import { technologies } from "../../constants";
 import { useReveal } from "../../hooks/useReveal";
-import Mayilveera from "../../Assets/mvsite.jpg";
-import Meipaari from "../../Assets/meipaari3.PNG";
-import Ecommerce from "../../Assets/ecommerce.jpg";
+import { SplitWords } from "../../utils/SplitWords";
 
 const techMap = Object.fromEntries(technologies.map((t) => [t.name, t]));
 
 const projects = [
   {
     num: "01",
-    img: Mayilveera,
     project: "Mayilveera Website",
     category: "Corporate / Web",
+    description:
+      "Full corporate website built with React and Node.js — responsive, production-deployed with custom CMS features, contact forms, and SEO-optimized pages.",
     used: ["React JS", "Node JS"],
     link: "https://mayilveera.com/",
   },
   {
     num: "02",
-    img: Meipaari,
-    project: "Meipaari IOT Platform",
+    project: "Meipaari IoT Platform",
     category: "IoT / Dashboard",
+    description:
+      "Real-time IoT monitoring dashboard with live data visualization, device management, and alert systems using Socket.io for bidirectional communication.",
     used: ["React JS", "Node JS", "MySQL"],
     link: null,
   },
   {
     num: "03",
-    img: Ecommerce,
-    project: "ECommerce Site",
+    project: "ECommerce Platform",
     category: "E-Commerce / Full Stack",
+    description:
+      "End-to-end e-commerce platform with product catalog, cart, checkout, and order management. REST API backend with MongoDB for flexible product schema.",
     used: ["React JS", "Node JS", "MongoDB"],
     link: null,
   },
 ];
 
-function ProjectCard({ p, index }) {
-  const ref = useReveal(0.1);
+function ProjectCard({ p }) {
   return (
-    <div
-      ref={ref}
-      className="project__card reveal"
-      style={{ transitionDelay: `${index * 0.1}s` }}
-    >
-      {/* Image */}
-      <div className="project__card-img">
-        <img src={p.img} alt={p.project} loading="lazy" />
-      </div>
+    <div className="project__card">
+      <div className="project__card-inner">
+        <div className="project__card-top">
+          <span className="project__card-num">{p.num}</span>
+          <span className="project__card-category">{p.category}</span>
+        </div>
 
-      {/* Body */}
-      <div className="project__card-body">
-        <span className="project__card-num">{p.num}</span>
         <h3 className="project__card-title">{p.project}</h3>
-        <p className="project__card-category">{p.category}</p>
+        <p className="project__card-desc">{p.description}</p>
 
-        {/* Footer */}
         <div className="project__card-footer">
           <div className="project__card-tags">
             {p.used.map((t) => {
@@ -74,6 +69,7 @@ function ProjectCard({ p, index }) {
               rel="noreferrer"
               className="project__card-link"
               aria-label={`Visit ${p.project}`}
+              data-hover
             >
               <FiExternalLink size={15} />
             </a>
@@ -87,7 +83,22 @@ function ProjectCard({ p, index }) {
 }
 
 function Recentprojects() {
-  const headRef = useReveal(0.1);
+  const outerRef = useRef(null);   /* tall scroll container */
+  const headRef  = useReveal(0.1);
+
+  /* Drive horizontal pan off the tall outer container's scroll progress */
+  const { scrollYProgress } = useScroll({
+    target: outerRef,
+    offset: ["start start", "end end"],
+  });
+
+  /*
+    3 cards × 42vw = 126vw total strip width.
+    Start: x=+4vw  → card 1 visible, card 3 barely peeking right.
+    End:   x=-26vw → card 1 partially off-left, card 3 fully in view.
+    Movement range = 30vw = 1 card width of travel.
+  */
+  const x = useTransform(scrollYProgress, [0.05, 0.95], ["4vw", "-26vw"]);
 
   return (
     <section className="projects" id="Projects">
@@ -95,13 +106,30 @@ function Recentprojects() {
         <span className="section__label">
           <span className="section__num">02 /</span> Work
         </span>
-        <h2 className="projects__title">Selected Projects</h2>
+        <h2 className="projects__title" aria-label="Selected Projects">
+          <SplitWords text="SELECTED" />{" "}
+          <span className="projects__title-accent">
+            <SplitWords text="PROJECTS" delay={0.1} />
+          </span>
+        </h2>
       </div>
 
-      <div className="projects__grid">
-        {projects.map((p, i) => (
-          <ProjectCard key={p.num} p={p} index={i} />
-        ))}
+      {/* ── Tall outer div — gives scroll room for horizontal panning ── */}
+      <div className="projects__sticky-outer" ref={outerRef}>
+
+        {/* ── Sticky inner — stays in view while outer scrolls ───────── */}
+        <div className="projects__sticky-inner">
+
+          {/* ── Horizontally panning strip ─────────────────────────── */}
+          <div className="projects__overflow">
+            <motion.div className="projects__grid" style={{ x }}>
+              {projects.map((p) => (
+                <ProjectCard key={p.num} p={p} />
+              ))}
+            </motion.div>
+          </div>
+
+        </div>
       </div>
     </section>
   );

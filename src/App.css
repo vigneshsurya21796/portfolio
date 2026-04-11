@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Lenis owns smooth scroll */
 }
 
 a {
@@ -31,12 +31,12 @@ body::after {
   z-index: 9997;
 }
 
-/* ── Tech Marquee ─────────────────────────────────────────── */
+/* ── Tech Marquee — scroll-driven, large display text ─────── */
 .tech-marquee {
   overflow: hidden;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 1.1rem 0;
+  padding: 1.6rem 0;
   background: var(--bg);
 }
 
@@ -44,33 +44,30 @@ body::after {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee-left 35s linear infinite;
-}
-
-.tech-marquee:hover .tech-marquee__inner {
-  animation-play-state: paused;
+  /* No CSS animation — movement is driven by scroll via framer-motion */
+  will-change: transform;
 }
 
 .tech-marquee__word {
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  font-family: var(--font-display-condensed);
+  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   white-space: nowrap;
   transition: color 0.2s;
 }
 
 .tech-marquee__word:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .tech-marquee__sep {
-  font-size: 0.9rem;
+  font-size: clamp(1rem, 2vw, 1.8rem);
   color: var(--accent);
-  opacity: 0.45;
+  opacity: 0.5;
   flex-shrink: 0;
 }
 
@@ -102,9 +99,9 @@ body::after {
 .quote-section__text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.4;
   color: var(--text);
   margin: 0 0 1.5rem;
 }
@@ -116,6 +113,21 @@ body::after {
   letter-spacing: 1.5px;
   color: var(--text-muted);
   text-transform: uppercase;
+}
+
+/* ── Scroll-driven lime gradient overlay ─────────────────── */
+.scroll-gradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 40% at 15% 10%,
+    rgba(201, 255, 71, 0.07),
+    transparent 70%
+  );
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
 }
 
 /* ── Scale animation (kept for mobile menu) ───────────────── */

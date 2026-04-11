@@ -21,7 +21,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
 }
 
 body {
@@ -49,15 +49,34 @@ a {
   border-radius: 2px;
 }
 
-/* ── Reveal animation ─────────────────────────────────────── */
+/* ── Reveal — fade + subtle lift (no clip-path = no black void) */
 .reveal {
   opacity: 0;
-  transform: translateY(48px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(18px);
+  transition: opacity 0.75s ease,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.revealed {
+/* ── Word-split animation ─────────────────────────────────── */
+.split-words-wrap {
+  display: block;
+  overflow: hidden;
+}
+
+.split-word {
+  display: inline-block;
+  margin-right: 0.28em;
+  opacity: 0;
+  transform: translateY(110%);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--word-delay, 0s),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--word-delay, 0s);
+}
+
+.revealed .split-word {
   opacity: 1;
   transform: translateY(0);
 }
@@ -116,6 +135,17 @@ a {
   to   { transform: translateX(-50%); }
 }
 
+/* ── Custom cursor ────────────────────────────────────────── */
+body.has-cursor {
+  cursor: none;
+}
+
+body.has-cursor a,
+body.has-cursor button,
+body.has-cursor [data-hover] {
+  cursor: none;
+}
+
 /* ── Reduced motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -124,6 +154,10 @@ a {
     transition-duration: 0.01ms !important;
   }
   .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .split-word {
     opacity: 1;
     transform: none;
   }

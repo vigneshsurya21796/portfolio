@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "./Contactme.css";
+import { SplitWords } from "../../utils/SplitWords";
 import emailjs from "emailjs-com";
 import { z } from "zod";
 import toast from "react-hot-toast";
@@ -81,10 +82,16 @@ function Contactme() {
         <span className="section__label">
           <span className="section__num">04 /</span> Contact
         </span>
-        <h2 className="contact-cta__headline">
-          Let's Build<br />
-          <span className="contact-cta__accent">Something</span>
-          <br />Great
+        <h2 className="contact-cta__headline" aria-label="Let's Build Something Great">
+          <SplitWords text="LET'S" />{" "}
+          <span className="contact-cta__accent">
+            <SplitWords text="BUILD" delay={0.1} />
+          </span>
+          <br />
+          <span className="contact-cta__accent">
+            <SplitWords text="SOMETHING" delay={0.2} />
+          </span>{" "}
+          <SplitWords text="GREAT" delay={0.35} />
         </h2>
         <p className="contact-cta__sub">
           Open to freelance, full-time, and collaborations.<br />

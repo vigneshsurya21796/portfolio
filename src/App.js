@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   Header,
@@ -8,27 +8,34 @@ import {
   Recentprojects,
 } from "./Components";
 import { Toaster } from "react-hot-toast";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
+import Cursor from "./Components/Cursor/Cursor";
 import { useReveal } from "./hooks/useReveal";
 import "./App.css";
 
-/* ── Tech Marquee ─────────────────────────────────────────── */
+/* ── Tech Marquee — scroll-driven ────────────────────────── */
 const MARQUEE_ITEMS = [
   "React", "Node.js", "TypeScript", "MySQL", "MongoDB",
   "Express", "Tailwind", "Figma", "GitHub", "Vite",
 ];
 
 function TechMarquee() {
+  const { scrollY } = useScroll();
+  /* As page scrolls 0 → 1600px, strip slides left by 42% of its width */
+  const x = useTransform(scrollY, [0, 1600], ["0%", "-42%"]);
+
   const doubled = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
   return (
     <div className="tech-marquee full-bleed" aria-hidden="true">
-      <div className="tech-marquee__inner">
+      <motion.div className="tech-marquee__inner" style={{ x }}>
         {doubled.map((item, i) => (
           <React.Fragment key={i}>
             <span className="tech-marquee__word">{item}</span>
             <span className="tech-marquee__sep">/</span>
           </React.Fragment>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -51,8 +58,44 @@ function QuoteSection() {
 
 /* ── App ──────────────────────────────────────────────────── */
 function App() {
+  /* Lenis smooth scroll */
+  useEffect(() => {
+    const lenis = new Lenis({
+      lerp: 0.085,
+      smoothWheel: true,
+      syncTouch: false,
+    });
+
+    let rafId;
+    const raf = (time) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+
+  /* Scroll-driven gradient */
+  const { scrollYProgress } = useScroll();
+  const gx = useTransform(scrollYProgress, [0, 1], ["12%", "88%"]);
+  const gy = useTransform(scrollYProgress, [0, 1], ["8%",  "92%"]);
+  const bgPos = useMotionTemplate`${gx} ${gy}`;
+
   return (
     <>
+      {/* Scroll-driven lime gradient overlay */}
+      <motion.div
+        className="scroll-gradient"
+        style={{ backgroundPosition: bgPos }}
+        aria-hidden="true"
+      />
+
+      <Cursor />
+
       <div className="App__container">
         <Navbar />
         <Header />

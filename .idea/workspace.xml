@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="415879d5-8360-4a38-905b-11668ad3e1f5" name="Changes" comment="optimized files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="415879d5-8360-4a38-905b-11668ad3e1f5" name="Changes" comment="optimized files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,6 +81,7 @@
       <workItem from="1760239113076" duration="321000" />
       <workItem from="1768495737770" duration="2423000" />
       <workItem from="1768574349749" duration="10000" />
+      <workItem from="1775498517871" duration="2240000" />
     </task>
     <task id="LOCAL-00001" summary="optimized files">
       <option name="closed" value="true" />

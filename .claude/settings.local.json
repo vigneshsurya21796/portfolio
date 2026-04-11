@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:mayilveera.com)"
+      "WebFetch(domain:mayilveera.com)",
+      "Read(//c/tmp/frames_border//**)",
+      "Read(//c/tmp/frames_border/**)",
+      "Bash(dir \"C:/tmp/frames_border/\")"
     ]
   }
 }

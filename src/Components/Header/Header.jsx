@@ -1,22 +1,28 @@
 import "./Header.css";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { socials } from "../../constants/index";
 
 const SOLID_LETTERS  = "SURYA".split("");
 const OUTLINE_WORD   = "DEVELOPER";
 
 function Header() {
+  const { scrollY } = useScroll();
+  const circleY  = useTransform(scrollY, [0, 600], [0, 140]);
+  const glowY    = useTransform(scrollY, [0, 600], [0, 200]);
+  const dotGridY = useTransform(scrollY, [0, 600], [0, 80]);
+
   return (
     <section className="hero" id="Home">
-      {/* ── Background shapes (static) ─────────────────────── */}
+      {/* ── Background shapes (scroll-parallax) ───────────────── */}
       <div className="hero__bg" aria-hidden="true">
-        <div className="hero__shape hero__shape--circle" />
+        <motion.div className="hero__shape hero__shape--circle" style={{ y: circleY }} />
         <div className="hero__shape hero__shape--ring" />
         <div className="hero__shape hero__shape--ring-sm" />
-        <div className="hero__shape hero__shape--dot-grid" />
+        <motion.div className="hero__shape hero__shape--dot-grid" style={{ y: dotGridY }} />
         <div className="hero__shape hero__shape--line" />
         <span className="hero__code-glyph">{"</>"}</span>
         <span className="hero__code-glyph hero__code-glyph--2">{"{}"}</span>
-        <div className="hero__glow" />
+        <motion.div className="hero__glow" style={{ y: glowY }} />
       </div>
 
       {/* ── Corner label (top-left) ────────────────────────── */}
