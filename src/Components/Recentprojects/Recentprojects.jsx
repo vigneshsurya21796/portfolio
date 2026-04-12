@@ -4,7 +4,7 @@ import "./Recentprojects.css";
 import { FiExternalLink } from "react-icons/fi";
 import { technologies } from "../../constants";
 import { useReveal } from "../../hooks/useReveal";
-import { SplitWords } from "../../utils/SplitWords";
+import { WipeText } from "../../utils/WipeText";
 
 const techMap = Object.fromEntries(technologies.map((t) => [t.name, t]));
 
@@ -107,9 +107,9 @@ function Recentprojects() {
           <span className="section__num">02 /</span> Work
         </span>
         <h2 className="projects__title" aria-label="Selected Projects">
-          <SplitWords text="SELECTED" />{" "}
+          <WipeText text="SELECTED" delay={0} />{" "}
           <span className="projects__title-accent">
-            <SplitWords text="PROJECTS" delay={0.1} />
+            <WipeText text="PROJECTS" delay={100} />
           </span>
         </h2>
       </div>

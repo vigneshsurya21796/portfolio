@@ -3,7 +3,7 @@ import { SiReact } from "react-icons/si";
 import { FaServer, FaLayerGroup } from "react-icons/fa";
 import { useReveal } from "../../hooks/useReveal";
 import { useCounter } from "../../hooks/useCounter";
-import { SplitWords } from "../../utils/SplitWords";
+import { WipeText } from "../../utils/WipeText";
 
 const roles = [
   { Icon: SiReact,      color: "#61DAFB", title: "Frontend",   description: "Pixel-perfect UIs with React, Tailwind & modern CSS." },
@@ -64,13 +64,13 @@ function Aboutme() {
               <span className="section__num">01 /</span> About Me
             </span>
             <h2 className="about__heading" aria-label="Building Systems That Matter">
-              <SplitWords text="BUILDING" />
+              <WipeText text="BUILDING" delay={0} />
               <br />
               <span className="about__heading-accent">
-                <SplitWords text="SYSTEMS" delay={0.15} />
+                <WipeText text="SYSTEMS" delay={150} />
               </span>
               <br />
-              <SplitWords text="THAT MATTER" delay={0.3} />
+              <WipeText text="THAT MATTER" delay={300} />
             </h2>
           </div>
 

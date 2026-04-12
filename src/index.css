@@ -61,7 +61,7 @@ a {
   transform: translateY(0);
 }
 
-/* ── Word-split animation ─────────────────────────────────── */
+/* ── Word-split animation (legacy) ───────────────────────── */
 .split-words-wrap {
   display: block;
   overflow: hidden;
@@ -79,6 +79,22 @@ a {
 .revealed .split-word {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── Scramble text ────────────────────────────────────────── */
+.scramble-text {
+  display: inline;
+}
+
+.scramble-char {
+  display: inline-block;
+  color: var(--accent);
+  transition: color 0.1s ease;
+  white-space: pre;
+}
+
+.scramble-char.resolved {
+  color: inherit;
 }
 
 /* ── Section label ────────────────────────────────────────── */

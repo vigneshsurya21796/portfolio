@@ -1,7 +1,7 @@
 import "./Skills.css";
 import { technologies, arsenal } from "../../constants/index";
 import { useReveal } from "../../hooks/useReveal";
-import { SplitWords } from "../../utils/SplitWords";
+import { WipeText } from "../../utils/WipeText";
 
 const techMap = Object.fromEntries(technologies.map((t) => [t.name, t]));
 
@@ -39,9 +39,9 @@ function Skills() {
           <span className="section__num">03 /</span> Expertise
         </span>
         <h2 className="skills__title" aria-label="Technical Arsenal">
-          <SplitWords text="TECHNICAL" />{" "}
+          <WipeText text="TECHNICAL" delay={0} />{" "}
           <span className="skills__title-accent">
-            <SplitWords text="ARSENAL" delay={0.1} />
+            <WipeText text="ARSENAL" delay={100} />
           </span>
         </h2>
       </div>
