@@ -67,10 +67,10 @@ function Aboutme() {
               <WipeText text="BUILDING" delay={0} />
               <br />
               <span className="about__heading-accent">
-                <WipeText text="SYSTEMS" delay={150} />
+                <WipeText text="SYSTEMS" delay={0.3} />
               </span>
               <br />
-              <WipeText text="THAT MATTER" delay={300} />
+              <WipeText text="THAT MATTER" delay={0.6} />
             </h2>
           </div>
 
