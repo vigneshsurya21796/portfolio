@@ -81,20 +81,30 @@ a {
   transform: translateY(0);
 }
 
-/* ── Scramble text ────────────────────────────────────────── */
-.scramble-text {
-  display: inline;
+/* ── v1 Bar Reveal (black overlay scaleX wipe) ────────────── */
+.wipe-wrap {
+  display: block;
 }
 
-.scramble-char {
+.wipe-word {
+  position: relative;
   display: inline-block;
-  color: var(--accent);
-  transition: color 0.1s ease;
-  white-space: pre;
+  margin-right: 0.28em;
+  overflow: hidden;
+  vertical-align: bottom;
 }
 
-.scramble-char.resolved {
-  color: inherit;
+.wipe-word__text {
+  display: block;
+}
+
+.wipe-word__bar {
+  position: absolute;
+  inset: -2px -1px;
+  background: var(--bg);
+  transform-origin: right;
+  will-change: transform;
+  pointer-events: none;
 }
 
 /* ── Section label ────────────────────────────────────────── */
