@@ -1,37 +1,62 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
 
 /**
- * WipeText v1 — BarReveal
- * Each word is covered by a var(--bg) overlay. On scroll-in,
- * the overlay scaleX animates 1→0 (transformOrigin: right),
- * wiping away left-to-right to reveal the text beneath.
+ * WipeText v2 — ScrambleText
+ * Characters cycle through random glyphs (accent color) before
+ * snapping to the real letter left-to-right, triggered on scroll-in.
  *
  * Props:
  *   text   {string}  — text to render
- *   delay  {number}  — base delay in seconds for the first word
+ *   delay  {number}  — start delay in ms (default 0)
+ *   speed  {number}  — ms between each frame (default 35)
  */
-export function WipeText({ text, delay = 0 }) {
+export function WipeText({ text, delay = 0, speed = 35 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-8% 0px" });
+  const [displayed, setDisplayed] = useState(() => text.split("").map(() => " "));
+  const frameRef = useRef(null);
+  const startedRef = useRef(false);
 
-  const words = text.split(" ");
+  useEffect(() => {
+    if (!isInView || startedRef.current) return;
+    startedRef.current = true;
+
+    const letters = text.split("");
+    let frame = 0;
+    const totalFrames = letters.length * 2 + 8;
+
+    const timer = setTimeout(() => {
+      frameRef.current = setInterval(() => {
+        setDisplayed(
+          letters.map((char, i) => {
+            const resolveAt = i * 2 + 8;
+            if (char === " ") return " ";
+            if (frame >= resolveAt) return char;
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          })
+        );
+        frame++;
+        if (frame > totalFrames) clearInterval(frameRef.current);
+      }, speed);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(frameRef.current);
+    };
+  }, [isInView, text, delay, speed]);
 
   return (
-    <span ref={ref} aria-label={text} className="wipe-wrap">
-      {words.map((word, i) => (
-        <span key={i} className="wipe-word">
-          <span className="wipe-word__text">{word}</span>
-          <motion.span
-            className="wipe-word__bar"
-            initial={{ scaleX: 1 }}
-            animate={{ scaleX: isInView ? 0 : 1 }}
-            transition={{
-              duration: 0.6,
-              ease: [0.76, 0, 0.24, 1],
-              delay: delay + i * 0.12,
-            }}
-          />
+    <span ref={ref} aria-label={text} className="scramble-text">
+      {displayed.map((ch, i) => (
+        <span
+          key={i}
+          className={ch === text[i] ? "scramble-char resolved" : "scramble-char"}
+        >
+          {ch}
         </span>
       ))}
     </span>
