@@ -1,64 +1,41 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
-
 /**
- * WipeText v2 — ScrambleText
- * Characters cycle through random glyphs (accent color) before
- * snapping to the real letter left-to-right, triggered on scroll-in.
+ * WipeText v3 — Block-Sweep (FINAL)
+ * An accent-colored bar grows left→right covering each word,
+ * then slides off to the right revealing the text beneath.
+ * Mirrors the FR Design System BlockTextRevealQuick animation.
  *
  * Props:
  *   text   {string}  — text to render
- *   delay  {number}  — start delay in ms (default 0)
- *   speed  {number}  — ms between each frame (default 35)
+ *   delay  {number}  — base delay in seconds for the first word
  */
-export function WipeText({ text, delay = 0, speed = 35 }) {
+export function WipeText({ text, delay = 0 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-8% 0px" });
-  const [displayed, setDisplayed] = useState(() => text.split("").map(() => " "));
-  const frameRef = useRef(null);
-  const startedRef = useRef(false);
 
-  useEffect(() => {
-    if (!isInView || startedRef.current) return;
-    startedRef.current = true;
-
-    const letters = text.split("");
-    let frame = 0;
-    const totalFrames = letters.length * 2 + 8;
-
-    const timer = setTimeout(() => {
-      frameRef.current = setInterval(() => {
-        setDisplayed(
-          letters.map((char, i) => {
-            const resolveAt = i * 2 + 8;
-            if (char === " ") return " ";
-            if (frame >= resolveAt) return char;
-            return CHARS[Math.floor(Math.random() * CHARS.length)];
-          })
-        );
-        frame++;
-        if (frame > totalFrames) clearInterval(frameRef.current);
-      }, speed);
-    }, delay);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(frameRef.current);
-    };
-  }, [isInView, text, delay, speed]);
+  const words = text.split(" ");
 
   return (
-    <span ref={ref} aria-label={text} className="scramble-text">
-      {displayed.map((ch, i) => (
-        <span
-          key={i}
-          className={ch === text[i] ? "scramble-char resolved" : "scramble-char"}
-        >
-          {ch}
-        </span>
-      ))}
+    <span ref={ref} aria-label={text} className="wipe-wrap">
+      {words.map((word, i) => {
+        const blockDelay = delay + i * 0.15;
+        const textDelay  = blockDelay + 0.5;
+
+        return (
+          <span
+            key={i}
+            className={`wipe-word${isInView ? " wipe-word--animate" : ""}`}
+            style={{
+              "--block-delay": `${blockDelay}s`,
+              "--text-delay":  `${textDelay}s`,
+            }}
+          >
+            {word}
+          </span>
+        );
+      })}
     </span>
   );
 }
