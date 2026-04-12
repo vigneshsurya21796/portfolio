@@ -41,7 +41,7 @@ function Skills() {
         <h2 className="skills__title" aria-label="Technical Arsenal">
           <WipeText text="TECHNICAL" delay={0} />{" "}
           <span className="skills__title-accent">
-            <WipeText text="ARSENAL" delay={100} />
+            <WipeText text="ARSENAL" delay={0.15} />
           </span>
         </h2>
       </div>

@@ -1,65 +1,39 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
 
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
-
 /**
- * ScrambleText — characters cycle through random glyphs before
- * snapping to the real letter, triggered when element enters viewport.
+ * WipeText — block sweeps left→right over each word, then slides off,
+ * revealing the text underneath. Mirrors the BlockTextRevealQuick animation.
  *
  * Props:
- *   text    {string}  — text to render
- *   delay   {number}  — start delay in ms (default 0)
- *   speed   {number}  — ms between each frame (default 35)
+ *   text   {string}  — text to render
+ *   delay  {number}  — base delay in seconds for the first word
  */
-export function WipeText({ text, delay = 0, speed = 35 }) {
+export function WipeText({ text, delay = 0 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-8% 0px" });
-  const [displayed, setDisplayed] = useState(() => text.split("").map(() => " "));
-  const frameRef = useRef(null);
-  const startedRef = useRef(false);
 
-  useEffect(() => {
-    if (!isInView || startedRef.current) return;
-    startedRef.current = true;
-
-    const letters = text.split("");
-    let frame = 0;
-    // Total frames needed: each char resolves after (charIndex * 2 + 8) frames
-    const totalFrames = letters.length * 2 + 8;
-
-    const timer = setTimeout(() => {
-      frameRef.current = setInterval(() => {
-        setDisplayed(
-          letters.map((char, i) => {
-            const resolveAt = i * 2 + 8;
-            if (char === " ") return " ";
-            if (frame >= resolveAt) return char;
-            // scramble phase
-            return CHARS[Math.floor(Math.random() * CHARS.length)];
-          })
-        );
-        frame++;
-        if (frame > totalFrames) clearInterval(frameRef.current);
-      }, speed);
-    }, delay);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(frameRef.current);
-    };
-  }, [isInView, text, delay, speed]);
+  const words = text.split(" ");
 
   return (
-    <span ref={ref} aria-label={text} className="scramble-text">
-      {displayed.map((ch, i) => (
-        <span
-          key={i}
-          className={ch === text[i] ? "scramble-char resolved" : "scramble-char"}
-        >
-          {ch}
-        </span>
-      ))}
+    <span ref={ref} aria-label={text} className="wipe-wrap">
+      {words.map((word, i) => {
+        const blockDelay  = delay + i * 0.15;          // block starts
+        const textDelay   = blockDelay + 0.5;           // text snaps visible at midpoint
+
+        return (
+          <span
+            key={i}
+            className={`wipe-word${isInView ? " wipe-word--animate" : ""}`}
+            style={{
+              "--block-delay": `${blockDelay}s`,
+              "--text-delay":  `${textDelay}s`,
+            }}
+          >
+            {word}
+          </span>
+        );
+      })}
     </span>
   );
 }

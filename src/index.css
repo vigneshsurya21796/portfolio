@@ -81,20 +81,51 @@ a {
   transform: translateY(0);
 }
 
-/* ── Scramble text ────────────────────────────────────────── */
-.scramble-text {
-  display: inline;
+/* ── Block-sweep reveal ───────────────────────────────────── */
+@keyframes wipe-block {
+  0%   { left: 0;    width: 0%;   }
+  50%  { left: 0%;   width: 100%; }
+  100% { left: 100%; width: 0%;   }
 }
 
-.scramble-char {
+@keyframes wipe-appear {
+  to { color: inherit; }
+}
+
+.wipe-wrap {
+  display: block;
+}
+
+/* each word */
+.wipe-word {
+  position: relative;
   display: inline-block;
-  color: var(--accent);
-  transition: color 0.1s ease;
-  white-space: pre;
+  margin-right: 0.28em;
+  color: var(--bg);            /* invisible until animation fires */
+  vertical-align: bottom;
 }
 
-.scramble-char.resolved {
-  color: inherit;
+/* the sweeping block */
+.wipe-word::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 0%;
+  height: calc(100% + 4px);
+  background: var(--accent);   /* lime block sweeps across */
+  pointer-events: none;
+}
+
+/* triggered when in view */
+.wipe-word--animate {
+  animation: wipe-appear 0.001s linear forwards;
+  animation-delay: var(--text-delay, 0.5s);
+}
+
+.wipe-word--animate::after {
+  animation: wipe-block 0.9s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: var(--block-delay, 0s);
 }
 
 /* ── Section label ────────────────────────────────────────── */
@@ -176,6 +207,9 @@ body.has-cursor [data-hover] {
   .split-word {
     opacity: 1;
     transform: none;
+  }
+  .wipe-word {
+    color: inherit;
   }
 }
 

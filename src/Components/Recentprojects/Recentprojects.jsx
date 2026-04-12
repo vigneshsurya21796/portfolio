@@ -109,7 +109,7 @@ function Recentprojects() {
         <h2 className="projects__title" aria-label="Selected Projects">
           <WipeText text="SELECTED" delay={0} />{" "}
           <span className="projects__title-accent">
-            <WipeText text="PROJECTS" delay={100} />
+            <WipeText text="PROJECTS" delay={0.15} />
           </span>
         </h2>
       </div>
