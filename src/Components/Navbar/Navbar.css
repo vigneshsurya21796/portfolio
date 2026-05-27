@@ -101,7 +101,7 @@
   50%       { box-shadow: 0 0 0 5px rgba(201, 255, 71, 0);   }
 }
 
-/* ── Animated hamburger ───────────────────────────────────── */
+/* ── Hamburger ────────────────────────────────────────────── */
 .nav__hamburger {
   display: none;
   flex-direction: column;
@@ -115,6 +115,13 @@
   cursor: pointer;
   position: relative;
   z-index: 201;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Hide hamburger while overlay is open (close btn takes over) */
+.nav__hamburger--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav__line {
@@ -125,23 +132,15 @@
   border-radius: 2px;
   transform-origin: center;
   transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1),
-              opacity   0.3s ease,
-              background 0.2s;
+              opacity   0.3s ease;
 }
 
-/* Morph to X when open */
-.nav__hamburger.is-open .nav__line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav__hamburger.is-open .nav__line:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.nav__hamburger.is-open .nav__line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ── Full-screen overlay ──────────────────────────────────── */
+/* ── Full-screen circle-reveal overlay ───────────────────── */
+/*
+ * z-index 199 — sits below the nav (200) so the nav bar
+ * stays visible and the close button appears at the exact
+ * position the hamburger was.
+ */
 .nav__overlay {
   position: fixed;
   inset: 0;
@@ -154,26 +153,44 @@
   overflow: hidden;
 }
 
-/* Subtle grain on overlay */
+/* Subtle noise grain */
 .nav__overlay::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-  opacity: 0.025;
+  opacity: 0.03;
   pointer-events: none;
 }
 
-/* Border top line */
-.nav__overlay::after {
-  content: "";
+/* ── Close button (replaces hamburger position inside overlay) */
+.nav__close {
+  /* position/size set via inline style from measured hamRect */
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__close-line {
   position: absolute;
-  top: 0;
-  left: 8vw;
-  right: 8vw;
-  height: 1px;
-  background: var(--border);
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+.nav__close-line:nth-child(1) { transform: rotate(45deg); }
+.nav__close-line:nth-child(2) { transform: rotate(-45deg); }
+
+.nav__close:hover .nav__close-line {
+  background: var(--accent);
+  transition: background 0.2s;
 }
 
 /* ── Overlay links list ───────────────────────────────────── */
@@ -190,25 +207,29 @@
   display: flex;
   align-items: baseline;
   gap: 1.2rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   text-decoration: none;
   overflow: hidden;
   position: relative;
-  transition: color 0.2s;
+  transition: padding-left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav__overlay-link:first-child {
-  border-top: 1px solid var(--border);
+.nav__overlay-links li:first-child .nav__overlay-link {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.nav__overlay-link:hover {
+  padding-left: 0.75rem;
 }
 
 .nav__overlay-num {
   font-family: "Courier New", monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   color: var(--accent);
-  opacity: 0.7;
+  opacity: 0.6;
   width: 2rem;
   flex-shrink: 0;
 }
@@ -221,22 +242,21 @@
   letter-spacing: -2px;
   line-height: 1;
   color: var(--text);
-  transition: color 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  display: block;
+  transition: color 0.25s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex: 1;
 }
 
 .nav__overlay-arrow {
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--accent);
   opacity: 0;
-  margin-left: auto;
-  transform: translate(-8px, 4px);
-  transition: opacity 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate(-10px, 4px);
+  transition: opacity 0.25s, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
 }
 
 .nav__overlay-link:hover .nav__overlay-label {
   color: var(--accent);
-  transform: translateX(8px);
 }
 
 .nav__overlay-link:hover .nav__overlay-arrow {
@@ -251,6 +271,7 @@
   justify-content: space-between;
   padding-top: 2rem;
   flex-shrink: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .nav__overlay-tag {
@@ -279,22 +300,19 @@
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
-@media screen and (max-width: 768px) {
-  .nav__links,
-  .nav__availability {
-    display: none;
-  }
-  .nav__hamburger {
-    display: flex;
-  }
+@media screen and (max-width: 900px) {
+  .nav__availability { display: none; }
+  .nav__hamburger    { display: flex; }
 }
 
-/* Show hamburger on smaller desktop too */
-@media screen and (max-width: 900px) {
-  .nav__availability {
-    display: none;
+@media screen and (max-width: 768px) {
+  .nav__links { display: none; }
+
+  .nav__overlay {
+    padding: 5.5rem 6vw 2.5rem;
   }
-  .nav__hamburger {
-    display: flex;
+
+  .nav__overlay-label {
+    letter-spacing: -1px;
   }
 }

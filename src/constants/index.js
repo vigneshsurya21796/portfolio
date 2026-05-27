@@ -1,7 +1,7 @@
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiExpress,
   SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiFigma, SiPostman,
-  SiLeetcode,
+  SiLeetcode, SiNextdotjs, SiSocketdotio,
 } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { VscCode } from "react-icons/vsc";
@@ -24,9 +24,11 @@ const technologies = [
   { name: "MySQL",       Icon: GrMysql,           color: "#4479A1" },
   { name: "Figma",       Icon: SiFigma,           color: "#F24E1E" },
   { name: "GitHub",      Icon: SiGithub,          color: "#e0e0e0" },
+  { name: "Next.js",     Icon: SiNextdotjs,       color: "#e0e0e0" },
   { name: "Vite",        Icon: TbBrandVite,       color: "#646CFF" },
   { name: "Postman",     Icon: SiPostman,         color: "#FF6C37" },
   { name: "VS Code",     Icon: VscCode,           color: "#007ACC" },
+  { name: "Socket.io",  Icon: SiSocketdotio,     color: "#010101" },
 ];
 
 const socials = [
@@ -39,7 +41,7 @@ const socials = [
 const arsenal = [
   {
     category: "Frontend",
-    techs: ["HTML 5", "CSS 3", "JavaScript", "TypeScript", "React JS", "Tailwind", "Bootstrap"],
+    techs: ["HTML 5", "CSS 3", "JavaScript", "TypeScript", "React JS", "Next.js", "Tailwind", "Bootstrap"],
   },
   {
     category: "Backend",

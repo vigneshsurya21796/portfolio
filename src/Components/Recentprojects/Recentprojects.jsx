@@ -20,12 +20,12 @@ const projects = [
   },
   {
     num: "02",
-    project: "Meipaari IoT Platform",
-    category: "IoT / Dashboard",
+    project: "Crypto Tracker",
+    category: "Finance / Web App",
     description:
-      "Real-time IoT monitoring dashboard with live data visualization, device management, and alert systems using Socket.io for bidirectional communication.",
-    used: ["React JS", "Node JS", "MySQL"],
-    link: null,
+      "Real-time cryptocurrency tracking app with live price updates, market cap data, and interactive charts. Fetches data from CoinGecko API with search and filter support.",
+    used: ["React JS", "Socket.io"],
+    link: "https://crypto-tracker-flame-zeta.vercel.app/",
   },
   {
     num: "03",
@@ -34,7 +34,7 @@ const projects = [
     description:
       "End-to-end e-commerce platform with product catalog, cart, checkout, and order management. REST API backend with MongoDB for flexible product schema.",
     used: ["React JS", "Node JS", "MongoDB"],
-    link: null,
+    link: "https://ecommerce-92rp.onrender.com/",
   },
 ];
 
