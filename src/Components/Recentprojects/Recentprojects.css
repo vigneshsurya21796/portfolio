@@ -25,29 +25,28 @@
   color: var(--accent);
 }
 
-/* ── Tall outer scroll container — provides scroll room ───── */
+/* ── Tall outer scroll container ─────────────────────────── */
 .projects__sticky-outer {
   height: 260vh;
   position: relative;
 }
 
-/* ── Sticky inner — stays pinned while outer scrolls ──────── */
+/* ── Sticky inner ─────────────────────────────────────────── */
 .projects__sticky-inner {
   position: sticky;
   top: 0;
   height: 100vh;
   display: flex;
   align-items: center;
-  /* No overflow: hidden — body overflow-x:hidden clips the strip at viewport edge */
 }
 
-/* ── Overflow clip — clips horizontal overflow cleanly ─────── */
+/* ── Overflow wrapper ─────────────────────────────────────── */
 .projects__overflow {
   width: 100%;
-  overflow: visible;    /* motion.div needs to overflow */
+  overflow: visible;
 }
 
-/* ── Horizontal card strip (flex, NOT grid) ───────────────── */
+/* ── Horizontal card strip ────────────────────────────────── */
 .projects__grid {
   display: flex;
   flex-direction: row;
@@ -56,83 +55,128 @@
   will-change: transform;
 }
 
-/* ── Individual card ──────────────────────────────────────── */
+/* ── Card wrapper ─────────────────────────────────────────── */
 .project__card {
-  background: var(--surface);
-  width: 42vw;
-  min-width: 320px;
+  position: relative;
+  width: 36vw;
+  min-width: 300px;
   flex-shrink: 0;
-  border: 1.5px solid transparent;
-  transition: background 0.3s ease,
-              box-shadow 0.4s ease,
-              border-color 0.35s ease;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.35s ease;
 }
 
 .project__card:hover {
-  background: var(--surface-2);
-  border-color: var(--accent);
-  box-shadow:
-    0 0 0 1px rgba(201, 255, 71, 0.08),
-    0 0 32px rgba(201, 255, 71, 0.10),
-    0 20px 50px rgba(0, 0, 0, 0.45);
+  background: #0e0e0e;
 }
 
-/* Inner padding wrapper */
-.project__card-inner {
-  padding: 2.5rem;
+/* Left accent bar */
+.project__card-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: top;
+  z-index: 2;
+  display: block;
+}
+
+/* ── Image / placeholder zone ────────────────────────────── */
+.project__card-image-wrap {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project__card:hover .project__card-image {
+  transform: scale(1.05);
+}
+
+.project__card-placeholder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project__card:hover .project__card-placeholder {
+  transform: scale(1.05);
+}
+
+/* Dot-grid overlay to suggest UI content */
+.project__card-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+/* ── Text block ──────────────────────────────────────────── */
+.project__card-body {
+  padding: 1.4rem 1.75rem 1.6rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  height: 420px;
+  gap: 0.75rem;
+  min-height: 240px;
 }
 
-/* Top row — number + category */
-.project__card-top {
+/* Category pill */
+.project__card-category {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.project__card-num {
-  font-family: "Courier New", monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--accent);
-}
-
-.project__card-category {
+  gap: 6px;
   font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.project__card-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }
 
 /* Title */
 .project__card-title {
   font-family: var(--font-display-condensed);
-  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-  font-weight: 700;
+  font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--text);
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.5px;
-  transition: color 0.2s;
+  transition: color 0.25s ease;
 }
 
 .project__card:hover .project__card-title {
   color: var(--accent);
 }
 
-/* Description */
-.project__card-desc {
-  font-family: var(--font-body);
-  font-size: 0.83rem;
-  line-height: 1.75;
-  color: var(--text-muted);
-  flex: 1;
+/* Animated divider line */
+.project__card-divider {
+  height: 1px;
+  background: var(--border);
+  transform-origin: left;
+  margin: 0.1rem 0;
 }
 
 /* Footer */
@@ -141,11 +185,10 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
   margin-top: auto;
 }
 
+/* Tech tags */
 .project__card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -157,7 +200,7 @@
   align-items: center;
   gap: 5px;
   font-family: var(--font-body);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 500;
   color: var(--text-muted);
   border: 1px solid var(--border);
@@ -165,46 +208,75 @@
   border-radius: 2px;
   white-space: nowrap;
   background: var(--bg);
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s;
 }
 
 .project__card:hover .project__tag {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Link icon */
-.project__card-link {
-  display: flex;
+/* VIEW PROJECT CTA */
+.project__card-cta {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
+  gap: 3px;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid rgba(201, 255, 71, 0.2);
-  border-radius: 2px;
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-bottom: 2px;
 }
 
-.project__card-link:hover {
-  background: var(--accent-dim);
-  border-color: rgba(201, 255, 71, 0.4);
-  transform: translateY(-2px);
+.project__card-cta::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project__card-cta:hover::after {
+  transform: scaleX(1);
+}
+
+/* Watermark number */
+.project__card-watermark {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-family: var(--font-display-condensed);
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -3px;
 }
 
 /* Private label */
 .project__row-private {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-muted);
   border: 1px solid var(--border);
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 2px;
-  flex-shrink: 0;
   opacity: 0.5;
+  flex-shrink: 0;
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
@@ -225,9 +297,12 @@
     min-width: 260px;
   }
 
-  .project__card-inner {
-    height: auto;
-    min-height: 340px;
+  .project__card-image-wrap {
+    height: 220px;
+  }
+
+  .project__card-body {
+    min-height: auto;
   }
 
   .projects__sticky-outer {
