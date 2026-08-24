@@ -6,18 +6,38 @@
   box-sizing: border-box;
 }
 
-:root {
-  --bg:           #080808;
-  --surface:      #111111;
-  --surface-2:    #1A1A1A;
-  --accent:       #C9FF47;
-  --accent-dim:   rgba(201, 255, 71, 0.12);
-  --text:         #EDE8E0;
-  --text-muted:   #555555;
-  --border:       #222222;
+:root,
+[data-theme="light"] {
+  --bg:              #FFFFFF;
+  --surface:         #F5F5F3;
+  --surface-2:       #ECECE8;
+  --accent:          #9FE000;
+  --accent-dim:      rgba(159, 224, 0, 0.12);
+  --text:            #1A1A1A;
+  --text-muted:      #8A8A8A;
+  --border:          #E2E2E0;
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.9);
+  --overlay-bg:      #F5F5F3;
+  --overlay-line:    rgba(0, 0, 0, 0.08);
+  --card-hover-bg:   #F5F5F3;
   --font-display:           "DM Serif Display", serif;
   --font-body:              "Space Grotesk", sans-serif;
   --font-display-condensed: "Barlow Condensed", sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg:              #080808;
+  --surface:         #111111;
+  --surface-2:       #1A1A1A;
+  --accent:          #C9FF47;
+  --accent-dim:      rgba(201, 255, 71, 0.12);
+  --text:            #EDE8E0;
+  --text-muted:      #555555;
+  --border:          #222222;
+  --nav-scrolled-bg: rgba(8, 8, 8, 0.9);
+  --overlay-bg:      #0A0A0A;
+  --overlay-line:    rgba(255, 255, 255, 0.07);
+  --card-hover-bg:   #0E0E0E;
 }
 
 html {
@@ -30,6 +50,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -82,10 +103,12 @@ a {
 }
 
 /* ── v3 Block-sweep reveal (FINAL) ───────────────────────── */
+/* transform: scaleX instead of left/width — compositor-only, avoids layout reflow during scroll */
 @keyframes wipe-block {
-  0%   { left: 0;    width: 0%;   }
-  50%  { left: 0%;   width: 100%; }
-  100% { left: 100%; width: 0%;   }
+  0%      { transform: scaleX(0); transform-origin: left; }
+  50%     { transform: scaleX(1); transform-origin: left; }
+  50.001% { transform-origin: right; }
+  100%    { transform: scaleX(0); transform-origin: right; }
 }
 
 @keyframes wipe-appear {
@@ -109,10 +132,13 @@ a {
   position: absolute;
   top: -2px;
   left: 0;
-  width: 0%;
+  width: 100%;
   height: calc(100% + 4px);
   background: var(--accent);
   pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
 }
 
 .wipe-word--animate {

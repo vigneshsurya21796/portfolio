@@ -116,9 +116,13 @@ body::after {
 }
 
 /* ── Scroll-driven lime gradient overlay ─────────────────── */
+/* Oversized so the transform-driven pan (App.js) never exposes an edge */
 .scroll-gradient {
   position: fixed;
-  inset: 0;
+  top: -8vh;
+  left: -12vw;
+  right: -12vw;
+  bottom: -8vh;
   background: radial-gradient(
     ellipse 60% 40% at 15% 10%,
     rgba(201, 255, 71, 0.07),
@@ -128,6 +132,7 @@ body::after {
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: screen;
+  will-change: transform;
 }
 
 /* ── Scale animation (kept for mobile menu) ───────────────── */

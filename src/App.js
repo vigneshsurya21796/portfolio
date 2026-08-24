@@ -12,6 +12,7 @@ import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motio
 import Lenis from "@studio-freight/lenis";
 import Cursor from "./Components/Cursor/Cursor";
 import { useReveal } from "./hooks/useReveal";
+import { ThemeProvider } from "./hooks/useTheme";
 import "./App.css";
 
 /* ── Tech Marquee — scroll-driven ────────────────────────── */
@@ -79,18 +80,18 @@ function App() {
     };
   }, []);
 
-  /* Scroll-driven gradient */
+  /* Scroll-driven gradient — panned via transform (compositor-only, avoids full-viewport repaint) */
   const { scrollYProgress } = useScroll();
-  const gx = useTransform(scrollYProgress, [0, 1], ["12%", "88%"]);
-  const gy = useTransform(scrollYProgress, [0, 1], ["8%",  "92%"]);
-  const bgPos = useMotionTemplate`${gx} ${gy}`;
+  const gx = useTransform(scrollYProgress, [0, 1], ["-12vw", "12vw"]);
+  const gy = useTransform(scrollYProgress, [0, 1], ["-8vh", "8vh"]);
+  const gradientTransform = useMotionTemplate`translate(${gx}, ${gy})`;
 
   return (
-    <>
+    <ThemeProvider>
       {/* Scroll-driven lime gradient overlay */}
       <motion.div
         className="scroll-gradient"
-        style={{ backgroundPosition: bgPos }}
+        style={{ transform: gradientTransform }}
         aria-hidden="true"
       />
 
@@ -116,15 +117,15 @@ function App() {
         reverseOrder={false}
         toastOptions={{
           style: {
-            background: "#1A1A1A",
-            color: "#EDE8E0",
-            border: "1px solid #222222",
+            background: "var(--surface-2)",
+            color: "var(--text)",
+            border: "1px solid var(--border)",
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "14px",
           },
         }}
       />
-    </>
+    </ThemeProvider>
   );
 }
 

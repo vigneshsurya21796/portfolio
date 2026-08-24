@@ -67,7 +67,7 @@
 }
 
 .project__card:hover {
-  background: #0e0e0e;
+  background: var(--card-hover-bg);
 }
 
 /* Left accent bar */

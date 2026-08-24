@@ -9,19 +9,19 @@ import { WipeText } from "../../utils/WipeText";
 const techMap = Object.fromEntries(technologies.map((t) => [t.name, t]));
 
 const projects = [
+  // {
+  //   num: "01",
+  //   project: "Mayilveera Website",
+  //   category: "Corporate / Web",
+  //   description:
+  //     "Full corporate website built with React and Node.js — responsive, production-deployed with custom CMS features, contact forms, and SEO-optimized pages.",
+  //   used: ["React JS", "Node JS"],
+  //   link: "https://mayilveera.com/",
+  //   image: null,
+  //   placeholder: "linear-gradient(135deg, #0d1a08 0%, #1a2e10 60%, #0f1f0a 100%)",
+  // },
   {
     num: "01",
-    project: "Mayilveera Website",
-    category: "Corporate / Web",
-    description:
-      "Full corporate website built with React and Node.js — responsive, production-deployed with custom CMS features, contact forms, and SEO-optimized pages.",
-    used: ["React JS", "Node JS"],
-    link: "https://mayilveera.com/",
-    image: null,
-    placeholder: "linear-gradient(135deg, #0d1a08 0%, #1a2e10 60%, #0f1f0a 100%)",
-  },
-  {
-    num: "02",
     project: "Crypto Tracker",
     category: "Finance / Web App",
     description:
@@ -29,7 +29,20 @@ const projects = [
     used: ["React JS", "Socket.io"],
     link: "https://crypto-tracker-flame-zeta.vercel.app/",
     image: null,
-    placeholder: "linear-gradient(135deg, #08101a 0%, #102030 60%, #0a141f 100%)",
+    placeholder:
+      "linear-gradient(135deg, #08101a 0%, #102030 60%, #0a141f 100%)",
+  },
+  {
+    num: "02",
+    project: "ECommerce Platform",
+    category: "E-Commerce / Full Stack",
+    description:
+      "End-to-end e-commerce platform with product catalog, cart, checkout, and order management. REST API backend with MongoDB for flexible product schema.",
+    used: ["React JS", "Node JS", "MongoDB"],
+    link: "https://ecommerce-92rp.onrender.com/",
+    image: null,
+    placeholder:
+      "linear-gradient(135deg, #1a080d 0%, #2a1020 60%, #1a0a14 100%)",
   },
   {
     num: "03",
@@ -40,7 +53,20 @@ const projects = [
     used: ["React JS", "Node JS", "MongoDB"],
     link: "https://ecommerce-92rp.onrender.com/",
     image: null,
-    placeholder: "linear-gradient(135deg, #1a080d 0%, #2a1020 60%, #1a0a14 100%)",
+    placeholder:
+      "linear-gradient(135deg, #1a080d 0%, #2a1020 60%, #1a0a14 100%)",
+  },
+  {
+    num: "04",
+    project: "ECommerce Platform",
+    category: "E-Commerce / Full Stack",
+    description:
+      "End-to-end e-commerce platform with product catalog, cart, checkout, and order management. REST API backend with MongoDB for flexible product schema.",
+    used: ["React JS", "Node JS", "MongoDB"],
+    link: "https://ecommerce-92rp.onrender.com/",
+    image: null,
+    placeholder:
+      "linear-gradient(135deg, #1a080d 0%, #2a1020 60%, #1a0a14 100%)",
   },
 ];
 
@@ -61,11 +87,7 @@ const watermarkVariants = {
 
 function ProjectCard({ p }) {
   return (
-    <motion.div
-      className="project__card"
-      initial="rest"
-      whileHover="hover"
-    >
+    <motion.div className="project__card" initial="rest" whileHover="hover">
       {/* Left accent bar */}
       <motion.span className="project__card-bar" variants={barVariants} />
 
@@ -126,7 +148,10 @@ function ProjectCard({ p }) {
         </div>
 
         {/* Watermark number */}
-        <motion.span className="project__card-watermark" variants={watermarkVariants}>
+        <motion.span
+          className="project__card-watermark"
+          variants={watermarkVariants}
+        >
           {p.num}
         </motion.span>
       </div>
@@ -136,7 +161,7 @@ function ProjectCard({ p }) {
 
 function Recentprojects() {
   const outerRef = useRef(null);
-  const headRef  = useReveal(0.1);
+  const headRef = useReveal(0.1);
 
   const { scrollYProgress } = useScroll({
     target: outerRef,

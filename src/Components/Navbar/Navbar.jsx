@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FiSun, FiMoon } from "react-icons/fi";
 import "./Navbar.css";
 import { socials } from "../../constants/index";
+import { useTheme } from "../../hooks/useTheme";
 
 const links = [
   { num: "01", label: "Home",     href: "#Home"     },
@@ -14,6 +16,7 @@ const links = [
 const SPRING = [0.16, 1, 0.3, 1];
 
 function Navbar() {
+  const { theme, toggleTheme } = useTheme();
   const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [origin, setOrigin]     = useState({ x: "calc(100% - 40px)", y: "40px" });
@@ -56,34 +59,40 @@ function Navbar() {
           <span className="nav__logo-bracket">/&gt;</span>
         </a>
 
-        {/* Desktop links */}
-        <ul className="nav__links">
-          {links.map(({ label, href }) => (
-            <li key={label}>
-              <a href={href} className="nav__link" data-hover>{label}</a>
-            </li>
-          ))}
-        </ul>
+        <div className="nav__right">
+          {/* Desktop links */}
+          <ul className="nav__links">
+            {links.map(({ label, href }) => (
+              <li key={label}>
+                <a href={href} className="nav__link" data-hover>{label}</a>
+              </li>
+            ))}
+          </ul>
 
-        {/* Availability badge */}
-        <div className="nav__availability" aria-label="Availability status">
-          <span className="nav__avail-dot" aria-hidden="true" />
-          Available
+          {/* Theme toggle */}
+          <button
+            className="nav__theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            data-hover
+          >
+            {theme === "light" ? <FiMoon size={16} /> : <FiSun size={16} />}
+          </button>
+
+          {/* Hamburger — only visible when closed */}
+          <button
+            ref={hamRef}
+            className={`nav__hamburger${open ? " nav__hamburger--hidden" : ""}`}
+            onClick={handleOpen}
+            aria-label="Open menu"
+            aria-expanded={open}
+            data-hover
+          >
+            <span className="nav__line" />
+            <span className="nav__line" />
+            <span className="nav__line" />
+          </button>
         </div>
-
-        {/* Hamburger — only visible when closed */}
-        <button
-          ref={hamRef}
-          className={`nav__hamburger${open ? " nav__hamburger--hidden" : ""}`}
-          onClick={handleOpen}
-          aria-label="Open menu"
-          aria-expanded={open}
-          data-hover
-        >
-          <span className="nav__line" />
-          <span className="nav__line" />
-          <span className="nav__line" />
-        </button>
       </nav>
 
       {/* Full-screen circle-reveal overlay */}
