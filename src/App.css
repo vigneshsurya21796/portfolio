@@ -115,7 +115,7 @@ body::after {
   text-transform: uppercase;
 }
 
-/* ── Scroll-driven lime gradient overlay ─────────────────── */
+/* ── Scroll-driven accent gradient overlay ───────────────── */
 /* Oversized so the transform-driven pan (App.js) never exposes an edge */
 .scroll-gradient {
   position: fixed;
@@ -125,7 +125,7 @@ body::after {
   bottom: -8vh;
   background: radial-gradient(
     ellipse 60% 40% at 15% 10%,
-    rgba(201, 255, 71, 0.07),
+    rgba(78, 155, 255, 0.07),
     transparent 70%
   );
   background-size: 100% 100%;

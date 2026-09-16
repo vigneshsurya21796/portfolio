@@ -11,8 +11,8 @@
   --bg:              #FFFFFF;
   --surface:         #F5F5F3;
   --surface-2:       #ECECE8;
-  --accent:          #9FE000;
-  --accent-dim:      rgba(159, 224, 0, 0.12);
+  --accent:          #1877F2;
+  --accent-dim:      rgba(24, 119, 242, 0.12);
   --text:            #1A1A1A;
   --text-muted:      #8A8A8A;
   --border:          #E2E2E0;
@@ -29,8 +29,8 @@
   --bg:              #080808;
   --surface:         #111111;
   --surface-2:       #1A1A1A;
-  --accent:          #C9FF47;
-  --accent-dim:      rgba(201, 255, 71, 0.12);
+  --accent:          #4E9BFF;
+  --accent-dim:      rgba(78, 155, 255, 0.12);
   --text:            #EDE8E0;
   --text-muted:      #555555;
   --border:          #222222;
@@ -61,7 +61,7 @@ a {
 
 ::selection {
   background: var(--accent);
-  color: #080808;
+  color: #FFFFFF;
 }
 
 :focus-visible {
@@ -203,17 +203,6 @@ a {
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
-}
-
-/* ── Custom cursor ────────────────────────────────────────── */
-body.has-cursor {
-  cursor: none;
-}
-
-body.has-cursor a,
-body.has-cursor button,
-body.has-cursor [data-hover] {
-  cursor: none;
 }
 
 /* ── Reduced motion ───────────────────────────────────────── */

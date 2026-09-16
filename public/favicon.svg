@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="12" fill="#0d0d0d"/>
-  <text x="32" y="22" text-anchor="middle" font-family="Courier New, monospace" font-size="12" font-weight="700" fill="#6C63FF">&lt;</text>
-  <text x="32" y="38" text-anchor="middle" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="#ffffff">S</text>
-  <text x="32" y="52" text-anchor="middle" font-family="Courier New, monospace" font-size="12" font-weight="700" fill="#6C63FF">/&gt;</text>
+  <rect width="64" height="64" rx="14" fill="#080808"/>
+  <text x="20" y="41" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="800" fill="#f5f5f5">S</text>
+  <text x="44" y="41" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="800" fill="#4E9BFF">P</text>
 </svg>

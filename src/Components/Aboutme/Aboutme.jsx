@@ -12,7 +12,7 @@ const roles = [
 ];
 
 const statsConfig = [
-  { target: 4,   suffix: "+",  label: "Years Experience" },
+  { target: 3.3, suffix: "+",  label: "Years Experience" },
   { target: 10,  suffix: "+",  label: "Projects Shipped" },
   { target: 20,  suffix: "+",  label: "Technologies"     },
   { target: 100, suffix: "%",  label: "Remote Ready"     },
@@ -76,7 +76,7 @@ function Aboutme() {
 
           <div ref={bioRef} className="reveal" style={{ transitionDelay: "0.1s" }}>
             <p className="about__bio">
-              Web developer with <strong>4+ years</strong> of experience combining
+              Web developer with <strong>3.3+ years</strong> of experience combining
               a foundation in Electronics &amp; Communication Engineering with
               hands-on full-stack expertise. Currently building custom software at{" "}
               <strong>Mayilveera Tech Solutions</strong>, Chennai — shipping

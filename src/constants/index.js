@@ -1,12 +1,14 @@
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiExpress,
-  SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiFigma, SiPostman,
+  SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiPostman,
   SiLeetcode, SiNextdotjs, SiSocketdotio,
+  SiAmazonec2, SiAmazons3, SiDocker,
+  SiRedis, SiStripe, SiRedux, SiReactquery, SiReactrouter,
 } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { VscCode } from "react-icons/vsc";
 import { FaNodeJs } from "react-icons/fa6";
-import { TbBrandVite } from "react-icons/tb";
+import { TbBrandVite, TbPlugConnected } from "react-icons/tb";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdAttachEmail } from "react-icons/md";
 
@@ -22,13 +24,21 @@ const technologies = [
   { name: "Express JS",  Icon: SiExpress,         color: "#cccccc" },
   { name: "MongoDB",     Icon: SiMongodb,         color: "#47A248" },
   { name: "MySQL",       Icon: GrMysql,           color: "#4479A1" },
-  { name: "Figma",       Icon: SiFigma,           color: "#F24E1E" },
   { name: "GitHub",      Icon: SiGithub,          color: "#e0e0e0" },
   { name: "Next.js",     Icon: SiNextdotjs,       color: "#e0e0e0" },
   { name: "Vite",        Icon: TbBrandVite,       color: "#646CFF" },
   { name: "Postman",     Icon: SiPostman,         color: "#FF6C37" },
   { name: "VS Code",     Icon: VscCode,           color: "#007ACC" },
   { name: "Socket.io",  Icon: SiSocketdotio,     color: "#010101" },
+  { name: "EC2",         Icon: SiAmazonec2,       color: "#FF9900" },
+  { name: "S3",          Icon: SiAmazons3,        color: "#569A31" },
+  { name: "Docker",      Icon: SiDocker,          color: "#2496ED" },
+  { name: "Redis",       Icon: SiRedis,           color: "#DC382D" },
+  { name: "Stripe",      Icon: SiStripe,          color: "#635BFF" },
+  { name: "Redux",       Icon: SiRedux,           color: "#764ABC" },
+  { name: "React Query", Icon: SiReactquery,      color: "#FF4154" },
+  { name: "React Router",Icon: SiReactrouter,     color: "#CA4245" },
+  { name: "WebSockets",  Icon: TbPlugConnected,   color: "#0EA5E9" },
 ];
 
 const socials = [
@@ -45,19 +55,19 @@ const arsenal = [
   },
   {
     category: "Backend",
-    techs: ["Node JS", "Express JS"],
+    techs: ["Node JS", "Express JS", "WebSockets"],
   },
   {
     category: "Database",
-    techs: ["MongoDB", "MySQL"],
+    techs: ["MongoDB", "MySQL", "Redis"],
   },
   {
     category: "DevOps / Tools",
     techs: ["GitHub", "Vite", "Postman", "VS Code"],
   },
   {
-    category: "Design",
-    techs: ["Figma"],
+    category: "Cloud & DevOps",
+    techs: ["EC2", "S3", "Docker"],
   },
 ];
 

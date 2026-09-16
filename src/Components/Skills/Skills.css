@@ -99,7 +99,7 @@
 }
 
 .arsenal__pill:hover {
-  border-color: rgba(201, 255, 71, 0.25);
+  border-color: rgba(78, 155, 255, 0.25);
   color: var(--text);
   background: var(--surface-2);
 }

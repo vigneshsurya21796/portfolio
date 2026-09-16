@@ -20,13 +20,16 @@ export function useCounter(target, duration = 1400) {
         fired.current = true;
         obs.unobserve(el);
 
+        const decimals = (target.toString().split(".")[1] || "").length;
+        const factor = 10 ** decimals;
+
         let startTime = null;
         const tick = (timestamp) => {
           if (!startTime) startTime = timestamp;
           const progress = Math.min((timestamp - startTime) / duration, 1);
           // ease-out quad
           const eased = 1 - (1 - progress) * (1 - progress);
-          setCount(Math.ceil(eased * target));
+          setCount(Math.round(eased * target * factor) / factor);
           if (progress < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);

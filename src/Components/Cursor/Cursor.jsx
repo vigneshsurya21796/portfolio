@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import "./Cursor.css";
 
 /**
- * Custom cursor — lime dot + lagged ring.
+ * Custom cursor — accent dot + lagged ring.
  * Only renders on devices that support hover (not touch/mobile).
  */
 function Cursor() {

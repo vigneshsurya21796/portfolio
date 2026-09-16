@@ -1,5 +1,5 @@
 import "./Header.css";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { socials } from "../../constants/index";
 
 const SOLID_LETTERS = "SURYA".split("");
@@ -7,12 +7,19 @@ const OUTLINE_WORD = "DEVELOPER";
 
 function Header() {
   const { scrollY } = useScroll();
-  const circleY = useTransform(scrollY, [0, 600], [0, 140]);
-  const glowY = useTransform(scrollY, [0, 600], [0, 200]);
-  const dotGridY = useTransform(scrollY, [0, 600], [0, 80]);
+  /* Spring-smoothed once, shared by every scroll-linked value below —
+     raw scrollY updates in whatever bursts Lenis/the browser deliver
+     them, which reads as jittery (worse on fast direction reversals
+     like flicking back up); a single spring decouples the animation
+     from that noise. */
+  const smoothScrollY = useSpring(scrollY, { stiffness: 300, damping: 40, mass: 0.5 });
+
+  const circleY = useTransform(smoothScrollY, [0, 600], [0, 140]);
+  const glowY = useTransform(smoothScrollY, [0, 600], [0, 200]);
+  const dotGridY = useTransform(smoothScrollY, [0, 600], [0, 80]);
 
   /* Scroll-drawn accent — draws in fast, over the first bit of scroll */
-  const pathLength = useTransform(scrollY, [0, 220], [0, 1]);
+  const pathLength = useTransform(smoothScrollY, [0, 220], [0, 1]);
 
   return (
     <section className="hero" id="Home">
@@ -39,15 +46,6 @@ function Header() {
         <span>Chennai, India</span>
         <span className="hero__corner-sep">—</span>
         <span>Full Stack Dev</span>
-      </div>
-
-      {/* ── Float panel (top-right) ────────────────────────── */}
-      <div className="hero__float-panel" aria-label="Brief intro">
-        <p>
-          Building scalable web experiences with React, Node.js &amp; modern
-          tooling. 4+ years shipping products that people actually use.
-        </p>
-        <span className="hero__float-scroll">scroll for more ↓</span>
       </div>
 
       {/* ── Main content ──────────────────────────────────── */}
@@ -89,9 +87,9 @@ function Header() {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#CBEB5E" />
-                <stop offset="45%" stopColor="#8FCF2E" />
-                <stop offset="100%" stopColor="#2C5C14" />
+                <stop offset="0%" stopColor="#8FC1FF" />
+                <stop offset="45%" stopColor="#1877F2" />
+                <stop offset="100%" stopColor="#0E3A82" />
               </linearGradient>
             </defs>
             <motion.path
@@ -133,7 +131,7 @@ function Header() {
         {/* Stats */}
         <div className="hero__stats">
           <div className="hero__stat">
-            <span className="hero__stat-n">4+</span>
+            <span className="hero__stat-n">3.3+</span>
             <span className="hero__stat-l">Years Exp.</span>
           </div>
           <div className="hero__stat-sep" />
