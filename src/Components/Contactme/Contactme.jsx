@@ -122,8 +122,8 @@ function Contactme() {
               <IoMdMail size={20} className="user__icon" />
               <div>
                 <p>Email</p>
-                <a href="mailto:vigneshsurya21796@gmail.com" className="contactme__email-link">
-                  vigneshsurya21796@gmail.com
+                <a href="mailto:suryap.vignesh@gmail.com" className="contactme__email-link">
+                  suryap.vignesh@gmail.com
                 </a>
               </div>
             </div>

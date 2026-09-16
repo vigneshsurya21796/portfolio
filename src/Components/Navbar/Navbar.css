@@ -7,14 +7,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 0;
-  transition: background 0.3s, border-color 0.3s, padding 0.3s;
+  transition: background 0.3s, border-color 0.3s;
   border-bottom: 1px solid transparent;
 }
 
 .nav--scrolled {
   background: var(--nav-scrolled-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   padding: 0.85rem 0;
 }

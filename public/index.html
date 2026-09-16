@@ -5,12 +5,12 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#FAF8F3" />
+    <meta name="theme-color" content="#080808" />
     <script>
       (function () {
         try {
           var theme = localStorage.getItem("theme");
-          document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme === "light" ? "light" : "dark");
         } catch (e) {}
       })();
     </script>

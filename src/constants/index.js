@@ -45,7 +45,7 @@ const socials = [
   { Icon: FaGithub,      href: "https://github.com/vigneshsurya21796",           label: "GitHub"   },
   { Icon: FaLinkedin,    href: "https://www.linkedin.com/in/vigneshsurya21796/",  label: "LinkedIn" },
   { Icon: SiLeetcode,    href: "#",                                               label: "LeetCode" },
-  { Icon: MdAttachEmail, href: "mailto:vigneshsurya21796@gmail.com",              label: "Email"    },
+  { Icon: MdAttachEmail, href: "mailto:suryap.vignesh@gmail.com",                 label: "Email"    },
 ];
 
 const arsenal = [

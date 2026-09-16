@@ -5,8 +5,8 @@ const STORAGE_KEY = "theme";
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    if (typeof window === "undefined") return "light";
-    return localStorage.getItem(STORAGE_KEY) === "dark" ? "dark" : "light";
+    if (typeof window === "undefined") return "dark";
+    return localStorage.getItem(STORAGE_KEY) === "light" ? "light" : "dark";
   });
 
   useEffect(() => {
