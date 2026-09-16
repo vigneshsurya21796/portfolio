@@ -84,7 +84,7 @@ function Aboutme() {
             </p>
             <a
               className="about__cv"
-              href="https://drive.google.com/file/d/1wJiNO9up801Jm-SzmaiRWGCFDHIR5QIU/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1chbEzwZPeujvqVD2y1UwnttiLtJgEzZN/view"
               target="_blank"
               rel="noreferrer"
               data-hover
