@@ -1,7 +1,7 @@
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiExpress,
   SiTailwindcss, SiBootstrap, SiMongodb, SiGithub, SiPostman,
-  SiLeetcode, SiNextdotjs, SiSocketdotio,
+  SiNextdotjs, SiSocketdotio,
   SiAmazonec2, SiAmazons3, SiDocker,
   SiRedis, SiStripe, SiRedux, SiReactquery, SiReactrouter,
 } from "react-icons/si";
